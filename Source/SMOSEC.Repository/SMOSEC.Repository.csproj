@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A228840D-7E0B-49F0-987A-CF43E932BA50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SMOSEC.Repository</RootNamespace>
+    <AssemblyName>SMOSEC.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\Kuaigs.UI\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\Kuaigs.UI\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\AssBorrowOrderRepository.cs" />
+    <Compile Include="Assets\AssBorrowOrderRowRepository.cs" />
+    <Compile Include="Assets\AssCollarOrderRepository.cs" />
+    <Compile Include="Assets\AssCollarOrderRowRepository.cs" />
+    <Compile Include="Assets\AssetsRepository.cs" />
+    <Compile Include="Assets\AssetsSNRepository.cs" />
+    <Compile Include="Assets\AssProcessRecordRepository.cs" />
+    <Compile Include="Assets\AssRepairOrderRepository.cs" />
+    <Compile Include="Assets\AssRepairOrderRowRepository.cs" />
+    <Compile Include="Assets\AssRestoreOrderRepository.cs" />
+    <Compile Include="Assets\AssRestoreOrderRowRepository.cs" />
+    <Compile Include="Assets\AssReturnOrderRepository.cs" />
+    <Compile Include="Assets\AssReturnOrderRowRepository.cs" />
+    <Compile Include="Assets\AssScrapOrderRepository.cs" />
+    <Compile Include="Assets\AssScrapOrderRowRepository.cs" />
+    <Compile Include="Assets\AssTransferOrderRepository.cs" />
+    <Compile Include="Assets\AssTransferOrderRowRepository.cs" />
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="Consumables\ConQuantRepository.cs" />
+    <Compile Include="Consumables\ConsumablesRepository.cs" />
+    <Compile Include="Consumables\OutboundOrderRepository.cs" />
+    <Compile Include="Consumables\WarehouseReceiptRepository.cs" />
+    <Compile Include="Setting\AssetsTypeRepository.cs" />
+    <Compile Include="Setting\AssLocationRepository.cs" />
+    <Compile Include="Setting\coreUserRepository.cs" />
+    <Compile Include="Setting\ValidateCodeRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMOSEC.Domain\SMOSEC.Domain.csproj">
+      <Project>{75ADB9C8-D14E-415A-93C9-113E5795F63A}</Project>
+      <Name>SMOSEC.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMOSEC.DTOs\SMOSEC.DTOs.csproj">
+      <Project>{B9B23883-06C5-4581-B315-4F2F649D55C5}</Project>
+      <Name>SMOSEC.DTOs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMOSEC.Infrastructure\SMOSEC.Infrastructure.csproj">
+      <Project>{C2679305-61A8-45C5-BCD5-482A734C71A2}</Project>
+      <Name>SMOSEC.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
