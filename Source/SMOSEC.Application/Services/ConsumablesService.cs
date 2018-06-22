@@ -5,7 +5,6 @@ using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using AutoMapper;
-using SMOSEC.Application.IServices;
 using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.Domain.IRepository;
@@ -13,7 +12,7 @@ using SMOSEC.DTOs.Enum;
 using SMOSEC.DTOs.InputDTO;
 using SMOSEC.DTOs.OutputDTO;
 using SMOSEC.Infrastructure;
-using SMOSEC.Repository.Consumables;
+using SMOSEC.Application.IServices;
 
 namespace SMOSEC.Application.Services
 {
@@ -41,7 +40,6 @@ namespace SMOSEC.Application.Services
         /// 耗材的查询接口
         /// </summary>
         private IConsumablesRepository _consumablesRepository;
-
         /// <summary>
         /// 入库单的查询接口
         /// </summary>
@@ -86,10 +84,15 @@ namespace SMOSEC.Application.Services
         /// 根据用户编号得到出库单列表
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        public DataTable GetOOListByUserId(string userId)
+        public DataTable GetOOListByUserId(string userId, string LocationId)
         {
             var list = _outboundOrderRepository.GetByUserId(userId).AsNoTracking();
+            if (!string.IsNullOrEmpty(LocationId))
+            {
+                list = list.Where(a => a.LOCATIONID == LocationId);
+            }
             var result = from outboundOrder in list
                 join user in _SMOSECDbContext.coreUsers on outboundOrder.HANDLEMAN equals user.USER_ID
                 join location in _SMOSECDbContext.AssLocations on outboundOrder.LOCATIONID equals location.LOCATIONID
@@ -199,10 +202,15 @@ namespace SMOSEC.Application.Services
         /// 根据用户编号得到入库单列表
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        public DataTable GetWRListByUserId(string userId)
+        public DataTable GetWRListByUserId(string userId, string LocationId)
         {
             var list = _warehouseReceiptRepository.GetByUserId(userId).AsNoTracking();
+            if (!string.IsNullOrEmpty(LocationId))
+            {
+                list = list.Where(a => a.LOCATIONID == LocationId);
+            }
             var result = from warehouseReceipt in list
                 join user in _SMOSECDbContext.coreUsers on warehouseReceipt.HANDLEMAN equals user.USER_ID
                 join location in _SMOSECDbContext.AssLocations on warehouseReceipt.LOCATIONID equals location.LOCATIONID

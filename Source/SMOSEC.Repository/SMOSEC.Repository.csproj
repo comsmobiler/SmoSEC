@@ -57,23 +57,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AssBorrowOrderRepository.cs" />
-    <Compile Include="Assets\AssBorrowOrderRowRepository.cs" />
     <Compile Include="Assets\AssCollarOrderRepository.cs" />
-    <Compile Include="Assets\AssCollarOrderRowRepository.cs" />
     <Compile Include="Assets\AssetsRepository.cs" />
     <Compile Include="Assets\AssetsSNRepository.cs" />
+    <Compile Include="Assets\AssInventoryRepository.cs" />
+    <Compile Include="Assets\AssInventoryResultRepository.cs" />
     <Compile Include="Assets\AssProcessRecordRepository.cs" />
     <Compile Include="Assets\AssRepairOrderRepository.cs" />
     <Compile Include="Assets\AssRepairOrderRowRepository.cs" />
     <Compile Include="Assets\AssRestoreOrderRepository.cs" />
-    <Compile Include="Assets\AssRestoreOrderRowRepository.cs" />
     <Compile Include="Assets\AssReturnOrderRepository.cs" />
-    <Compile Include="Assets\AssReturnOrderRowRepository.cs" />
     <Compile Include="Assets\AssScrapOrderRepository.cs" />
     <Compile Include="Assets\AssScrapOrderRowRepository.cs" />
     <Compile Include="Assets\AssTransferOrderRepository.cs" />
     <Compile Include="Assets\AssTransferOrderRowRepository.cs" />
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="Consumables\ConInventoryRepository.cs" />
+    <Compile Include="Consumables\ConInventoryResultRepository.cs" />
     <Compile Include="Consumables\ConQuantRepository.cs" />
     <Compile Include="Consumables\ConsumablesRepository.cs" />
     <Compile Include="Consumables\OutboundOrderRepository.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Setting\AssetsTypeRepository.cs" />
     <Compile Include="Setting\AssLocationRepository.cs" />
     <Compile Include="Setting\coreUserRepository.cs" />
+    <Compile Include="Setting\DepartmentRepository.cs" />
     <Compile Include="Setting\ValidateCodeRepository.cs" />
   </ItemGroup>
   <ItemGroup>

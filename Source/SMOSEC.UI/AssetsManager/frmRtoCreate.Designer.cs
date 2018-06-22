@@ -1,5 +1,3 @@
-using System;
-using Smobiler.Core;
 using SMOSEC.UI.UserControl;
 
 namespace SMOSEC.UI.AssetsManager
@@ -44,15 +42,17 @@ namespace SMOSEC.UI.AssetsManager
             this.btnBOMan = new Smobiler.Core.Controls.Button();
             this.Label4 = new Smobiler.Core.Controls.Label();
             this.btnBOMan1 = new Smobiler.Core.Controls.Button();
-            this.ImgBtnForBarcode = new Smobiler.Core.Controls.ImageButton();
             this.txtHMan = new Smobiler.Core.Controls.TextBox();
             this.txtLocation = new Smobiler.Core.Controls.TextBox();
+            this.panelScan = new Smobiler.Core.Controls.Panel();
+            this.image1 = new Smobiler.Core.Controls.Image();
+            this.label3 = new Smobiler.Core.Controls.Label();
             this.ListAss = new Smobiler.Core.Controls.ListView();
             this.PopRTMan = new Smobiler.Core.Controls.PopList();
-            this.PopHMan = new Smobiler.Core.Controls.PopList();
-            this.PopLocation = new Smobiler.Core.Controls.PopList();
             this.r2000Scanner1 = new Smobiler.Device.R2000Scanner();
             this.barcodeScanner1 = new Smobiler.Core.Controls.BarcodeScanner();
+            this.image2 = new Smobiler.Core.Controls.Image();
+            this.label6 = new Smobiler.Core.Controls.Label();
             // 
             // Title1
             // 
@@ -108,9 +108,9 @@ namespace SMOSEC.UI.AssetsManager
             this.btnBOMan,
             this.Label4,
             this.btnBOMan1,
-            this.ImgBtnForBarcode,
             this.txtHMan,
-            this.txtLocation});
+            this.txtLocation,
+            this.panelScan});
             this.Panel3.Name = "Panel3";
             this.Panel3.Size = new System.Drawing.Size(300, 191);
             // 
@@ -219,19 +219,6 @@ namespace SMOSEC.UI.AssetsManager
             this.btnBOMan1.Text = ">";
             this.btnBOMan1.Press += new System.EventHandler(this.btnBOMan_Press);
             // 
-            // ImgBtnForBarcode
-            // 
-            this.ImgBtnForBarcode.DataMember = null;
-            this.ImgBtnForBarcode.DisplayFormat = null;
-            this.ImgBtnForBarcode.DisplayMember = null;
-            this.ImgBtnForBarcode.ImageDirection = Smobiler.Core.Controls.Direction.Left;
-            this.ImgBtnForBarcode.Location = new System.Drawing.Point(10, 155);
-            this.ImgBtnForBarcode.Name = "ImgBtnForBarcode";
-            this.ImgBtnForBarcode.ResourceID = "BarcodeScanner";
-            this.ImgBtnForBarcode.Size = new System.Drawing.Size(151, 30);
-            this.ImgBtnForBarcode.Text = "É¨ÂëÌí¼Ó";
-            this.ImgBtnForBarcode.Press += new System.EventHandler(this.ImgBtnForBarcode_Press);
-            // 
             // txtHMan
             // 
             this.txtHMan.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
@@ -254,6 +241,31 @@ namespace SMOSEC.UI.AssetsManager
             this.txtLocation.ReadOnly = true;
             this.txtLocation.Size = new System.Drawing.Size(200, 30);
             // 
+            // panelScan
+            // 
+            this.panelScan.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.image1,
+            this.label3});
+            this.panelScan.Location = new System.Drawing.Point(5, 156);
+            this.panelScan.Name = "panelScan";
+            this.panelScan.Size = new System.Drawing.Size(124, 28);
+            this.panelScan.Touchable = true;
+            this.panelScan.Press += new System.EventHandler(this.panelScan_Press);
+            // 
+            // image1
+            // 
+            this.image1.Location = new System.Drawing.Point(1, 1);
+            this.image1.Name = "image1";
+            this.image1.ResourceID = "scan";
+            this.image1.Size = new System.Drawing.Size(30, 26);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(38, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 25);
+            this.label3.Text = "É¨ÂëÌí¼Ó";
+            // 
             // ListAss
             // 
             this.ListAss.BackColor = System.Drawing.Color.White;
@@ -273,16 +285,6 @@ namespace SMOSEC.UI.AssetsManager
             this.PopRTMan.Name = "PopRTMan";
             this.PopRTMan.Selected += new System.EventHandler(this.PopRTMan_Selected);
             // 
-            // PopHMan
-            // 
-            this.PopHMan.Name = "PopHMan";
-            this.PopHMan.Selected += new System.EventHandler(this.PopHMan_Selected);
-            // 
-            // PopLocation
-            // 
-            this.PopLocation.Name = "PopLocation";
-            this.PopLocation.Selected += new System.EventHandler(this.PopLocation_Selected);
-            // 
             // r2000Scanner1
             // 
             this.r2000Scanner1.Name = "r2000Scanner1";
@@ -294,12 +296,24 @@ namespace SMOSEC.UI.AssetsManager
             this.barcodeScanner1.Name = "barcodeScanner1";
             this.barcodeScanner1.BarcodeScanned += new Smobiler.Core.Controls.BarcodeScannerCallBackHandler(this.barcodeScanner1_BarcodeScanned_1);
             // 
+            // image2
+            // 
+            this.image2.Location = new System.Drawing.Point(1, 1);
+            this.image2.Name = "image2";
+            this.image2.ResourceID = "scan";
+            this.image2.Size = new System.Drawing.Size(30, 26);
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(38, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 25);
+            this.label6.Text = "É¨ÂëÌí¼Ó";
+            // 
             // frmRtoCreate
             // 
             this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
             this.PopRTMan,
-            this.PopHMan,
-            this.PopLocation,
             this.r2000Scanner1,
             this.barcodeScanner1});
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
@@ -329,14 +343,16 @@ namespace SMOSEC.UI.AssetsManager
         internal Smobiler.Core.Controls.Button btnBOMan;
         internal Smobiler.Core.Controls.Label Label4;
         internal Smobiler.Core.Controls.Button btnBOMan1;
-        internal Smobiler.Core.Controls.ImageButton ImgBtnForBarcode;
         internal Smobiler.Core.Controls.PopList PopRTMan;
-        internal Smobiler.Core.Controls.PopList PopHMan;
-        internal Smobiler.Core.Controls.PopList PopLocation;
         private Smobiler.Core.Controls.ListView ListAss;
         internal Smobiler.Core.Controls.TextBox txtHMan;
         internal Smobiler.Core.Controls.TextBox txtLocation;
         private Smobiler.Device.R2000Scanner r2000Scanner1;
         private Smobiler.Core.Controls.BarcodeScanner barcodeScanner1;
+        internal Smobiler.Core.Controls.Panel panelScan;
+        private Smobiler.Core.Controls.Image image1;
+        private Smobiler.Core.Controls.Label label3;
+        private Smobiler.Core.Controls.Image image2;
+        private Smobiler.Core.Controls.Label label6;
     }
 }

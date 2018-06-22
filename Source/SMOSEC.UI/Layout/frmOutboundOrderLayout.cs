@@ -7,6 +7,11 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class frmOutboundOrderLayout : Smobiler.Core.Controls.MobileUserControl
     {
+        /// <summary>
+        /// 点击，查看出库单详情
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Panel1_Press(object sender, EventArgs e)
         {
             try

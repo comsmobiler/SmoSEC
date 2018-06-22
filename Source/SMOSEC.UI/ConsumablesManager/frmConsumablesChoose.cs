@@ -8,18 +8,28 @@ using Smobiler.Core.Controls;
 
 namespace SMOSEC.UI.ConsumablesManager
 {
-    partial class frmConsumablesChoose : Smobiler.Core.Controls.MobileForm
+    partial class frmConsumablesChoose: Smobiler.Core.Controls.MobileForm
     {
+        #region 变量
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
-        public DataTable ConTable;
-        public List<string> ConList;
-        public string LocationId;
+        public DataTable ConTable;  //耗材表格
+        public List<string> ConList;  //耗材
+        public string LocationId;  //区域编号
 
-        public OperationType OperationType;
+        public OperationType OperationType;  //操作类型
 
-        public List<WarehouseReceiptRowInputDto> WrList=new List<WarehouseReceiptRowInputDto>();
-        public List<OutboundOrderRowInputDto> OoList=new List<OutboundOrderRowInputDto>();
-        public string UserId;
+        public List<WarehouseReceiptRowInputDto> WrList=new List<WarehouseReceiptRowInputDto>();  //入库单行项
+        public List<OutboundOrderRowInputDto> OoList=new List<OutboundOrderRowInputDto>();  //出库单行项
+        public string UserId; //用户编号
+        
+
+        #endregion
+
+        /// <summary>
+        /// 当全选发生变化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Checkall_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -113,6 +123,11 @@ namespace SMOSEC.UI.ConsumablesManager
             
         }
 
+        /// <summary>
+        /// 保存行项数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Press(object sender, EventArgs e)
         {
             try
@@ -128,6 +143,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 搜索耗材
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void plSearch_Press(object sender, EventArgs e)
         {
             try
@@ -141,16 +161,27 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 按回退键，则关闭窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesChoose_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
                 Close();
         }
 
+        /// <summary>
+        /// 初始化界面时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesChoose_Load(object sender, EventArgs e)
         {
             try
             {
+                //给对应的操作选择不同的行项模板
                 switch (OperationType)
                 {
                     case OperationType.入库:

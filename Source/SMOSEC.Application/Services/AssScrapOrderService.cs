@@ -200,7 +200,6 @@ namespace SMOSEC.Application.Services
             try
             {
                 String SOROWID = "0";
-                AssQuant assQuant = new AssQuant();
                 if (entity.Rows != null)
                 {
                     foreach (AssScrapOrderRow Row in entity.Rows)
@@ -244,7 +243,6 @@ namespace SMOSEC.Application.Services
             try
             {
                 AssScrapOrderRow assROR = new AssScrapOrderRow();
-                AssQuant assQuant = new AssQuant();
                 foreach (AssScrapOrderRow Row in entity.Rows)
                 {
                     assROR = _AssScrapOrderRowRepository.GetByID(entity.SOID, Row.SOROWID).FirstOrDefault();

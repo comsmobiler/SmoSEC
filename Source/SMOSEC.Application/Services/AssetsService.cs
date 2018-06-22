@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -56,7 +55,10 @@ namespace SMOSEC.Application.Services
         /// </summary>
         private IAssReturnOrderRepository _assReturnOrderRepository;
 
-
+        /// <summary>
+        /// 部门的查询接口
+        /// </summary>
+        private IDepartmentRepository _departmentRepository;
         /// <summary>
         /// 资产操作(借用,归还,领用,退库)的服务实现的构造函数
         /// </summary>
@@ -66,6 +68,7 @@ namespace SMOSEC.Application.Services
             IAssCollarOrderRepository assCollarOrderRepository,
             IAssRestoreOrderRepository assRestoreOrderRepository,
             IAssReturnOrderRepository assReturnOrderRepository,
+            IDepartmentRepository departmentRepository,
             IDbContext dbContext)
         {
             _unitOfWork = unitOfWork;
@@ -74,6 +77,7 @@ namespace SMOSEC.Application.Services
             _assCollarOrderRepository = assCollarOrderRepository;
             _assRestoreOrderRepository = assRestoreOrderRepository;
             _assReturnOrderRepository = assReturnOrderRepository;
+            _departmentRepository = departmentRepository;
             _SMOSECDbContext = (SMOSECDbContext)dbContext;
         }
 
@@ -86,7 +90,6 @@ namespace SMOSEC.Application.Services
         public AssBorrowOrderOutputDto GetBobyId(string id)
         {
             var dto = from assBorrowOrder in _SMOSECDbContext.AssBorrowOrders
-                          //                from user2 in _SMOSECDbContext.coreUsers 
                       join user in _SMOSECDbContext.coreUsers on assBorrowOrder.BORROWER equals user.USER_ID
                       join user2 in _SMOSECDbContext.coreUsers on assBorrowOrder.BRHANDLEMAN equals user2.USER_ID
                       join location in _SMOSECDbContext.AssLocations on assBorrowOrder.LOCATIONID equals location.LOCATIONID
@@ -109,10 +112,15 @@ namespace SMOSEC.Application.Services
         /// 根据用户编号返回借用单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        public DataTable GetBoByUserId(string userId)
+        public DataTable GetBoByUserId(string userId, string LocationId)
         {
             var list = _assBorrowOrderRepository.GetByUserId(userId).AsNoTracking();
+            if (!string.IsNullOrEmpty(LocationId))
+            {
+                list = list.Where(a => a.LOCATIONID == LocationId);
+            }
             var result = from borrowOrder in list
                          join user in _SMOSECDbContext.coreUsers on borrowOrder.BORROWER equals user.USER_ID
                          join location in _SMOSECDbContext.AssLocations on borrowOrder.LOCATIONID equals location.LOCATIONID
@@ -155,7 +163,6 @@ namespace SMOSEC.Application.Services
         public AssCollarOrderOutputDto GetCobyId(string id)
         {
             var dto = from assCollarOrder in _SMOSECDbContext.AssCollarOrders
-                          //                from user2 in _SMOSECDbContext.coreUsers
                       join user in _SMOSECDbContext.coreUsers on assCollarOrder.USERID equals user.USER_ID
                       join user2 in _SMOSECDbContext.coreUsers on assCollarOrder.HANDLEMAN equals user2.USER_ID
                       join location in _SMOSECDbContext.AssLocations on assCollarOrder.LOCATIONID equals location.LOCATIONID
@@ -168,20 +175,35 @@ namespace SMOSEC.Application.Services
                           Handleman = user2.USER_NAME,
                           Eptrestoredate = assCollarOrder.EPTRESTOREDATE,
                           Locationid = location.NAME,
-                          Note = assCollarOrder.NOTE
-
+                          Note = assCollarOrder.NOTE,
+                          Place = assCollarOrder.PLACE,
+                          Inusedep = assCollarOrder.INUSEDDEP
                       };
-            return dto.FirstOrDefault();
+            var assCollarOrderOutputDto = dto.FirstOrDefault();
+            if (assCollarOrderOutputDto != null && !string.IsNullOrEmpty(assCollarOrderOutputDto.Inusedep))
+            {
+                var department = _departmentRepository.GetByID(assCollarOrderOutputDto.Inusedep);
+
+                var firstOrDefault = department.FirstOrDefault();
+                if (firstOrDefault != null)
+                    assCollarOrderOutputDto.Inusedep = firstOrDefault.NAME;
+            }
+            return assCollarOrderOutputDto;
         }
 
         /// <summary>
         /// 根据用户编号返回领用单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        public DataTable GetCoByUserId(string userId)
+        public DataTable GetCoByUserId(string userId, string LocationId)
         {
             var list = _assCollarOrderRepository.GetByUserId(userId).AsNoTracking();
+            if (!string.IsNullOrEmpty(LocationId))
+            {
+                list = list.Where(a => a.LOCATIONID == LocationId);
+            }
             var result = from collarOrder in list
                          join user in _SMOSECDbContext.coreUsers on collarOrder.USERID equals user.USER_ID
                          join location in _SMOSECDbContext.AssLocations on collarOrder.LOCATIONID equals location.LOCATIONID
@@ -238,7 +260,8 @@ namespace SMOSEC.Application.Services
                           Restorer = user.USER_NAME,
                           Handleman = user2.USER_NAME,
                           LocationName = location.NAME,
-                          Note = assRestoreOrder.NOTE
+                          Note = assRestoreOrder.NOTE,
+                          Place = assRestoreOrder.PLACE
 
                       };
             return dto.FirstOrDefault();
@@ -248,10 +271,15 @@ namespace SMOSEC.Application.Services
         /// 根据用户编号返回退库单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        public DataTable GetRsoByUserId(string userId)
+        public DataTable GetRsoByUserId(string userId, string LocationId)
         {
             var list = _assRestoreOrderRepository.GetByUserID(userId).AsNoTracking();
+            if (!string.IsNullOrEmpty(LocationId))
+            {
+                list = list.Where(a => a.LOCATIONID == LocationId);
+            }
             var result = from restoreOrder in list
                          join user in _SMOSECDbContext.coreUsers on restoreOrder.HANDLEMAN equals user.USER_ID
                          join user2 in _SMOSECDbContext.coreUsers on restoreOrder.RESTORER equals user2.USER_ID
@@ -318,10 +346,15 @@ namespace SMOSEC.Application.Services
         /// 根据用户编号返回归还单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        public DataTable GetRtoByUserId(string userId)
+        public DataTable GetRtoByUserId(string userId, string LocationId)
         {
             var list = _assReturnOrderRepository.GetByUserID(userId).AsNoTracking();
+            if (!string.IsNullOrEmpty(LocationId))
+            {
+                list = list.Where(a => a.LOCATIONID == LocationId);
+            }
             var result = from returnOrder in list
                          join user in _SMOSECDbContext.coreUsers on returnOrder.RETURNER equals user.USER_ID
                          join location in _SMOSECDbContext.AssLocations on returnOrder.LOCATIONID equals location.LOCATIONID
@@ -444,22 +477,17 @@ namespace SMOSEC.Application.Services
                             assets.STATUS = (int)STATUS.借用中;
                             assets.CURRENTUSER = borrowOrderInput.BORROWER;
 
-                            //得到借用人的区域，并修改资产的区域为借用人的区域
-                            //                            var User = from user in _SMOSECDbContext.coreUsers
-                            //                                where user.USER_ID == assbo.BORROWER
-                            //                                select new coreUser()
-                            //                                {
-                            //
-                            //                                };
+                            //得到借用人的区域，并修改资产的区域为借用人的区域                           
                             var User = _SMOSECDbContext.coreUsers.Where(a => a.USER_ID == assbo.BORROWER)
                                 .AsNoTracking().FirstOrDefault();
                             if (User != null)
                             {
                                 assets.LOCATIONID = User.USER_LOCATIONID;
+                                assets.DEPARTMENTID = User.USER_DEPARTMENTID;
                             }
                             else
                             {
-                                //                                sb.Append("该用户不存在。");
+                                
                                 throw new Exception("该用户不存在。");
                             }
                             _unitOfWork.RegisterDirty(assets);
@@ -553,10 +581,10 @@ namespace SMOSEC.Application.Services
                             if (User != null)
                             {
                                 assets.LOCATIONID = User.USER_LOCATIONID;
+                                assets.DEPARTMENTID = User.USER_DEPARTMENTID;
                             }
                             else
                             {
-                                //                                sb.Append("该用户不存在。");
                                 throw new Exception("该用户不存在。");
                             }
                             _unitOfWork.RegisterDirty(assets);

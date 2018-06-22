@@ -53,6 +53,11 @@ namespace SMOSEC.DTOs.OutputDTO
         public string DepartmentId { get; set; }
 
         /// <summary>
+        /// 部门名称
+        /// </summary>
+        public string DepartmentName { get; set; }
+
+        /// <summary>
         /// 当前用户
         /// </summary>
         public string CurrentUser { get; set; }
@@ -87,12 +92,6 @@ namespace SMOSEC.DTOs.OutputDTO
         /// </summary>
         public string Place { get; set; }
 
-
-        //        /// <summary>
-        //        /// 是否启用SN(0 不启用，1启用，默认为0)
-        //        /// </summary>
-        //        public int ISSNCONTROL { get; set; }
-
         /// <summary>
         /// 购入时间
         /// </summary>
@@ -122,10 +121,6 @@ namespace SMOSEC.DTOs.OutputDTO
         /// 状态
         /// </summary>
         public int? Status { get; set; }
-        //        /// <summary>
-        //        /// 有效期时间单位(0 年,1 月, 2 日,默认为月)
-        //        /// </summary>
-        //        public int? EXPIRYDATEUNIT { get; set; }
 
     }
 

@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using Smobiler.Core.Controls;
 using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.DTOs.InputDTO;
 using SMOSEC.UI.Layout;
-using Smobiler.Core.Controls;
 
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmOutOrderCreate : Smobiler.Core.Controls.MobileForm
     {
+        #region 变量
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
         private string TypeId;
         private string HManId;
@@ -20,7 +21,13 @@ namespace SMOSEC.UI.ConsumablesManager
 
         private List<OutboundOrderRowInputDto> rowsInputDtos=new List<OutboundOrderRowInputDto>();
         private string UserId;
+        #endregion
 
+        /// <summary>
+        /// 创建出库单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Press(object sender, EventArgs e)
         {
             try
@@ -57,37 +64,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
-        private void btnHMan_Press(object sender, EventArgs e)
-        {
-            try
-            {
-                PopHMan.Groups.Clear();
-                PopListGroup hManGroup = new PopListGroup();
-                PopHMan.Title = "处理人选择";
-                List<coreUser> users = _autofacConfig.coreUserService.GetAdmin();
-                foreach (coreUser Row in users)
-                {
-                    hManGroup.AddListItem(Row.USER_NAME, Row.USER_ID);
-                }
-                PopHMan.Groups.Add(hManGroup);
-                if (btnHMan.Tag != null)   //如果已有选中项，则显示选中效果
-                {
-                    foreach (PopListItem Item in hManGroup.Items)
-                    {
-                        if (Item.Value == btnHMan.Tag.ToString())
-                            PopHMan.SetSelections(Item);
-                    }
-                }
-                PopHMan.ShowDialog();
-
-
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
+        /// <summary>
+        /// 选择出库类型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBOMan_Press(object sender, EventArgs e)
         {
             try
@@ -97,12 +78,6 @@ namespace SMOSEC.UI.ConsumablesManager
                 PopBOMan.Title = "出库类型选择";
                 manGroup.AddListItem("退货", "1");
                 manGroup.AddListItem("领用", "2");
-
-//                List<coreUser> users = _autofacConfig.coreUserService.GetDealInAdmin();
-//                foreach (coreUser Row in users)
-//                {
-//                    manGroup.AddListItem(Row.USER_NAME, Row.USER_ID);
-//                }
                 PopBOMan.Groups.Add(manGroup);
                 if (btnBOMan.Tag != null)   //如果已有选中项，则显示选中效果
                 {
@@ -121,6 +96,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 选择区域
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLocation_Press(object sender, EventArgs e)
         {
             try
@@ -156,12 +136,22 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 按回退，关闭当前窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmOutOrderCreate_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
                 Close();
         }
 
+        /// <summary>
+        /// 创建出库单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Press(object sender, EventArgs e)
         {
             try
@@ -196,38 +186,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
-        private void PopBOMan_Selected(object sender, EventArgs e)
-        {
-            try
-            {
-                if (PopBOMan.Selection != null)
-                {
-                    btnBOMan.Text = PopBOMan.Selection.Text;
-                    TypeId = PopBOMan.Selection.Value;
-                }
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
-        private void PopHMan_Selected(object sender, EventArgs e)
-        {
-            try
-            {
-                if (PopHMan.Selection != null)
-                {
-                    btnHMan.Text = PopHMan.Selection.Text;
-                    HManId = PopHMan.Selection.Value;
-                }
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
+        /// <summary>
+        /// 选择区域后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PopLocation_Selected(object sender, EventArgs e)
         {
             try
@@ -242,9 +205,12 @@ namespace SMOSEC.UI.ConsumablesManager
                     }
                     btnLocation.Text = PopLocation.Selection.Text;
                     AssLocation location = _autofacConfig.assLocationService.GetByID(LocationId);
-                    coreUser manager = _autofacConfig.coreUserService.GetUserByID(location.MANAGER);
-                    HManId = location.MANAGER;
-                    txtHMan.Text = manager.USER_NAME;
+                    if (location != null)
+                    {
+                        coreUser manager = _autofacConfig.coreUserService.GetUserByID(location.MANAGER);
+                        HManId = location.MANAGER;
+                        if (manager != null) txtHMan.Text = manager.USER_NAME;
+                    }
                     if (LocationId != null && LocationId != PopLocation.Selection.Value)
                     {
                         LocationId = PopLocation.Selection.Value;
@@ -258,12 +224,19 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 清空相关的数据
+        /// </summary>
         private void ClearInfo()
         {
             ConTable.Rows.Clear();
+            ConList.Clear();
             BindListView();
         }
 
+        /// <summary>
+        /// 绑定数据
+        /// </summary>
         public void BindListView()
         {
             try
@@ -278,6 +251,9 @@ namespace SMOSEC.UI.ConsumablesManager
 
         }
 
+        /// <summary>
+        /// 得到行项数据
+        /// </summary>
         private void GetRows()
         {
             rowsInputDtos.Clear();
@@ -315,9 +291,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 得到行项数据
+        /// </summary>
         private void GetCon()
         {
-//            rowsInputDtos.Clear();
             foreach (var row in listViewCon.Rows)
             {
 
@@ -349,6 +327,11 @@ namespace SMOSEC.UI.ConsumablesManager
 
         }
 
+        /// <summary>
+        /// 界面初始化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmOutOrderCreate_Load(object sender, EventArgs e)
         {
             try
@@ -372,10 +355,52 @@ namespace SMOSEC.UI.ConsumablesManager
                 ConTable.PrimaryKey = keys;
 
                 UserId = Client.Session["UserID"].ToString();
+                if (Client.Session["Role"].ToString() == "SMOSECAdmin")
+                {
+                    var user = _autofacConfig.coreUserService.GetUserByID(UserId);
+                    LocationId = user.USER_LOCATIONID;
+                    var location = _autofacConfig.assLocationService.GetByID(LocationId);
+                    btnLocation.Text = location.NAME;
+                    btnLocation.Enabled = false;
+                    btnLocation1.Enabled = false;
+                    txtHMan.Text = user.USER_NAME;
+                }
             }
             catch (Exception ex)
             {
                 Toast(ex.Message);
+            }
+        }
+        
+        /// <summary>
+        /// 移除耗材
+        /// </summary>
+        /// <param name="CID"></param>
+        public void RemoveCon(string CID)
+        {
+            try
+            {
+                DataRow row=ConTable.Rows.Find(CID);
+                ConTable.Rows.Remove(row);
+                ConList.Remove(CID);
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 选中处理人后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PopBOMan_Selected(object sender, EventArgs e)
+        {
+            if (PopBOMan.Selection != null)
+            {
+                TypeId = PopBOMan.Selection.Value;
+                btnBOMan.Text = PopBOMan.Selection.Text;
             }
         }
     }

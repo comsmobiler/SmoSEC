@@ -40,6 +40,13 @@ namespace SMOSEC.Domain.Entity
         public int ISENABLE { get; set; }
 
         /// <summary>
+        /// 部门头像
+        /// </summary>
+        [StringLength(maximumLength: 200, ErrorMessage = "长度不能超过200")]
+        [DisplayName("部门头像")]
+        public string IMAGEID { get; set; }
+
+        /// <summary>
         /// 创建日期
         /// </summary>
         [Required]

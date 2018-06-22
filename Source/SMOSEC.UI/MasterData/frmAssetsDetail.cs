@@ -1,42 +1,38 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Linq;
-using System.Text;
+using Smobiler.Core.Controls;
 using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.DTOs.OutputDTO;
-using Smobiler.Core;
-using Smobiler.Core.Controls;
+using Smobiler.Device;
 
 namespace SMOSEC.UI.MasterData
 {
+    /// <summary>
+    /// 资产详情界面
+    /// </summary>
     partial class frmAssetsDetail : Smobiler.Core.Controls.MobileForm
     {
-        public string AssId;
-        private string LocationId;
-        private string TypeId;
-        private string ManagerId;
+        #region 变量
+        public string AssId; //资产编号
+        private string LocationId; //区域编号
+        private string TypeId; //类型编号
+        private string ManagerId; //管理员编号
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
-        private string LastUser;
+        private string LastUser; //资产最近的拥有者
+        private string DepId; //部门编号
+        #endregion
 
-        private void btnPrint_Press(object sender, EventArgs e)
-        {
-            try
-            {
-                Toast("抱歉，打印功能暂时无法使用");
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
+        /// <summary>
+        /// 查看处理记录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLog_Press(object sender, EventArgs e)
         {
             try
             {
-                frmPrShow prShow = new frmPrShow {AssId = AssId};
+                frmPrShow prShow = new frmPrShow { AssId = AssId };
                 Show(prShow);
             }
             catch (Exception ex)
@@ -45,11 +41,16 @@ namespace SMOSEC.UI.MasterData
             }
         }
 
+        /// <summary>
+        /// 跳转到资产编辑界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Press(object sender, EventArgs e)
         {
             try
             {
-                frmAssetsDetailEdit assetsDetailEdit = new frmAssetsDetailEdit {AssId = AssId};
+                frmAssetsDetailEdit assetsDetailEdit = new frmAssetsDetailEdit { AssId = AssId, DepId = DepId };
                 Show(assetsDetailEdit, (MobileForm sender1, object args) =>
                 {
                     if (assetsDetailEdit.ShowResult == ShowResult.Yes)
@@ -65,44 +66,42 @@ namespace SMOSEC.UI.MasterData
             }
         }
 
+        /// <summary>
+        /// 绑定数据
+        /// </summary>
         private void Bind()
         {
-            
+
             try
             {
                 AssetsOutputDto outputDto = _autofacConfig.SettingService.GetAssetsByID(AssId);
-//                txtNote.Text = outputDto.Note;
-                txtEDate.Text = outputDto.ExpiryDate.ToString("yyyy-MM-dd");
-//                txtName.Text = outputDto.Name;
-//                txtPrice.Text = outputDto.Price.ToString();
-//                txtSpe.Text = outputDto.Specification;
-                txtAssId1.Text = outputDto.AssId;
-//                ImgPicture.ResourceID = outputDto.Image;
-
-                txtBuyDate.Text= outputDto.BuyDate.ToString("yyyy-MM-dd");
-                txtDep.Text = outputDto.DepartmentId;
-                txtLocation1.Text = outputDto.LocationName;
-                txtManager.Text = outputDto.ManagerName;
-                txtName1.Text = outputDto.Name;
-                txtPlace1.Text = outputDto.Place;
-                txtPrice1.Text = outputDto.Price.ToString();
-                txtSN1.Text = outputDto.SN;
-                txtSPE1.Text = outputDto.Specification;
-                txtType.Text = outputDto.TypeName;
-                txtUnit1.Text = outputDto.Unit;
-                txtVendor1.Text = outputDto.Vendor;
-                image2.ResourceID = outputDto.Image;
-                txtNote1.Text = outputDto.Note;
-                LocationId = outputDto.LocationId;
-                TypeId = outputDto.TypeId;
-                if (string.IsNullOrEmpty(outputDto.CurrentUser))
+                if (outputDto != null)
                 {
-                    btnChange.Visible = false;
-                    btnChange.Enabled = false;
-                    btnLog.Location= new System.Drawing.Point(47, 2);
-                    btnEdit.Location= new System.Drawing.Point(174, 2);
+                    DepId = outputDto.DepartmentId;
+                    txtEDate.Text = outputDto.ExpiryDate.ToString("yyyy-MM-dd");
+                    txtAssId1.Text = outputDto.AssId;
+                    txtBuyDate.Text = outputDto.BuyDate.ToString("yyyy-MM-dd");
+                    txtDep.Text = outputDto.DepartmentName;
+                    txtLocation1.Text = outputDto.LocationName;
+                    txtManager.Text = outputDto.ManagerName;
+                    txtName1.Text = outputDto.Name;
+                    txtPlace1.Text = outputDto.Place;
+                    txtPrice1.Text = outputDto.Price.ToString();
+                    txtSN1.Text = outputDto.SN;
+                    txtSPE1.Text = outputDto.Specification;
+                    txtType.Text = outputDto.TypeName;
+                    txtUnit1.Text = outputDto.Unit;
+                    txtVendor1.Text = outputDto.Vendor;
+                    image2.ResourceID = outputDto.Image;
+                    txtNote1.Text = outputDto.Note;
+                    LocationId = outputDto.LocationId;
+                    TypeId = outputDto.TypeId;
+                    if (string.IsNullOrEmpty(outputDto.CurrentUser))
+                    {
+                        btnChange.Visible = false;
+                        btnChange.Enabled = false;
+                    }
                 }
-
             }
             catch (Exception ex)
             {
@@ -110,6 +109,11 @@ namespace SMOSEC.UI.MasterData
             }
         }
 
+        /// <summary>
+        /// 按回退时，关闭当前窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmAssetsDetail_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
@@ -118,13 +122,25 @@ namespace SMOSEC.UI.MasterData
                 Close();
 
             }
-                
+
         }
 
+        /// <summary>
+        /// 界面初始化时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmAssetsDetail_Load(object sender, EventArgs e)
         {
             try
             {
+                if (Client.Session["Role"].ToString() == "SMOSECUser")
+                {
+                    btnChange.Visible = false;
+                    btnEdit.Visible = false;
+                    btnLog.Flex = 1;
+                }
+
                 Bind();
             }
             catch (Exception ex)
@@ -133,50 +149,41 @@ namespace SMOSEC.UI.MasterData
             }
         }
 
+        /// <summary>
+        /// 复制资产数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCopy_Press(object sender, EventArgs e)
         {
             try
             {
                 frmAssetsCreate assetsCreate = new frmAssetsCreate
                 {
-                    DatePickerBuy = {Value = DatePickerBuy.Value},
-                    txtDepart = {Text = txtDep.Text},
-                    DatePickerExpiry = {Value = DatePickerExpiry.Value},
-                    ImgPicture = {ResourceID = ImgPicture.ResourceID},
+                    DatePickerBuy = { Value = Convert.ToDateTime(txtBuyDate.Text) },
+                    DepId = DepId,
+                    btnDep = { Text = txtDep.Text + "   > " },
+                    DatePickerExpiry = { Value = Convert.ToDateTime(txtEDate.Text)},
+                    ImgPicture = { ResourceID = image2.ResourceID },
                     LocationId = LocationId,
-                    btnLocation = {Text = txtLocation1.Text},
+                    btnLocation = { Text = txtLocation1.Text },
                     ManagerId = ManagerId,
-                    txtManager = {Text = txtManager.Text},
-                    txtName = {Text = txtName.Text},
-                    txtNote = {Text = txtNote.Text},
-                    txtPlace = {Text = txtPlace.Text},
-                    txtPrice = {Text = txtPrice.Text},
-                    txtSpe = {Text = txtSpe.Text},
+                    txtManager = { Text = txtManager.Text },
+                    txtName = { Text = txtName1.Text },
+                    txtNote = { Text = txtNote1.Text },
+                    txtPlace = { Text = txtPlace1.Text },
+                    txtPrice = { Text = txtPrice1.Text },
+                    txtSpe = { Text = txtSPE1.Text },
                     TypeId = TypeId,
-                    btnType = {Text = txtType.Text},
-                    txtUnit = {Text = txtUnit.Text},
-                    txtVendor = {Text = txtVendor.Text}
-//                    txtSN = {Text = txtVendor.Text}
+                    btnType = { Text = txtType.Text },
+                    txtUnit = { Text = txtUnit1.Text },
+                    txtVendor = { Text = txtVendor1.Text }
                 };
-                //                CreateUser = UserId,
-//                CurrentUser = "",
-                //                assetsInputDto.LocationId = LocationId;
-                //                ModifyUser = UserId,
 
-
-                //                assetsInputDto.TypeId = TypeId;
 
 
                 Show(assetsCreate);
                 Close();
-//                Show(assetsCreate, (MobileForm sender1, object args) =>
-//                {
-//                    if (assetsCreate.ShowResult == ShowResult.Yes)
-//                    {
-//                        ShowResult = ShowResult.Yes;
-//                        Bind();
-//                    }
-//                });
             }
             catch (Exception ex)
             {
@@ -185,6 +192,11 @@ namespace SMOSEC.UI.MasterData
 
         }
 
+        /// <summary>
+        /// 变更使用人
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChange_Press(object sender, EventArgs e)
         {
             try
@@ -203,9 +215,8 @@ namespace SMOSEC.UI.MasterData
                 {
                     if (Item.Value == assets.CURRENTUSER)
                     {
-                       popCurrentUser.SetSelections(Item);
-                       LastUser = assets.CURRENTUSER;
-//                       ASSID = lblID.BindDataValue.ToString();
+                        popCurrentUser.SetSelections(Item);
+                        LastUser = assets.CURRENTUSER;
                     }
                 }
                 popCurrentUser.ShowDialog();
@@ -215,9 +226,14 @@ namespace SMOSEC.UI.MasterData
             {
                 Toast(ex.Message);
             }
-            
+
         }
 
+        /// <summary>
+        /// 当前使用者选中后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void popCurrentUser_Selected(object sender, EventArgs e)
         {
             try
@@ -235,6 +251,39 @@ namespace SMOSEC.UI.MasterData
                         throw new Exception(RInfo.ErrorInfo);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 打印
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPrint_Press(object sender, EventArgs e)
+        {
+            try
+            {
+                AssetsOutputDto outputDto = _autofacConfig.SettingService.GetAssetsByID(AssId);
+                PosPrinterEntityCollection Commands = new PosPrinterEntityCollection();
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.Initial));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.EnabledBarcode));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.AbsoluteLocation));
+                Commands.Add(new PosPrinterBarcodeEntity(PosBarcodeType.CODE128Height, "62"));
+                Commands.Add(new PosPrinterBarcodeEntity(PosBarcodeType.CODE128, outputDto.SN));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.DisabledBarcode));
+                Commands.Add(new PosPrinterContentEntity(System.Environment.NewLine));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.Cut));
+
+                posPrinter1.Print(Commands, (obj, args) =>
+                {
+                    if (args.isError == true)
+                        this.Toast("Error: " + args.error);
+                    else
+                        this.Toast("打印成功");
+                });
             }
             catch (Exception ex)
             {

@@ -259,8 +259,8 @@ namespace SMOSEC.UI.AssetsManager
                 }
                 else
                     throw new Exception(e.error);
-                Assets assets = autofacConfig.orderCommonService.GetAssetsBySN(SN);
-                if (assets == null) throw new Exception("不存在序列号为" + SN + "的资产");
+                Assets assets = autofacConfig.orderCommonService.GetUnusedAssetsBySN(SN);
+                if (assets == null) throw new Exception("不存在序列号为" + SN + "的闲置资产");
                 if (assets.LOCATIONID == btnLocation.Tag.ToString()) throw new Exception("该资产已在目的区域!");
                 Data.ASSID = assets.ASSID;
                 Data.LOCATIONID = assets.LOCATIONID;
@@ -390,8 +390,8 @@ namespace SMOSEC.UI.AssetsManager
             {
                 AssetsOrderRow Data = new AssetsOrderRow();
                 SN = e.Data;
-                Assets assets = autofacConfig.orderCommonService.GetAssetsBySN(SN);
-                if (assets == null) throw new Exception("不存在序列号为" + SN + "的资产");
+                Assets assets = autofacConfig.orderCommonService.GetUnusedAssetsBySN(SN);
+                if (assets == null) throw new Exception("不存在序列号为" + SN + "的闲置资产");
                 if (assets.LOCATIONID == btnLocation.Tag.ToString()) throw new Exception("该资产已在目的区域!");
                 Data.ASSID = assets.ASSID;
                 Data.LOCATIONID = assets.LOCATIONID;
@@ -431,7 +431,7 @@ namespace SMOSEC.UI.AssetsManager
             {
                 AssetsOrderRow Data = new AssetsOrderRow();
                 SN = e.Epc;
-                Assets assets = autofacConfig.orderCommonService.GetAssetsBySN(SN);
+                Assets assets = autofacConfig.orderCommonService.GetUnusedAssetsBySN(SN);
                 if (assets == null) throw new Exception();
                 if (assets.LOCATIONID == btnLocation.Tag.ToString()) throw new Exception();
                 Data.ASSID = assets.ASSID;

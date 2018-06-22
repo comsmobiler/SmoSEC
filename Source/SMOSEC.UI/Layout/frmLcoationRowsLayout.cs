@@ -58,7 +58,7 @@ namespace SMOSEC.UI.Layout
                     {
                         if (args.Result == ShowResult.OK)     //删除该区域
                         {
-                            ReturnInfo r = autofacConfig.assLocationService.ChangeEnable(lblName.BindDataValue.ToString(),LocationStatus.启用);
+                            ReturnInfo r = autofacConfig.assLocationService.ChangeEnable(lblName.BindDataValue.ToString(),IsEnable.启用);
                             if (r.IsSuccess == true)
                             {
                                 this.Form.Toast("区域启用成功");
@@ -84,7 +84,7 @@ namespace SMOSEC.UI.Layout
                     {
                         if (args.Result == ShowResult.OK)     //删除该区域
                         {
-                            ReturnInfo r = autofacConfig.assLocationService.ChangeEnable(lblName.BindDataValue.ToString(), LocationStatus.禁用);
+                            ReturnInfo r = autofacConfig.assLocationService.ChangeEnable(lblName.BindDataValue.ToString(), IsEnable.禁用);
                             if (r.IsSuccess == true)
                             {
                                 this.Form.Toast("区域禁用成功");

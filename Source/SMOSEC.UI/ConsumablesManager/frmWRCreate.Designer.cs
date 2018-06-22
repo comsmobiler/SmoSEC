@@ -1,3 +1,5 @@
+using SMOSEC.UI.UserControl;
+
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmWRCreate : Smobiler.Core.Controls.MobileForm
@@ -45,7 +47,6 @@ namespace SMOSEC.UI.ConsumablesManager
             this.txtHMan = new Smobiler.Core.Controls.TextBox();
             this.Panel4 = new Smobiler.Core.Controls.Panel();
             this.listViewCon = new Smobiler.Core.Controls.ListView();
-            this.PopHMan = new Smobiler.Core.Controls.PopList();
             this.PopLocation = new Smobiler.Core.Controls.PopList();
             // 
             // Title1
@@ -84,11 +85,11 @@ namespace SMOSEC.UI.ConsumablesManager
             this.Panel1.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Panel3,
             this.Panel4});
-            this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel1.Location = new System.Drawing.Point(0, 62);
+            this.Panel1.Flex = 1;
+            this.Panel1.Location = new System.Drawing.Point(0, 40);
             this.Panel1.Name = "Panel1";
             this.Panel1.Scrollable = true;
-            this.Panel1.Size = new System.Drawing.Size(300, 327);
+            this.Panel1.Size = new System.Drawing.Size(300, 420);
             // 
             // Panel3
             // 
@@ -105,6 +106,7 @@ namespace SMOSEC.UI.ConsumablesManager
             this.txtVendor,
             this.btnAdd,
             this.txtHMan});
+            this.Panel3.Flex = 1;
             this.Panel3.Name = "Panel3";
             this.Panel3.Size = new System.Drawing.Size(300, 195);
             // 
@@ -248,6 +250,7 @@ namespace SMOSEC.UI.ConsumablesManager
             // 
             this.Panel4.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.listViewCon});
+            this.Panel4.Flex = 1;
             this.Panel4.Location = new System.Drawing.Point(0, 195);
             this.Panel4.Name = "Panel4";
             this.Panel4.Size = new System.Drawing.Size(300, 225);
@@ -267,11 +270,6 @@ namespace SMOSEC.UI.ConsumablesManager
             this.listViewCon.SplitLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.listViewCon.TemplateControlName = "OperCreateConLayout";
             // 
-            // PopHMan
-            // 
-            this.PopHMan.Name = "PopHMan";
-            this.PopHMan.Selected += new System.EventHandler(this.PopHMan_Selected);
-            // 
             // PopLocation
             // 
             this.PopLocation.Name = "PopLocation";
@@ -280,7 +278,6 @@ namespace SMOSEC.UI.ConsumablesManager
             // frmWRCreate
             // 
             this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
-            this.PopHMan,
             this.PopLocation});
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Title1,
@@ -313,7 +310,6 @@ namespace SMOSEC.UI.ConsumablesManager
         private Smobiler.Core.Controls.ListView listViewCon;
         internal Smobiler.Core.Controls.TextBox txtVendor;
         private Smobiler.Core.Controls.Button btnAdd;
-        internal Smobiler.Core.Controls.PopList PopHMan;
         internal Smobiler.Core.Controls.PopList PopLocation;
         internal Smobiler.Core.Controls.TextBox txtHMan;
     }

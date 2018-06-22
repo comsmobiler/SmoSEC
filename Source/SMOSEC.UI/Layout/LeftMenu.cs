@@ -4,6 +4,7 @@ using SMOSEC.UI.MasterData;
 using SMOSEC.UI.UserInfo;
 using Smobiler.Core.Controls;
 using SMOSEC.UI.ConsumablesManager;
+using SMOSEC.UI.Department;
 
 namespace SMOSEC.UI.Layout
 {
@@ -20,10 +21,10 @@ namespace SMOSEC.UI.Layout
         {
             if (SNAssets.Visible)
             {
-                lblSNAssetsManager.ForeColor= System.Drawing.Color.FromArgb(255, 255, 255);
+                lblSNAssetsManager.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 lblSNAssetsShow.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 imgSNAssets.ResourceID = "zichan1";
-                SNAssets .Visible = false;
+                SNAssets.Visible = false;
                 SNJieyong.Visible = false;
                 SNGuiHuan.Visible = false;
                 SNLingYong.Visible = false;
@@ -31,8 +32,10 @@ namespace SMOSEC.UI.Layout
                 SNDiaoBo.Visible = false;
                 SNWeiXiu.Visible = false;
                 SNBaoFei.Visible = false;
-                SNZiChanFenLei.Visible = false ;
-                SNQuYu.Visible = false ;
+                SNPanDian.Visible = false;
+                SNZiChanFenLei.Visible = false;
+                SNQuYu.Visible = false;
+                SNBuMen.Visible = false;
                 lblSNAssetsShow.Text = ">";
             }
             else
@@ -48,14 +51,22 @@ namespace SMOSEC.UI.Layout
                 SNGuiHuan.Visible = true;
                 SNLingYong.Visible = true;
                 SNTuiKu.Visible = true;
-                SNDiaoBo.Visible = true;
                 SNWeiXiu.Visible = true;
                 SNBaoFei.Visible = true;
                 lblSNAssetsShow.Text = "﹀";
-                if (Client.Session["Role"].ToString() == "ADMIN")
+                switch (Client.Session["Role"].ToString())
                 {
-                    SNZiChanFenLei.Visible = true;
-                    SNQuYu.Visible = true;
+                    case "SMOSECAdmin":
+                        SNDiaoBo.Visible = true;
+                        SNPanDian.Visible = true;
+                        break;
+                    case "ADMIN":
+                        SNDiaoBo.Visible = true;
+                        SNPanDian.Visible = true;
+                        SNZiChanFenLei.Visible = true;
+                        SNQuYu.Visible = true;
+                        SNBuMen.Visible = true;
+                        break;
                 }
             }
         }
@@ -66,7 +77,7 @@ namespace SMOSEC.UI.Layout
         /// <param name="e"></param>
         private void SNAssets_Press(object sender, EventArgs e)
         {
-            frmAssets frm= new frmAssets();
+            frmAssets frm = new frmAssets();
             Form.Show(frm);
         }
         /// <summary>
@@ -140,24 +151,14 @@ namespace SMOSEC.UI.Layout
             this.Form.Show(frm);
         }
         /// <summary>
-        /// 设置按钮，点击关闭或显示子项
+        /// 跳转到资产盘点界面
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SNSheZhi_Press(object sender, EventArgs e)
+        private void SNInventory_Press(object sender, EventArgs e)
         {
-            if (SNZiChanFenLei.Visible)
-            {
-                SNZiChanFenLei.Visible = false;
-                SNQuYu.Visible = false;
-                lblSheZhiShow.Text = ">";
-            }
-            else
-            {
-                SNZiChanFenLei.Visible = true;
-                SNQuYu.Visible = true;
-                lblSheZhiShow.Text = "﹀";
-            }
+            frmAssInventory frm = new frmAssInventory();
+            this.Form.Show(frm);
         }
         /// <summary>
         /// 跳转到资产分类界面
@@ -180,6 +181,16 @@ namespace SMOSEC.UI.Layout
             Form.Show(frm);
         }
         /// <summary>
+        /// 跳转到部门界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SNBuMen_Press(object sender, EventArgs e)
+        {
+            frmDepartment frm = new frmDepartment();
+            Form.Show(frm);
+        }
+        /// <summary>
         /// 显示耗材管理子项
         /// </summary>
         /// <param name="sender"></param>
@@ -189,31 +200,38 @@ namespace SMOSEC.UI.Layout
             if (DiaoBo.Visible)
             {
                 lblConsumables.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                lblConsumablesShow.ForeColor= System.Drawing.Color.FromArgb(255, 255, 255);
+                lblConsumablesShow.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 imgConsumables.ResourceID = "haocai1";
                 DiaoBo.Visible = false;
                 HaoCai.Visible = false;
                 ruku.Visible = false;
                 chuku.Visible = false;
+                pandian.Visible = false;
                 lblConsumablesShow.Text = ">";
             }
             else
             {
                 lblConsumables.ForeColor = System.Drawing.Color.FromArgb(93, 155, 251);
-                lblConsumablesShow.ForeColor= System.Drawing.Color.FromArgb(93, 155, 251);
+                lblConsumablesShow.ForeColor = System.Drawing.Color.FromArgb(93, 155, 251);
                 imgConsumables.ResourceID = "haocai2";
                 lblSNAssetsManager.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 lblSNAssetsShow.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 imgSNAssets.ResourceID = "zichan1";
-                DiaoBo.Visible = true;
                 HaoCai.Visible = true;
                 ruku.Visible = true;
                 chuku.Visible = true;
                 lblConsumablesShow.Text = "﹀";
-                //if (Client.Session["Role"].ToString() == "SMOSECAdmin")
-                //{
-                //    SheZhi.Visible = true;
-                //}
+                if (Client.Session["Role"].ToString() == "SMOSECUser")
+                {
+                    DiaoBo.Visible = false;
+                    pandian.Visible = false;
+                }
+                else
+                {
+                    DiaoBo.Visible = true;
+                    pandian.Visible = true;
+                }
+
             }
         }
         /// <summary>
@@ -257,14 +275,22 @@ namespace SMOSEC.UI.Layout
             Form.Show(frm);
         }
         /// <summary>
+        /// 跳转到耗材盘点界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pandian_Press(object sender, EventArgs e)
+        {
+            frmConInventory frm = new frmConInventory();
+            Form.Show(frm);
+        }
+        /// <summary>
         /// 显示个人信息
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void plPerson_Press(object sender, EventArgs e)
         {
-            //lblZhanghu.ForeColor = System.Drawing.Color.FromArgb(93, 155, 251);
-            //imgZhanghu.ResourceID = "zhanghu2";
             frmMessage frm = new frmMessage();
             Form.Show(frm);
         }
@@ -275,20 +301,18 @@ namespace SMOSEC.UI.Layout
         /// <param name="e"></param>
         private void plZhuXiao_Press(object sender, EventArgs e)
         {
-            //lblZhuXiao.ForeColor = System.Drawing.Color.FromArgb(93, 155, 251);
-            //imgZhuxiao.ResourceID = "zhuxiao2";
-            MessageBox.Show("是否注销当前用户？","系统提醒", MessageBoxButtons.OKCancel, (object sender1, MessageBoxHandlerArgs args)=> 
-            {
-                try
-                {
-                    if (args.Result == ShowResult.OK)
-                        Client.ReStart();
-                }
-                catch(Exception ex)
-                {
-                    Toast(ex.Message);
-                }
-            });
+            MessageBox.Show("是否注销当前用户？", "系统提醒", MessageBoxButtons.OKCancel, (object sender1, MessageBoxHandlerArgs args) =>
+             {
+                 try
+                 {
+                     if (args.Result == ShowResult.OK)
+                         Client.ReStart();
+                 }
+                 catch (Exception ex)
+                 {
+                     Toast(ex.Message);
+                 }
+             });
         }
     }
 }

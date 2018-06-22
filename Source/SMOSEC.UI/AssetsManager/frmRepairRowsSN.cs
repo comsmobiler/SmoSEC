@@ -36,8 +36,6 @@ namespace SMOSEC.UI.AssetsManager
         /// <param name="e"></param>
         private void frmRepairRowsSN_Load(object sender, EventArgs e)
         {
-            Client.Session["Role"] = "SMOSECAdmin";
-            Client.Session["UserID"] = "Steven";
             Bind();
         }
         /// <summary>

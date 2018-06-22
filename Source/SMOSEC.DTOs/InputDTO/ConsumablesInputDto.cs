@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SMOSEC.DTOs.InputDTO
 {
+    /// <summary>
+    /// 耗材信息传输对象
+    /// </summary>
     public class ConsumablesInputDto:IEntity
     {
         /// <summary>

@@ -37,26 +37,10 @@ namespace SMOSEC.DTOs.OutputDTO
         /// </summary>
         public string Locationid { get; set; }
 
-//        /// <summary>
-//        /// 实际归还时间
-//        /// </summary>
-//        public DateTime? Returndate { get; set; }
-//
-//        /// <summary>
-//        /// 归还处理人
-//        /// </summary>
-//        public string Rthandleman { get; set; }
-
         /// <summary>
         /// 说明
         /// </summary>
         public string Note { get; set; }
-//
-//        /// <summary>
-//        /// 当前状态(0 借用中，1 归还完毕，默认值借用中)
-//        /// </summary>
-//        public int Status { get; set; }
-
     }
 
 }

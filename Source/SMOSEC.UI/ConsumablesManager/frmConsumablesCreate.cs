@@ -7,9 +7,19 @@ namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmConsumablesCreate : Smobiler.Core.Controls.MobileForm
     {
+        #region 变量
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
 
-        public string UserId;
+        public string UserId;  //用户编号
+        
+
+        #endregion
+
+        /// <summary>
+        /// 保存耗材
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Press(object sender, EventArgs e)
         {
             try
@@ -85,18 +95,32 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 上传照片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PanelImg_Press(object sender, EventArgs e)
         {
             CamPicture.GetPhoto();
         }
 
-
+        /// <summary>
+        /// 按回退，则关闭窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesCreate_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
                 Close();
         }
 
+        /// <summary>
+        /// 获取到待上传的图片时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CamPicture_ImageCaptured(object sender, BinaryResultArgs e)
         {
             try
@@ -114,6 +138,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 界面初始化时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesCreate_Load(object sender, EventArgs e)
         {
             try

@@ -1,6 +1,5 @@
-using System;
 using SMOSEC.UI.UserControl;
-using Smobiler.Core;
+
 namespace SMOSEC.UI.MasterData
 {
     partial class frmAssetsCreate : Smobiler.Core.Controls.MobileForm
@@ -44,7 +43,6 @@ namespace SMOSEC.UI.MasterData
             this.Label15 = new Smobiler.Core.Controls.Label();
             this.txtName = new Smobiler.Core.Controls.TextBox();
             this.txtSpe = new Smobiler.Core.Controls.TextBox();
-            this.txtDepart = new Smobiler.Core.Controls.TextBox();
             this.txtUnit = new Smobiler.Core.Controls.TextBox();
             this.txtSN = new Smobiler.Core.Controls.TextBox();
             this.txtPrice = new Smobiler.Core.Controls.TextBox();
@@ -70,12 +68,13 @@ namespace SMOSEC.UI.MasterData
             this.PopLocation = new Smobiler.Core.Controls.PopList();
             this.PopType = new Smobiler.Core.Controls.PopList();
             this.barcodeScanner1 = new Smobiler.Core.Controls.BarcodeScanner();
-            this.PopManager = new Smobiler.Core.Controls.PopList();
             this.Title1 = new SMOSEC.UI.UserControl.Title();
             this.Panel2 = new Smobiler.Core.Controls.Panel();
             this.Panel1 = new Smobiler.Core.Controls.Panel();
             this.txtManager = new Smobiler.Core.Controls.TextBox();
+            this.btnDep = new Smobiler.Core.Controls.Button();
             this.r2000Scanner1 = new Smobiler.Device.R2000Scanner();
+            this.popDep = new Smobiler.Core.Controls.PopList();
             // 
             // btnSave
             // 
@@ -238,18 +237,6 @@ namespace SMOSEC.UI.MasterData
             this.txtSpe.Size = new System.Drawing.Size(199, 55);
             this.txtSpe.WaterMarkText = "(选填)";
             this.txtSpe.WaterMarkTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            // 
-            // txtDepart
-            // 
-            this.txtDepart.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.txtDepart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDepart.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.txtDepart.Location = new System.Drawing.Point(100, 390);
-            this.txtDepart.Name = "txtDepart";
-            this.txtDepart.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
-            this.txtDepart.Size = new System.Drawing.Size(199, 40);
-            this.txtDepart.WaterMarkText = "(选填)";
-            this.txtDepart.WaterMarkTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             // 
             // txtUnit
             // 
@@ -492,9 +479,11 @@ namespace SMOSEC.UI.MasterData
             // ImgBtnForSN
             // 
             this.ImgBtnForSN.BackColor = System.Drawing.Color.White;
+            this.ImgBtnForSN.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
+            this.ImgBtnForSN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ImgBtnForSN.Location = new System.Drawing.Point(222, 135);
             this.ImgBtnForSN.Name = "ImgBtnForSN";
-            this.ImgBtnForSN.ResourceID = "BarcodeScanner";
+            this.ImgBtnForSN.ResourceID = "scan";
             this.ImgBtnForSN.Size = new System.Drawing.Size(102, 40);
             this.ImgBtnForSN.Press += new System.EventHandler(this.ImgBtnForAssId_Press);
             // 
@@ -517,11 +506,6 @@ namespace SMOSEC.UI.MasterData
             // 
             this.barcodeScanner1.Name = "barcodeScanner1";
             this.barcodeScanner1.BarcodeScanned += new Smobiler.Core.Controls.BarcodeScannerCallBackHandler(this.barcodeScanner1_BarcodeScanned);
-            // 
-            // PopManager
-            // 
-            this.PopManager.Name = "PopManager";
-            this.PopManager.Selected += new System.EventHandler(this.PopManager_Selected);
             // 
             // Title1
             // 
@@ -562,7 +546,6 @@ namespace SMOSEC.UI.MasterData
             this.Label15,
             this.txtName,
             this.txtSpe,
-            this.txtDepart,
             this.txtUnit,
             this.txtSN,
             this.txtPrice,
@@ -583,7 +566,8 @@ namespace SMOSEC.UI.MasterData
             this.txtVendor,
             this.label16,
             this.ImgBtnForSN,
-            this.txtManager});
+            this.txtManager,
+            this.btnDep});
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Flex = 10000;
             this.Panel1.Location = new System.Drawing.Point(0, 70);
@@ -602,11 +586,31 @@ namespace SMOSEC.UI.MasterData
             this.txtManager.ReadOnly = true;
             this.txtManager.Size = new System.Drawing.Size(200, 40);
             // 
+            // btnDep
+            // 
+            this.btnDep.BackColor = System.Drawing.Color.White;
+            this.btnDep.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
+            this.btnDep.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnDep.BorderRadius = 0;
+            this.btnDep.ForeColor = System.Drawing.Color.Black;
+            this.btnDep.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
+            this.btnDep.Location = new System.Drawing.Point(99, 390);
+            this.btnDep.Name = "btnDep";
+            this.btnDep.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
+            this.btnDep.Size = new System.Drawing.Size(200, 40);
+            this.btnDep.Text = "选择（选填）   > ";
+            this.btnDep.Press += new System.EventHandler(this.btnDep_Press);
+            // 
             // r2000Scanner1
             // 
             this.r2000Scanner1.Name = "r2000Scanner1";
             this.r2000Scanner1.BarcodeDataCaptured += new Smobiler.Device.R2000BarcodeScanEventHandler(this.r2000Scanner1_BarcodeDataCaptured);
             this.r2000Scanner1.RFIDDataCaptured += new Smobiler.Device.R2000RFIDScanEventHandler(this.r2000Scanner1_RFIDDataCaptured);
+            // 
+            // popDep
+            // 
+            this.popDep.Name = "popDep";
+            this.popDep.Selected += new System.EventHandler(this.popDep_Selected);
             // 
             // frmAssetsCreate
             // 
@@ -615,8 +619,8 @@ namespace SMOSEC.UI.MasterData
             this.PopLocation,
             this.PopType,
             this.barcodeScanner1,
-            this.PopManager,
-            this.r2000Scanner1});
+            this.r2000Scanner1,
+            this.popDep});
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Title1,
             this.Panel2,
@@ -647,7 +651,6 @@ namespace SMOSEC.UI.MasterData
         internal Smobiler.Core.Controls.Label Label15;
         internal Smobiler.Core.Controls.TextBox txtName;
         internal Smobiler.Core.Controls.TextBox txtSpe;
-        internal Smobiler.Core.Controls.TextBox txtDepart;
         internal Smobiler.Core.Controls.TextBox txtUnit;
         internal Smobiler.Core.Controls.TextBox txtSN;
         internal Smobiler.Core.Controls.TextBox txtPrice;
@@ -673,8 +676,9 @@ namespace SMOSEC.UI.MasterData
         internal Smobiler.Core.Controls.Label label16;
         private Smobiler.Core.Controls.ImageButton ImgBtnForSN;
         private Smobiler.Core.Controls.BarcodeScanner barcodeScanner1;
-        private Smobiler.Core.Controls.PopList PopManager;
         private Smobiler.Device.R2000Scanner r2000Scanner1;
         internal Smobiler.Core.Controls.TextBox txtManager;
+        internal Smobiler.Core.Controls.Button btnDep;
+        private Smobiler.Core.Controls.PopList popDep;
     }
 }

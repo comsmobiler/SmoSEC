@@ -75,24 +75,12 @@ namespace SMOSEC.DTOs.InputDTO
         [DisplayName("说明")]
         public string NOTE { get; set; }
 
-//        /// <summary>
-//        /// 创建时间
-//        /// </summary>
-//        [DisplayName("创建时间")]
-//        public DateTime? CreateDate { get; set; }
-
         /// <summary>
         /// 创建用户
         /// </summary>
         [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]
         [DisplayName("创建用户")]
         public string CREATEUSER { get; set; }
-
-//        /// <summary>
-//        /// 更新时间
-//        /// </summary>
-//        [DisplayName("更新时间")]
-//        public DateTime? ModifyDate { get; set; }
 
         /// <summary>
         /// 更新用户

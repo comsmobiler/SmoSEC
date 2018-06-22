@@ -43,32 +43,63 @@ namespace SMOSEC.UI.Layout
             this.label17 = new Smobiler.Core.Controls.Label();
             this.SNTuiKu = new Smobiler.Core.Controls.Panel();
             this.label18 = new Smobiler.Core.Controls.Label();
-            this.SNDiaoBo = new Smobiler.Core.Controls.Panel();
-            this.Label6 = new Smobiler.Core.Controls.Label();
             this.SNWeiXiu = new Smobiler.Core.Controls.Panel();
             this.Label7 = new Smobiler.Core.Controls.Label();
             this.SNBaoFei = new Smobiler.Core.Controls.Panel();
             this.Label8 = new Smobiler.Core.Controls.Label();
+            this.SNDiaoBo = new Smobiler.Core.Controls.Panel();
+            this.Label6 = new Smobiler.Core.Controls.Label();
+            this.SNPanDian = new Smobiler.Core.Controls.Panel();
+            this.lblInventory = new Smobiler.Core.Controls.Label();
             this.SNZiChanFenLei = new Smobiler.Core.Controls.Panel();
-            this.Label11 = new Smobiler.Core.Controls.Label();
+            this.label32 = new Smobiler.Core.Controls.Label();
             this.SNQuYu = new Smobiler.Core.Controls.Panel();
-            this.Label12 = new Smobiler.Core.Controls.Label();
+            this.label33 = new Smobiler.Core.Controls.Label();
+            this.SNBuMen = new Smobiler.Core.Controls.Panel();
+            this.label34 = new Smobiler.Core.Controls.Label();
             this.Consumables = new Smobiler.Core.Controls.Panel();
+            this.image7 = new Smobiler.Core.Controls.Image();
+            this.label35 = new Smobiler.Core.Controls.Label();
+            this.label36 = new Smobiler.Core.Controls.Label();
+            this.HaoCai = new Smobiler.Core.Controls.Panel();
+            this.label38 = new Smobiler.Core.Controls.Label();
+            this.ruku = new Smobiler.Core.Controls.Panel();
+            this.label37 = new Smobiler.Core.Controls.Label();
+            this.chuku = new Smobiler.Core.Controls.Panel();
+            this.label40 = new Smobiler.Core.Controls.Label();
+            this.DiaoBo = new Smobiler.Core.Controls.Panel();
+            this.label39 = new Smobiler.Core.Controls.Label();
+            this.pandian = new Smobiler.Core.Controls.Panel();
+            this.label43 = new Smobiler.Core.Controls.Label();
+            this.plPerson = new Smobiler.Core.Controls.Panel();
+            this.image8 = new Smobiler.Core.Controls.Image();
+            this.label41 = new Smobiler.Core.Controls.Label();
+            this.plZhuXiao = new Smobiler.Core.Controls.Panel();
+            this.image9 = new Smobiler.Core.Controls.Image();
+            this.label42 = new Smobiler.Core.Controls.Label();
+            this.Label11 = new Smobiler.Core.Controls.Label();
+            this.Label12 = new Smobiler.Core.Controls.Label();
+            this.label1 = new Smobiler.Core.Controls.Label();
+            this.image1 = new Smobiler.Core.Controls.Image();
+            this.label2 = new Smobiler.Core.Controls.Label();
+            this.label24 = new Smobiler.Core.Controls.Label();
+            this.label25 = new Smobiler.Core.Controls.Label();
+            this.label26 = new Smobiler.Core.Controls.Label();
+            this.label27 = new Smobiler.Core.Controls.Label();
+            this.label28 = new Smobiler.Core.Controls.Label();
+            this.image2 = new Smobiler.Core.Controls.Image();
+            this.label29 = new Smobiler.Core.Controls.Label();
+            this.image6 = new Smobiler.Core.Controls.Image();
+            this.label30 = new Smobiler.Core.Controls.Label();
             this.imgConsumables = new Smobiler.Core.Controls.Image();
             this.lblConsumables = new Smobiler.Core.Controls.Label();
             this.lblConsumablesShow = new Smobiler.Core.Controls.Label();
-            this.HaoCai = new Smobiler.Core.Controls.Panel();
             this.label20 = new Smobiler.Core.Controls.Label();
-            this.ruku = new Smobiler.Core.Controls.Panel();
             this.label21 = new Smobiler.Core.Controls.Label();
-            this.chuku = new Smobiler.Core.Controls.Panel();
             this.label22 = new Smobiler.Core.Controls.Label();
-            this.DiaoBo = new Smobiler.Core.Controls.Panel();
             this.label23 = new Smobiler.Core.Controls.Label();
-            this.plPerson = new Smobiler.Core.Controls.Panel();
             this.imgZhanghu = new Smobiler.Core.Controls.Image();
             this.lblZhanghu = new Smobiler.Core.Controls.Label();
-            this.plZhuXiao = new Smobiler.Core.Controls.Panel();
             this.imgZhuxiao = new Smobiler.Core.Controls.Image();
             this.lblZhuXiao = new Smobiler.Core.Controls.Label();
             this.Label9 = new Smobiler.Core.Controls.Label();
@@ -85,6 +116,7 @@ namespace SMOSEC.UI.Layout
             this.label5 = new Smobiler.Core.Controls.Label();
             this.image19 = new Smobiler.Core.Controls.Image();
             this.label19 = new Smobiler.Core.Controls.Label();
+            this.label31 = new Smobiler.Core.Controls.Label();
             // 
             // plContent
             // 
@@ -96,16 +128,19 @@ namespace SMOSEC.UI.Layout
             this.SNGuiHuan,
             this.SNLingYong,
             this.SNTuiKu,
-            this.SNDiaoBo,
             this.SNWeiXiu,
             this.SNBaoFei,
+            this.SNDiaoBo,
+            this.SNPanDian,
             this.SNZiChanFenLei,
             this.SNQuYu,
+            this.SNBuMen,
             this.Consumables,
             this.HaoCai,
             this.ruku,
             this.chuku,
             this.DiaoBo,
+            this.pandian,
             this.plPerson,
             this.plZhuXiao});
             this.plContent.Flex = 1;
@@ -262,27 +297,6 @@ namespace SMOSEC.UI.Layout
             this.label18.Size = new System.Drawing.Size(100, 35);
             this.label18.Text = "退库";
             // 
-            // SNDiaoBo
-            // 
-            this.SNDiaoBo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
-            this.SNDiaoBo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.SNDiaoBo.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.Label6});
-            this.SNDiaoBo.Name = "SNDiaoBo";
-            this.SNDiaoBo.Size = new System.Drawing.Size(0, 35);
-            this.SNDiaoBo.Touchable = true;
-            this.SNDiaoBo.TouchOpacity = 100;
-            this.SNDiaoBo.Visible = false;
-            this.SNDiaoBo.Press += new System.EventHandler(this.SNDiaoBo_Press);
-            // 
-            // Label6
-            // 
-            this.Label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Label6.Location = new System.Drawing.Point(72, 0);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(100, 35);
-            this.Label6.Text = "调拨";
-            // 
             // SNWeiXiu
             // 
             this.SNWeiXiu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
@@ -325,18 +339,313 @@ namespace SMOSEC.UI.Layout
             this.Label8.Size = new System.Drawing.Size(100, 35);
             this.Label8.Text = "报废";
             // 
+            // SNDiaoBo
+            // 
+            this.SNDiaoBo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.SNDiaoBo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.SNDiaoBo.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.Label6});
+            this.SNDiaoBo.Name = "SNDiaoBo";
+            this.SNDiaoBo.Size = new System.Drawing.Size(0, 35);
+            this.SNDiaoBo.Touchable = true;
+            this.SNDiaoBo.TouchOpacity = 100;
+            this.SNDiaoBo.Visible = false;
+            this.SNDiaoBo.Press += new System.EventHandler(this.SNDiaoBo_Press);
+            // 
+            // Label6
+            // 
+            this.Label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Label6.Location = new System.Drawing.Point(72, 0);
+            this.Label6.Name = "Label6";
+            this.Label6.Size = new System.Drawing.Size(100, 35);
+            this.Label6.Text = "调拨";
+            // 
+            // SNPanDian
+            // 
+            this.SNPanDian.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.SNPanDian.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.SNPanDian.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.lblInventory});
+            this.SNPanDian.Name = "SNPanDian";
+            this.SNPanDian.Size = new System.Drawing.Size(0, 35);
+            this.SNPanDian.Touchable = true;
+            this.SNPanDian.TouchOpacity = 100;
+            this.SNPanDian.Visible = false;
+            this.SNPanDian.Press += new System.EventHandler(this.SNInventory_Press);
+            // 
+            // lblInventory
+            // 
+            this.lblInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblInventory.Location = new System.Drawing.Point(72, 0);
+            this.lblInventory.Name = "lblInventory";
+            this.lblInventory.Size = new System.Drawing.Size(100, 35);
+            this.lblInventory.Text = "盘点";
+            // 
             // SNZiChanFenLei
             // 
             this.SNZiChanFenLei.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
             this.SNZiChanFenLei.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.SNZiChanFenLei.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.Label11});
+            this.label32});
             this.SNZiChanFenLei.Name = "SNZiChanFenLei";
             this.SNZiChanFenLei.Size = new System.Drawing.Size(0, 35);
             this.SNZiChanFenLei.Touchable = true;
             this.SNZiChanFenLei.TouchOpacity = 100;
             this.SNZiChanFenLei.Visible = false;
             this.SNZiChanFenLei.Press += new System.EventHandler(this.SNZiChanFenLei_Press);
+            // 
+            // label32
+            // 
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label32.Location = new System.Drawing.Point(72, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(100, 35);
+            this.label32.Text = "资产分类";
+            // 
+            // SNQuYu
+            // 
+            this.SNQuYu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.SNQuYu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.SNQuYu.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.label33});
+            this.SNQuYu.Name = "SNQuYu";
+            this.SNQuYu.Size = new System.Drawing.Size(0, 35);
+            this.SNQuYu.Touchable = true;
+            this.SNQuYu.TouchOpacity = 100;
+            this.SNQuYu.Visible = false;
+            this.SNQuYu.Press += new System.EventHandler(this.SNQuYu_Press);
+            // 
+            // label33
+            // 
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label33.Location = new System.Drawing.Point(72, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(100, 35);
+            this.label33.Text = "区域";
+            // 
+            // SNBuMen
+            // 
+            this.SNBuMen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.SNBuMen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.SNBuMen.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.label34});
+            this.SNBuMen.Name = "SNBuMen";
+            this.SNBuMen.Size = new System.Drawing.Size(0, 35);
+            this.SNBuMen.Touchable = true;
+            this.SNBuMen.TouchOpacity = 100;
+            this.SNBuMen.Visible = false;
+            this.SNBuMen.Press += new System.EventHandler(this.SNBuMen_Press);
+            // 
+            // label34
+            // 
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label34.Location = new System.Drawing.Point(72, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(100, 35);
+            this.label34.Text = "部门";
+            // 
+            // Consumables
+            // 
+            this.Consumables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(75)))), ((int)(((byte)(125)))));
+            this.Consumables.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.Consumables.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.image7,
+            this.label35,
+            this.label36});
+            this.Consumables.Direction = Smobiler.Core.Controls.LayoutDirection.Row;
+            this.Consumables.Layout = Smobiler.Core.Controls.LayoutPosition.Relative;
+            this.Consumables.Name = "Consumables";
+            this.Consumables.Size = new System.Drawing.Size(0, 35);
+            this.Consumables.Touchable = true;
+            this.Consumables.TouchOpacity = 100;
+            this.Consumables.Press += new System.EventHandler(this.Assets_Press);
+            // 
+            // image7
+            // 
+            this.image7.Location = new System.Drawing.Point(16, 7);
+            this.image7.Name = "image7";
+            this.image7.ResourceID = "haocai1";
+            this.image7.Size = new System.Drawing.Size(20, 20);
+            // 
+            // label35
+            // 
+            this.label35.Flex = 6;
+            this.label35.ForeColor = System.Drawing.Color.White;
+            this.label35.Margin = new Smobiler.Core.Controls.Margin(52F, 0F, 0F, 0F);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(100, 35);
+            this.label35.Text = "耗材管理";
+            // 
+            // label36
+            // 
+            this.label36.Flex = 1;
+            this.label36.FontSize = 15F;
+            this.label36.ForeColor = System.Drawing.Color.White;
+            this.label36.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Center;
+            this.label36.Margin = new Smobiler.Core.Controls.Margin(0F, 0F, 16F, 0F);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(35, 35);
+            this.label36.Text = ">";
+            // 
+            // HaoCai
+            // 
+            this.HaoCai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.HaoCai.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.HaoCai.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.label38});
+            this.HaoCai.Name = "HaoCai";
+            this.HaoCai.Size = new System.Drawing.Size(0, 35);
+            this.HaoCai.Touchable = true;
+            this.HaoCai.TouchOpacity = 100;
+            this.HaoCai.Visible = false;
+            this.HaoCai.Press += new System.EventHandler(this.HaoCai_Press);
+            // 
+            // label38
+            // 
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label38.Location = new System.Drawing.Point(72, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(100, 35);
+            this.label38.Text = "耗材";
+            // 
+            // ruku
+            // 
+            this.ruku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.ruku.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.ruku.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.label37});
+            this.ruku.Name = "ruku";
+            this.ruku.Size = new System.Drawing.Size(0, 35);
+            this.ruku.Touchable = true;
+            this.ruku.TouchOpacity = 100;
+            this.ruku.Visible = false;
+            this.ruku.Press += new System.EventHandler(this.ruku_Press);
+            // 
+            // label37
+            // 
+            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label37.Location = new System.Drawing.Point(72, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(100, 35);
+            this.label37.Text = "入库";
+            // 
+            // chuku
+            // 
+            this.chuku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.chuku.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.chuku.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.label40});
+            this.chuku.Name = "chuku";
+            this.chuku.Size = new System.Drawing.Size(0, 35);
+            this.chuku.Touchable = true;
+            this.chuku.TouchOpacity = 100;
+            this.chuku.Visible = false;
+            this.chuku.Press += new System.EventHandler(this.chuku_Press);
+            // 
+            // label40
+            // 
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label40.Location = new System.Drawing.Point(72, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(100, 35);
+            this.label40.Text = "出库";
+            // 
+            // DiaoBo
+            // 
+            this.DiaoBo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.DiaoBo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.DiaoBo.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.label39});
+            this.DiaoBo.Name = "DiaoBo";
+            this.DiaoBo.Size = new System.Drawing.Size(0, 35);
+            this.DiaoBo.Touchable = true;
+            this.DiaoBo.TouchOpacity = 100;
+            this.DiaoBo.Visible = false;
+            this.DiaoBo.Press += new System.EventHandler(this.DiaoBo_Press);
+            // 
+            // label39
+            // 
+            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label39.Location = new System.Drawing.Point(72, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(100, 35);
+            this.label39.Text = "调拨";
+            // 
+            // pandian
+            // 
+            this.pandian.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
+            this.pandian.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.pandian.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.label43});
+            this.pandian.Name = "pandian";
+            this.pandian.Size = new System.Drawing.Size(0, 35);
+            this.pandian.Touchable = true;
+            this.pandian.TouchOpacity = 100;
+            this.pandian.Visible = false;
+            this.pandian.Press += new System.EventHandler(this.pandian_Press);
+            // 
+            // label43
+            // 
+            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label43.Location = new System.Drawing.Point(72, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(100, 35);
+            this.label43.Text = "盘点";
+            // 
+            // plPerson
+            // 
+            this.plPerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(75)))), ((int)(((byte)(125)))));
+            this.plPerson.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.plPerson.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.image8,
+            this.label41});
+            this.plPerson.Name = "plPerson";
+            this.plPerson.Size = new System.Drawing.Size(0, 35);
+            this.plPerson.Touchable = true;
+            this.plPerson.TouchOpacity = 100;
+            this.plPerson.Press += new System.EventHandler(this.plPerson_Press);
+            // 
+            // image8
+            // 
+            this.image8.Location = new System.Drawing.Point(16, 7);
+            this.image8.Name = "image8";
+            this.image8.ResourceID = "zhanghu1";
+            this.image8.Size = new System.Drawing.Size(20, 20);
+            // 
+            // label41
+            // 
+            this.label41.ForeColor = System.Drawing.Color.White;
+            this.label41.Location = new System.Drawing.Point(72, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(100, 35);
+            this.label41.Text = "账户信息";
+            // 
+            // plZhuXiao
+            // 
+            this.plZhuXiao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(75)))), ((int)(((byte)(125)))));
+            this.plZhuXiao.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.image9,
+            this.label42});
+            this.plZhuXiao.Name = "plZhuXiao";
+            this.plZhuXiao.Size = new System.Drawing.Size(0, 35);
+            this.plZhuXiao.Touchable = true;
+            this.plZhuXiao.TouchOpacity = 100;
+            this.plZhuXiao.Press += new System.EventHandler(this.plZhuXiao_Press);
+            // 
+            // image9
+            // 
+            this.image9.Location = new System.Drawing.Point(16, 7);
+            this.image9.Name = "image9";
+            this.image9.ResourceID = "zhuxiao1";
+            this.image9.Size = new System.Drawing.Size(20, 20);
+            // 
+            // label42
+            // 
+            this.label42.ForeColor = System.Drawing.Color.White;
+            this.label42.Location = new System.Drawing.Point(72, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(100, 35);
+            this.label42.Text = "注销";
             // 
             // Label11
             // 
@@ -346,19 +655,6 @@ namespace SMOSEC.UI.Layout
             this.Label11.Size = new System.Drawing.Size(100, 35);
             this.Label11.Text = "资产分类";
             // 
-            // SNQuYu
-            // 
-            this.SNQuYu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
-            this.SNQuYu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.SNQuYu.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.Label12});
-            this.SNQuYu.Name = "SNQuYu";
-            this.SNQuYu.Size = new System.Drawing.Size(0, 35);
-            this.SNQuYu.Touchable = true;
-            this.SNQuYu.TouchOpacity = 100;
-            this.SNQuYu.Visible = false;
-            this.SNQuYu.Press += new System.EventHandler(this.SNQuYu_Press);
-            // 
             // Label12
             // 
             this.Label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -367,21 +663,102 @@ namespace SMOSEC.UI.Layout
             this.Label12.Size = new System.Drawing.Size(100, 35);
             this.Label12.Text = "区域";
             // 
-            // Consumables
+            // label1
             // 
-            this.Consumables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(75)))), ((int)(((byte)(125)))));
-            this.Consumables.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Consumables.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.imgConsumables,
-            this.lblConsumables,
-            this.lblConsumablesShow});
-            this.Consumables.Direction = Smobiler.Core.Controls.LayoutDirection.Row;
-            this.Consumables.Layout = Smobiler.Core.Controls.LayoutPosition.Relative;
-            this.Consumables.Name = "Consumables";
-            this.Consumables.Size = new System.Drawing.Size(0, 35);
-            this.Consumables.Touchable = true;
-            this.Consumables.TouchOpacity = 100;
-            this.Consumables.Press += new System.EventHandler(this.Assets_Press);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label1.Location = new System.Drawing.Point(72, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 35);
+            this.label1.Text = "部门";
+            // 
+            // image1
+            // 
+            this.image1.Location = new System.Drawing.Point(16, 7);
+            this.image1.Name = "image1";
+            this.image1.ResourceID = "haocai1";
+            this.image1.Size = new System.Drawing.Size(20, 20);
+            // 
+            // label2
+            // 
+            this.label2.Flex = 6;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Margin = new Smobiler.Core.Controls.Margin(52F, 0F, 0F, 0F);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 35);
+            this.label2.Text = "耗材管理";
+            // 
+            // label24
+            // 
+            this.label24.Flex = 1;
+            this.label24.FontSize = 15F;
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Center;
+            this.label24.Margin = new Smobiler.Core.Controls.Margin(0F, 0F, 16F, 0F);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(35, 35);
+            this.label24.Text = ">";
+            // 
+            // label25
+            // 
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label25.Location = new System.Drawing.Point(72, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(100, 35);
+            this.label25.Text = "入库";
+            // 
+            // label26
+            // 
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label26.Location = new System.Drawing.Point(72, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(100, 35);
+            this.label26.Text = "耗材";
+            // 
+            // label27
+            // 
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label27.Location = new System.Drawing.Point(72, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(100, 35);
+            this.label27.Text = "调拨";
+            // 
+            // label28
+            // 
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label28.Location = new System.Drawing.Point(72, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(100, 35);
+            this.label28.Text = "出库";
+            // 
+            // image2
+            // 
+            this.image2.Location = new System.Drawing.Point(16, 7);
+            this.image2.Name = "image2";
+            this.image2.ResourceID = "zhanghu1";
+            this.image2.Size = new System.Drawing.Size(20, 20);
+            // 
+            // label29
+            // 
+            this.label29.ForeColor = System.Drawing.Color.White;
+            this.label29.Location = new System.Drawing.Point(72, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(100, 35);
+            this.label29.Text = "账户信息";
+            // 
+            // image6
+            // 
+            this.image6.Location = new System.Drawing.Point(16, 7);
+            this.image6.Name = "image6";
+            this.image6.ResourceID = "zhuxiao1";
+            this.image6.Size = new System.Drawing.Size(20, 20);
+            // 
+            // label30
+            // 
+            this.label30.ForeColor = System.Drawing.Color.White;
+            this.label30.Location = new System.Drawing.Point(72, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(100, 35);
+            this.label30.Text = "注销";
             // 
             // imgConsumables
             // 
@@ -410,19 +787,6 @@ namespace SMOSEC.UI.Layout
             this.lblConsumablesShow.Size = new System.Drawing.Size(35, 35);
             this.lblConsumablesShow.Text = ">";
             // 
-            // HaoCai
-            // 
-            this.HaoCai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
-            this.HaoCai.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.HaoCai.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.label20});
-            this.HaoCai.Name = "HaoCai";
-            this.HaoCai.Size = new System.Drawing.Size(0, 35);
-            this.HaoCai.Touchable = true;
-            this.HaoCai.TouchOpacity = 100;
-            this.HaoCai.Visible = false;
-            this.HaoCai.Press += new System.EventHandler(this.HaoCai_Press);
-            // 
             // label20
             // 
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -430,19 +794,6 @@ namespace SMOSEC.UI.Layout
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(100, 35);
             this.label20.Text = "耗材";
-            // 
-            // ruku
-            // 
-            this.ruku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
-            this.ruku.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ruku.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.label21});
-            this.ruku.Name = "ruku";
-            this.ruku.Size = new System.Drawing.Size(0, 35);
-            this.ruku.Touchable = true;
-            this.ruku.TouchOpacity = 100;
-            this.ruku.Visible = false;
-            this.ruku.Press += new System.EventHandler(this.ruku_Press);
             // 
             // label21
             // 
@@ -452,19 +803,6 @@ namespace SMOSEC.UI.Layout
             this.label21.Size = new System.Drawing.Size(100, 35);
             this.label21.Text = "入库";
             // 
-            // chuku
-            // 
-            this.chuku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
-            this.chuku.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.chuku.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.label22});
-            this.chuku.Name = "chuku";
-            this.chuku.Size = new System.Drawing.Size(0, 35);
-            this.chuku.Touchable = true;
-            this.chuku.TouchOpacity = 100;
-            this.chuku.Visible = false;
-            this.chuku.Press += new System.EventHandler(this.chuku_Press);
-            // 
             // label22
             // 
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -473,19 +811,6 @@ namespace SMOSEC.UI.Layout
             this.label22.Size = new System.Drawing.Size(100, 35);
             this.label22.Text = "出库";
             // 
-            // DiaoBo
-            // 
-            this.DiaoBo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(62)))), ((int)(((byte)(106)))));
-            this.DiaoBo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.DiaoBo.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.label23});
-            this.DiaoBo.Name = "DiaoBo";
-            this.DiaoBo.Size = new System.Drawing.Size(0, 35);
-            this.DiaoBo.Touchable = true;
-            this.DiaoBo.TouchOpacity = 100;
-            this.DiaoBo.Visible = false;
-            this.DiaoBo.Press += new System.EventHandler(this.DiaoBo_Press);
-            // 
             // label23
             // 
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -493,19 +818,6 @@ namespace SMOSEC.UI.Layout
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(100, 35);
             this.label23.Text = "调拨";
-            // 
-            // plPerson
-            // 
-            this.plPerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(75)))), ((int)(((byte)(125)))));
-            this.plPerson.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.plPerson.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.imgZhanghu,
-            this.lblZhanghu});
-            this.plPerson.Name = "plPerson";
-            this.plPerson.Size = new System.Drawing.Size(0, 35);
-            this.plPerson.Touchable = true;
-            this.plPerson.TouchOpacity = 100;
-            this.plPerson.Press += new System.EventHandler(this.plPerson_Press);
             // 
             // imgZhanghu
             // 
@@ -521,18 +833,6 @@ namespace SMOSEC.UI.Layout
             this.lblZhanghu.Name = "lblZhanghu";
             this.lblZhanghu.Size = new System.Drawing.Size(100, 35);
             this.lblZhanghu.Text = "账户信息";
-            // 
-            // plZhuXiao
-            // 
-            this.plZhuXiao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(75)))), ((int)(((byte)(125)))));
-            this.plZhuXiao.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.imgZhuxiao,
-            this.lblZhuXiao});
-            this.plZhuXiao.Name = "plZhuXiao";
-            this.plZhuXiao.Size = new System.Drawing.Size(0, 35);
-            this.plZhuXiao.Touchable = true;
-            this.plZhuXiao.TouchOpacity = 100;
-            this.plZhuXiao.Press += new System.EventHandler(this.plZhuXiao_Press);
             // 
             // imgZhuxiao
             // 
@@ -650,6 +950,14 @@ namespace SMOSEC.UI.Layout
             this.label19.Size = new System.Drawing.Size(100, 35);
             this.label19.Text = "调拨";
             // 
+            // label31
+            // 
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label31.Location = new System.Drawing.Point(72, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(100, 35);
+            this.label31.Text = "报废";
+            // 
             // LeftMenu
             // 
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
@@ -682,11 +990,8 @@ namespace SMOSEC.UI.Layout
         internal Smobiler.Core.Controls.Label Label8;
         internal Smobiler.Core.Controls.Label Label9;
         private Smobiler.Core.Controls.Label lblSheZhiShow;
-        internal Smobiler.Core.Controls.Panel SNZiChanFenLei;
         internal Smobiler.Core.Controls.Label Label11;
-        internal Smobiler.Core.Controls.Panel SNQuYu;
         internal Smobiler.Core.Controls.Label Label12;
-        internal Smobiler.Core.Controls.Panel Consumables;
         internal Smobiler.Core.Controls.Image imgConsumables;
         internal Smobiler.Core.Controls.Label lblConsumables;
         private Smobiler.Core.Controls.Label lblConsumablesShow;
@@ -700,23 +1005,58 @@ namespace SMOSEC.UI.Layout
         internal Smobiler.Core.Controls.Label Label13;
         internal Smobiler.Core.Controls.Image Image10;
         internal Smobiler.Core.Controls.Label label3;
-        internal Smobiler.Core.Controls.Panel HaoCai;
         internal Smobiler.Core.Controls.Label label20;
         internal Smobiler.Core.Controls.Image image19;
         internal Smobiler.Core.Controls.Label label19;
-        internal Smobiler.Core.Controls.Panel ruku;
         internal Smobiler.Core.Controls.Label label21;
-        internal Smobiler.Core.Controls.Panel chuku;
         internal Smobiler.Core.Controls.Label label22;
-        internal Smobiler.Core.Controls.Panel DiaoBo;
         internal Smobiler.Core.Controls.Label label23;
-        internal Smobiler.Core.Controls.Panel plPerson;
         internal Smobiler.Core.Controls.Image imgZhanghu;
         internal Smobiler.Core.Controls.Label lblZhanghu;
-        internal Smobiler.Core.Controls.Panel plZhuXiao;
         internal Smobiler.Core.Controls.Image imgZhuxiao;
         internal Smobiler.Core.Controls.Label lblZhuXiao;
         internal Smobiler.Core.Controls.Label lblSNAssetsManager;
         private Smobiler.Core.Controls.Label lblSNAssetsShow;
+        internal Smobiler.Core.Controls.Label label1;
+        internal Smobiler.Core.Controls.Image image1;
+        internal Smobiler.Core.Controls.Label label2;
+        private Smobiler.Core.Controls.Label label24;
+        internal Smobiler.Core.Controls.Label label25;
+        internal Smobiler.Core.Controls.Label label26;
+        internal Smobiler.Core.Controls.Label label27;
+        internal Smobiler.Core.Controls.Label label28;
+        internal Smobiler.Core.Controls.Image image2;
+        internal Smobiler.Core.Controls.Label label29;
+        internal Smobiler.Core.Controls.Image image6;
+        internal Smobiler.Core.Controls.Label label30;
+        internal Smobiler.Core.Controls.Panel SNPanDian;
+        internal Smobiler.Core.Controls.Label lblInventory;
+        internal Smobiler.Core.Controls.Label label31;
+        internal Smobiler.Core.Controls.Panel SNZiChanFenLei;
+        internal Smobiler.Core.Controls.Label label32;
+        internal Smobiler.Core.Controls.Panel SNQuYu;
+        internal Smobiler.Core.Controls.Label label33;
+        internal Smobiler.Core.Controls.Panel SNBuMen;
+        internal Smobiler.Core.Controls.Label label34;
+        internal Smobiler.Core.Controls.Panel Consumables;
+        internal Smobiler.Core.Controls.Image image7;
+        internal Smobiler.Core.Controls.Label label35;
+        private Smobiler.Core.Controls.Label label36;
+        internal Smobiler.Core.Controls.Panel ruku;
+        internal Smobiler.Core.Controls.Label label37;
+        internal Smobiler.Core.Controls.Panel HaoCai;
+        internal Smobiler.Core.Controls.Label label38;
+        internal Smobiler.Core.Controls.Panel DiaoBo;
+        internal Smobiler.Core.Controls.Label label39;
+        internal Smobiler.Core.Controls.Panel chuku;
+        internal Smobiler.Core.Controls.Label label40;
+        internal Smobiler.Core.Controls.Panel plPerson;
+        internal Smobiler.Core.Controls.Image image8;
+        internal Smobiler.Core.Controls.Label label41;
+        internal Smobiler.Core.Controls.Panel plZhuXiao;
+        internal Smobiler.Core.Controls.Image image9;
+        internal Smobiler.Core.Controls.Label label42;
+        internal Smobiler.Core.Controls.Panel pandian;
+        internal Smobiler.Core.Controls.Label label43;
     }
 }

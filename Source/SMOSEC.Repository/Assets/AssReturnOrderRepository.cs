@@ -6,10 +6,14 @@ using SMOSEC.Infrastructure;
 
 namespace SMOSEC.Repository.Assets
 {
+
+    /// <summary>
+    /// 归还单查询实现
+    /// </summary>
     public class AssReturnOrderRepository : BaseRepository<AssReturnOrder>, IAssReturnOrderRepository
     {
         /// <summary>
-        /// 仓储类的构造函数
+        /// 归还单查询类的构造函数
         /// </summary>
         /// <param name="dbContext">数据库上下文</param>
         public AssReturnOrderRepository(IDbContext dbContext)
@@ -18,7 +22,7 @@ namespace SMOSEC.Repository.Assets
 
         /// <summary>
         /// 得到对应的归还单列表
-        /// <param name="RTOID"></param>
+        /// <param name="RTOID">归还单编号</param>
         /// </summary>
         /// <returns></returns>
         public IQueryable<AssReturnOrder> GetByID(string RTOID)
@@ -29,7 +33,7 @@ namespace SMOSEC.Repository.Assets
         /// <summary>
         /// 根据用户编号返回归还单信息
         /// </summary>
-        /// <param name="UserID"></param>
+        /// <param name="UserID">用户编号</param>
         /// <returns></returns>
         public IQueryable<AssReturnOrder> GetByUserID(string UserID)
         {
@@ -41,6 +45,10 @@ namespace SMOSEC.Repository.Assets
             return result.AsNoTracking().OrderByDescending(a=>a.CREATEDATE);
         }
 
+        /// <summary>
+        /// 得到最大编号
+        /// </summary>
+        /// <returns></returns>
         public string GetMaxID()
         {
             return _entities.Select(e => e.RTOID).Max();

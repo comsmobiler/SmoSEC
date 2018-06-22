@@ -52,7 +52,6 @@ namespace SMOSEC.UI.Layout
             this.touchPanel1.Size = new System.Drawing.Size(300, 70);
             this.touchPanel1.Touchable = true;
             this.touchPanel1.Press += new System.EventHandler(this.touchPanel1_Press);
-            this.touchPanel1.LongPress += new System.EventHandler(this.touchPanel1_LongPress);
             // 
             // imgPicture
             // 

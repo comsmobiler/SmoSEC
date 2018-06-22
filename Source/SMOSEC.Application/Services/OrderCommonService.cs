@@ -280,9 +280,9 @@ namespace SMOSEC.Application.Services
         /// </summary>
         /// <param name="ASSID"></param>
         /// <returns></returns>
-        public Assets GetAssetsBySN(String SN)
+        public Assets GetUnusedAssetsBySN(String SN)
         {
-            return _AssetsRepository.GetBySN(SN).AsNoTracking().FirstOrDefault();
+            return _AssetsRepository.GetUnusedBySN(SN).AsNoTracking().FirstOrDefault();
         }
         /// <summary>
         /// 获取除选择区域外的空闲耗材库存信息

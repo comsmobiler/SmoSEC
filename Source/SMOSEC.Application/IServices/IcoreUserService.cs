@@ -1,6 +1,7 @@
 ﻿using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.DTOs.Enum;
+using SMOSEC.DTOs.OutputDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,17 @@ namespace SMOSEC.Application.IServices
         /// </summary>
         /// <returns></returns>
         List<coreUser> GetAll();
+        /// <summary>
+        /// 得到某个部门的所有用户
+        /// </summary>
+        /// <param name="DepartmentID"></param>
+        /// <returns></returns>
+        List<coreUser> GetUserByDepID(String DepartmentID);
+        /// <summary>
+        /// 根据用户ID返回用户和部门信息
+        /// </summary>
+        /// <param name="UserID">用户ID</param>
+        UserDepDto GetUseDepByUserID(string UserID);
         /// <summary>
         /// 用户登录
         /// </summary>

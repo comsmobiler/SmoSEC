@@ -39,7 +39,6 @@
     <Compile Include="Configuration\AssLocationConfiguration.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="KuaigsDbContext.cs" />
     <Compile Include="Migrations\201804250600036_Initial.cs" />
     <Compile Include="Migrations\201804250600036_Initial.Designer.cs">
       <DependentUpon>201804250600036_Initial.cs</DependentUpon>
@@ -56,7 +55,36 @@
     <Compile Include="Migrations\201805070241293_AddDepartment.Designer.cs">
       <DependentUpon>201805070241293_AddDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805080353575_AddAssInventory.cs" />
+    <Compile Include="Migrations\201805080353575_AddAssInventory.Designer.cs">
+      <DependentUpon>201805080353575_AddAssInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805080633472_AddIsLockedToAssets.cs" />
+    <Compile Include="Migrations\201805080633472_AddIsLockedToAssets.Designer.cs">
+      <DependentUpon>201805080633472_AddIsLockedToAssets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805180748013_ChangeAssInventory.cs" />
+    <Compile Include="Migrations\201805180748013_ChangeAssInventory.Designer.cs">
+      <DependentUpon>201805180748013_ChangeAssInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805290743433_AddConInventory.cs" />
+    <Compile Include="Migrations\201805290743433_AddConInventory.Designer.cs">
+      <DependentUpon>201805290743433_AddConInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805300319455_ChangeConInventoryResult.cs" />
+    <Compile Include="Migrations\201805300319455_ChangeConInventoryResult.Designer.cs">
+      <DependentUpon>201805300319455_ChangeConInventoryResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806010718450_ChangeIntToDecimal.cs" />
+    <Compile Include="Migrations\201806010718450_ChangeIntToDecimal.Designer.cs">
+      <DependentUpon>201806010718450_ChangeIntToDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806060842390_AddIsLockedToLocation.cs" />
+    <Compile Include="Migrations\201806060842390_AddIsLockedToLocation.Designer.cs">
+      <DependentUpon>201806060842390_AddIsLockedToLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="SMOSECDbContext.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +126,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805070241293_AddDepartment.resx">
       <DependentUpon>201805070241293_AddDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080353575_AddAssInventory.resx">
+      <DependentUpon>201805080353575_AddAssInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080633472_AddIsLockedToAssets.resx">
+      <DependentUpon>201805080633472_AddIsLockedToAssets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805180748013_ChangeAssInventory.resx">
+      <DependentUpon>201805180748013_ChangeAssInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805290743433_AddConInventory.resx">
+      <DependentUpon>201805290743433_AddConInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805300319455_ChangeConInventoryResult.resx">
+      <DependentUpon>201805300319455_ChangeConInventoryResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806010718450_ChangeIntToDecimal.resx">
+      <DependentUpon>201806010718450_ChangeIntToDecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806060842390_AddIsLockedToLocation.resx">
+      <DependentUpon>201806060842390_AddIsLockedToLocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,7 @@ using System.Text;
 namespace SMOSEC.DTOs.InputDTO
 {
     /// <summary>
-    /// 耗材所用传输数据类型
+    /// 耗材列表所用传输数据类型
     /// </summary>
     public class ConsumablesOrderRow
     {

@@ -12,6 +12,11 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class AssSelectLayout : Smobiler.Core.Controls.MobileUserControl
     {
+        /// <summary>
+        /// CheckBox选择状态变化时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             try

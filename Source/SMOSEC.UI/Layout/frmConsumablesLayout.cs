@@ -8,30 +8,28 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class frmConsumablesLayout : Smobiler.Core.Controls.MobileUserControl
     {
+        /// <summary>
+        /// 点击，查看耗材详情
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void touchPanel1_Press(object sender, EventArgs e)
         {
             try
             {
                 frmConsumablesDetail consumablesDetail = new frmConsumablesDetail {CID = lblID.BindDataValue.ToString()};
                 Form.Show(consumablesDetail, (MobileForm sender1, object args) =>
-                                {
-                                    if (consumablesDetail.ShowResult == ShowResult.Yes)
-                                    {
-                                        frmConsumables consumables = (frmConsumables) Form;
-                                        consumables.Bind();
-                                    }
-                                });
-//                Form.Show(consumablesDetail);
+                {
+                    if (consumablesDetail.ShowResult == ShowResult.Yes)
+                    {
+                        ((frmConsumables)Form).Bind();
+                    }
+                });
             }
             catch (Exception ex)
             {
                 Form.Toast(ex.Message);
             }
-        }
-
-        private void touchPanel1_LongPress(object sender, EventArgs e)
-        {
-
         }
     }
 }

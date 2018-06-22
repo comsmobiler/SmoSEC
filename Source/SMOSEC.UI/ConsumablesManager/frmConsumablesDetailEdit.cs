@@ -7,9 +7,19 @@ namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmConsumablesDetailEdit : Smobiler.Core.Controls.MobileForm
     {
+        #region 变量
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
-        public string CID;
-        public string UserId;
+        public string CID;  //耗材编号
+        public string UserId;   //用户编号
+        
+
+        #endregion
+
+        /// <summary>
+        /// 保存修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Press(object sender, EventArgs e)
         {
             try
@@ -86,17 +96,32 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 上传图片时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PanelImg_Press(object sender, EventArgs e)
         {
             CamPicture.GetPhoto();
         }
 
+        /// <summary>
+        /// 按回退时，关闭当前窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesDetailEdit_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
                 Close();
         }
 
+        /// <summary>
+        /// 获得需上传的图片数据时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CamPicture_ImageCaptured(object sender, BinaryResultArgs e)
         {
             try
@@ -114,6 +139,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 初始化界面时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesDetailEdit_Load(object sender, EventArgs e)
         {
             try
@@ -126,6 +156,9 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 数据绑定
+        /// </summary>
         private void Bind()
         {
             try

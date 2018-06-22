@@ -40,6 +40,12 @@ namespace SMOSEC.Domain.IRepository
         /// <returns></returns>
         IQueryable<coreUser> GetByID(String ID);
         /// <summary>
+        /// 得到某个部门的所有用户
+        /// </summary>
+        /// <param name="DepartmentID"></param>
+        /// <returns></returns>
+        IQueryable<coreUser> GetUserByDepID(string DepartmentID);
+        /// <summary>
         /// 通过手机号码获取数据
         /// </summary>
         /// <param name="Phone"></param>
@@ -51,5 +57,11 @@ namespace SMOSEC.Domain.IRepository
         /// <param name="Email"></param>
         /// <returns></returns>
         IQueryable<coreUser> GetByEmail(String Email);
+        /// <summary>
+        /// 判断该用户ID是否存在
+        /// </summary>
+        /// <param name="UserID">用户ID</param>
+        /// <returns>true表示存在，false表示不存在</returns>
+        bool IsExists(string UserID);
     }
 }

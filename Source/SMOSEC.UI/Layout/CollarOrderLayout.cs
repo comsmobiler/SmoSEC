@@ -12,12 +12,16 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class CollarOrderLayout : Smobiler.Core.Controls.MobileUserControl
     {
+        /// <summary>
+        /// 点击，查看领用单详情
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Panel1_Press(object sender, EventArgs e)
         {
             try
             {
-                frmCoDetail coDetail=new frmCoDetail();
-                coDetail.CoId = LblID.BindDataValue.ToString();
+                frmCoDetail coDetail = new frmCoDetail {CoId = LblID.BindDataValue.ToString()};
                 Form.Show(coDetail);
             }
             catch (Exception ex)

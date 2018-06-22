@@ -1,3 +1,5 @@
+using SMOSEC.UI.UserControl;
+
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmOutOrderCreate : Smobiler.Core.Controls.MobileForm
@@ -37,7 +39,6 @@ namespace SMOSEC.UI.ConsumablesManager
             this.Label8 = new Smobiler.Core.Controls.Label();
             this.txtNote = new Smobiler.Core.Controls.TextBox();
             this.DPickerCO = new Smobiler.Core.Controls.DatePicker();
-            this.btnHMan = new Smobiler.Core.Controls.Button();
             this.btnBOMan = new Smobiler.Core.Controls.Button();
             this.btnBOMan1 = new Smobiler.Core.Controls.Button();
             this.Label4 = new Smobiler.Core.Controls.Label();
@@ -47,9 +48,8 @@ namespace SMOSEC.UI.ConsumablesManager
             this.txtHMan = new Smobiler.Core.Controls.TextBox();
             this.Panel4 = new Smobiler.Core.Controls.Panel();
             this.listViewCon = new Smobiler.Core.Controls.ListView();
-            this.PopBOMan = new Smobiler.Core.Controls.PopList();
-            this.PopHMan = new Smobiler.Core.Controls.PopList();
             this.PopLocation = new Smobiler.Core.Controls.PopList();
+            this.PopBOMan = new Smobiler.Core.Controls.PopList();
             // 
             // Title1
             // 
@@ -102,7 +102,6 @@ namespace SMOSEC.UI.ConsumablesManager
             this.Label8,
             this.txtNote,
             this.DPickerCO,
-            this.btnHMan,
             this.btnBOMan,
             this.btnBOMan1,
             this.Label4,
@@ -177,20 +176,6 @@ namespace SMOSEC.UI.ConsumablesManager
             this.DPickerCO.Name = "DPickerCO";
             this.DPickerCO.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
             this.DPickerCO.Size = new System.Drawing.Size(200, 30);
-            // 
-            // btnHMan
-            // 
-            this.btnHMan.BackColor = System.Drawing.Color.White;
-            this.btnHMan.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.btnHMan.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnHMan.BorderRadius = 0;
-            this.btnHMan.ForeColor = System.Drawing.Color.Black;
-            this.btnHMan.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.btnHMan.Location = new System.Drawing.Point(100, 0);
-            this.btnHMan.Name = "btnHMan";
-            this.btnHMan.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 2F, 0F);
-            this.btnHMan.Size = new System.Drawing.Size(166, 30);
-            this.btnHMan.Press += new System.EventHandler(this.btnHMan_Press);
             // 
             // btnBOMan
             // 
@@ -304,27 +289,21 @@ namespace SMOSEC.UI.ConsumablesManager
             this.listViewCon.SplitLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.listViewCon.TemplateControlName = "OperCreateConExLayout";
             // 
-            // PopBOMan
-            // 
-            this.PopBOMan.Name = "PopBOMan";
-            this.PopBOMan.Selected += new System.EventHandler(this.PopBOMan_Selected);
-            // 
-            // PopHMan
-            // 
-            this.PopHMan.Name = "PopHMan";
-            this.PopHMan.Selected += new System.EventHandler(this.PopHMan_Selected);
-            // 
             // PopLocation
             // 
             this.PopLocation.Name = "PopLocation";
             this.PopLocation.Selected += new System.EventHandler(this.PopLocation_Selected);
             // 
+            // PopBOMan
+            // 
+            this.PopBOMan.Name = "PopBOMan";
+            this.PopBOMan.Selected += new System.EventHandler(this.PopBOMan_Selected);
+            // 
             // frmOutOrderCreate
             // 
             this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
-            this.PopBOMan,
-            this.PopHMan,
-            this.PopLocation});
+            this.PopLocation,
+            this.PopBOMan});
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Title1,
             this.Panel2,
@@ -349,7 +328,6 @@ namespace SMOSEC.UI.ConsumablesManager
         internal Smobiler.Core.Controls.Label Label8;
         internal Smobiler.Core.Controls.TextBox txtNote;
         internal Smobiler.Core.Controls.DatePicker DPickerCO;
-        internal Smobiler.Core.Controls.Button btnHMan;
         internal Smobiler.Core.Controls.Button btnBOMan;
         internal Smobiler.Core.Controls.Button btnBOMan1;
         internal Smobiler.Core.Controls.Label Label4;
@@ -358,9 +336,8 @@ namespace SMOSEC.UI.ConsumablesManager
         internal Smobiler.Core.Controls.Panel Panel4;
         private Smobiler.Core.Controls.ListView listViewCon;
         private Smobiler.Core.Controls.Button btnAdd;
-        internal Smobiler.Core.Controls.PopList PopBOMan;
-        internal Smobiler.Core.Controls.PopList PopHMan;
         internal Smobiler.Core.Controls.PopList PopLocation;
         internal Smobiler.Core.Controls.TextBox txtHMan;
+        private Smobiler.Core.Controls.PopList PopBOMan;
     }
 }

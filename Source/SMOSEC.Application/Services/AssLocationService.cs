@@ -202,7 +202,7 @@ namespace SMOSEC.Application.Services
         /// <param name="LocationID"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        public ReturnInfo ChangeEnable(String LocationID, LocationStatus status)
+        public ReturnInfo ChangeEnable(String LocationID, IsEnable status)
         {
             ReturnInfo RInfo = new ReturnInfo();
             try

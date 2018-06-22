@@ -1,5 +1,5 @@
-using System;
-using Smobiler.Core;
+using SMOSEC.UI.UserControl;
+
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmWRDetail : Smobiler.Core.Controls.MobileForm
@@ -79,8 +79,9 @@ namespace SMOSEC.UI.ConsumablesManager
             this.txtVendor,
             this.txtHMan,
             this.txtLocatin});
+            this.Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(300, 195);
+            this.Panel3.Size = new System.Drawing.Size(300, 153);
             // 
             // Label1
             // 
@@ -200,6 +201,7 @@ namespace SMOSEC.UI.ConsumablesManager
             // 
             this.Panel4.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.ListAss});
+            this.Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel4.Location = new System.Drawing.Point(0, 153);
             this.Panel4.Name = "Panel4";
             this.Panel4.Size = new System.Drawing.Size(300, 307);

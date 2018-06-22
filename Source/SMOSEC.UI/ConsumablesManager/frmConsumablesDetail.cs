@@ -1,19 +1,22 @@
 using System;
-using SMOSEC.CommLib;
 using Smobiler.Core.Controls;
+using SMOSEC.CommLib;
+using Smobiler.Device;
 
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmConsumablesDetail : Smobiler.Core.Controls.MobileForm
     {
+        #region 变量
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
-        public string CID;
+        public string CID;  //耗材编号
+        #endregion
 
-        private void PanelImg_Press(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 查看耗材库存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnQuant_Press(object sender, EventArgs e)
         {
             try
@@ -27,6 +30,11 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 编辑耗材
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Press(object sender, EventArgs e)
         {
             try
@@ -40,7 +48,6 @@ namespace SMOSEC.UI.ConsumablesManager
                         Bind();
                     }
                 });
-//                Show(conEdit);
             }
             catch (Exception ex)
             {
@@ -48,16 +55,25 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 按回退键，关闭当前窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesDetail_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
             {
-//                ShowResult = ShowResult.None;
                 Close();
             }
                 
         }
 
+        /// <summary>
+        /// 界面初始化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmConsumablesDetail_Load(object sender, EventArgs e)
         {
             try
@@ -70,6 +86,9 @@ namespace SMOSEC.UI.ConsumablesManager
             }
         }
 
+        /// <summary>
+        /// 绑定数据
+        /// </summary>
         private void Bind()
         {
             try
@@ -84,13 +103,54 @@ namespace SMOSEC.UI.ConsumablesManager
                 txtSpe.Text = consumables.SPECIFICATION;
                 txtUnit.Text = consumables.UNIT;
                 ImgPicture.ResourceID = consumables.IMAGE;
+                if (Client.Session["Role"].ToString() == "SMOSECUser")
+                {
+                    btnEdit.Visible = false;
+                    btnDelete.Visible = false;
+                }
             }
             catch (Exception ex)
             {
                 Toast(ex.Message);
             }
         }
+        /// <summary>
+        /// 耗材条码打印
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPrint_Press(object sender, EventArgs e)
+        {
+            try
+            {
+                PosPrinterEntityCollection Commands = new PosPrinterEntityCollection();
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.Initial));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.EnabledBarcode));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.AbsoluteLocation));
+                Commands.Add(new PosPrinterBarcodeEntity(PosBarcodeType.CODE128Height, "62"));
+                Commands.Add(new PosPrinterBarcodeEntity(PosBarcodeType.CODE128, CID));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.DisabledBarcode));
+                Commands.Add(new PosPrinterContentEntity(System.Environment.NewLine));
+                Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.Cut));
 
+                posPrinter1.Print(Commands, (obj, args) =>
+                {
+                    if (args.isError == true)
+                        this.Toast("Error: " + args.error);
+                    else
+                        this.Toast("打印成功");
+                });
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 删除耗材
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Press(object sender, EventArgs e)
         {
             try

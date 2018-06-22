@@ -32,5 +32,12 @@ namespace SMOSEC.Domain.Entity
         [Required]
         [DisplayName("是否启用")]
         public Int32 ISENABLE { get; set; }
+
+        /// <summary>
+        /// 是否锁定(0 不锁定，1 锁定，默认为0)
+        /// </summary>
+        [Required]
+        [DisplayName("是否锁定")]
+        public Int32 ISLOCKED { get; set; }
     }
 }

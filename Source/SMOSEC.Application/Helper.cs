@@ -1,11 +1,12 @@
-﻿using SMOSEC.CommLib;
+﻿using System;
+using System.Text;
+using SMOSEC.CommLib;
 using SMOSEC.Domain.IRepository;
+using SMOSEC.DTOs;
 using SMOSEC.DTOs.InputDTO;
 using SMOSEC.Infrastructure;
 using SMOSEC.Repository.Assets;
-using System;
-using System.Linq;
-using System.Text;
+using SMOSEC.Repository.Setting;
 
 namespace SMOSEC.Application
 {
@@ -24,6 +25,10 @@ namespace SMOSEC.Application
         /// </summary>
         public static IAssetsRepository AssetsRepository = new AssetsRepository(context);
         /// <summary>
+        /// 用户的仓储类的接口
+        /// </summary>
+        public static IcoreUserRepository userRepository = new coreUserRepository(context);
+        /// <summary>
         /// 产生部分表的主键ID(调拨单、报废单、报修单)
         /// </summary>
         /// <param name="Head"></param>
@@ -41,6 +46,34 @@ namespace SMOSEC.Application
             {
                 int HeadLength = Head.Length;
                 int MinuteMax = int.Parse(MaxID.Substring(HeadLength, 9));
+                String NowMax = (MinuteMax + 1).ToString();
+                for (int i = 0; i < 10 - NowMax.Length - HeadLength; i++)
+                {
+                    sb.Append("0");
+                }
+                sb.Append(NowMax);
+            }
+            return sb.ToString();
+        }
+        /// <summary>
+        /// 产生部门表的主键ID
+        /// </summary>
+        /// <param name="Head"></param>
+        /// <param name="MaxID"></param>
+        /// <returns></returns>
+        public static String GenerateDepID(String Head, String MaxID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Head);
+            if (String.IsNullOrWhiteSpace(MaxID))
+            {
+                sb.Append("201805001");
+            }
+            else
+            {
+                sb.Append(DateTime.Now.ToString("yyyyMM"));
+                int HeadLength = 7;
+                int MinuteMax = int.Parse(MaxID.Substring(HeadLength, 3));
                 String NowMax = (MinuteMax + 1).ToString();
                 for (int i = 0; i < 10 - NowMax.Length - HeadLength; i++)
                 {
@@ -116,7 +149,7 @@ namespace SMOSEC.Application
         /// 基础验证
         /// </summary>
         /// <param name="entity">继承自IEntity的泛型对象</param>
-        public static StringBuilder BasicValidate<T>(T entity) where T : SMOSEC.DTOs.IEntity
+        public static StringBuilder BasicValidate<T>(T entity) where T : IEntity
         {
             StringBuilder sb = new StringBuilder();
             //基础验证
@@ -191,6 +224,34 @@ namespace SMOSEC.Application
                 default:
                     return "";
             }
+
+        }
+
+        /// <summary>
+        /// 部门验证
+        /// </summary>
+        /// <param name="entity">部门对象</param>
+        public static string ValidateDepInputDto(DepInputDto entity)
+        {
+            //基础验证
+            StringBuilder sb = BasicValidate<DepInputDto>(entity);
+            //额外验证
+            if (entity.UserIDs.Count > 0)
+            {
+                foreach (string s in entity.UserIDs)
+                {
+                    if (!userRepository.IsExists(s))
+                    {
+                        sb.Append("部门人员" + s + "不在用户表中!");
+                    }
+
+                }
+            }
+            else
+            {
+                sb.Append("部门人员至少需要一人!");
+            }
+            return sb.ToString();
 
         }
     }

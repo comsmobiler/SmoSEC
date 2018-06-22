@@ -23,7 +23,7 @@ namespace SMOSEC.Application.IServices
         /// </summary>
         /// <param name="ASSID"></param>
         /// <returns></returns>
-        Assets GetAssetsBySN(String SN);
+        Assets GetUnusedAssetsBySN(String SN);
         /// <summary>
         /// 根据耗材名称返回耗材信息
         /// </summary>

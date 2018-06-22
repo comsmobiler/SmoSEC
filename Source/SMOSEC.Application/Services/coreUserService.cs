@@ -1,8 +1,10 @@
-﻿using SMOSEC.Application.IServices;
+﻿using AutoMapper;
+using SMOSEC.Application.IServices;
 using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.Domain.IRepository;
 using SMOSEC.DTOs.Enum;
+using SMOSEC.DTOs.OutputDTO;
 using SMOSEC.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -30,6 +32,10 @@ namespace SMOSEC.Application.Services
         /// </summary>
         private IcoreUserRepository _coreUserRepository;
         /// <summary>
+        /// 部门信息的查询接口
+        /// </summary>
+        private IDepartmentRepository _DepartmentRepository;
+        /// <summary>
         /// 数据库上下文
         /// </summary>
         private SMOSECDbContext SMOSECDbContext;
@@ -39,11 +45,13 @@ namespace SMOSEC.Application.Services
         public coreUserService(IUnitOfWork unitOfWork,
             IAssetsRepository assetsRepository,
             IcoreUserRepository coreUserRepository,
+            IDepartmentRepository DepartmentRepository,
             IDbContext dbContext)
         {
             _unitOfWork = unitOfWork;
             _assetsRepository = assetsRepository;
             _coreUserRepository = coreUserRepository;
+            _DepartmentRepository = DepartmentRepository;
             SMOSECDbContext = (SMOSECDbContext)dbContext;
         }
         #region 查询
@@ -64,12 +72,41 @@ namespace SMOSEC.Application.Services
             return _coreUserRepository.GetAll().AsNoTracking().ToList();
         }
         /// <summary>
+        /// 得到某个部门的所有用户
+        /// </summary>
+        /// <param name="DepartmentID"></param>
+        /// <returns></returns>
+        public List<coreUser> GetUserByDepID(String DepartmentID)
+        {
+            return _coreUserRepository.GetUserByDepID(DepartmentID).AsNoTracking().ToList();
+        }
+        /// <summary>
         /// 获取用户数据
         /// </summary>
         /// <returns></returns>
         public List<coreUser> GetUser()
         {
             return _coreUserRepository.GetUser().AsNoTracking().ToList();
+        }
+        /// <summary>
+        /// 根据用户ID返回用户和部门信息
+        /// </summary>
+        /// <param name="UserID">用户ID</param>
+        public UserDepDto GetUseDepByUserID(string UserID)
+        {
+            UserDepDto ud = Mapper.Map<coreUser, UserDepDto>(_coreUserRepository.GetByID(UserID).AsNoTracking().FirstOrDefault());
+            if (ud != null)
+            {
+                if (!string.IsNullOrEmpty(ud.DEPARTMENTID))
+                {
+                    DepartmentDto d = Mapper.Map<Department, DepartmentDto>(_DepartmentRepository.GetByID(ud.DEPARTMENTID).AsNoTracking().FirstOrDefault());
+                    if (d != null)
+                    {
+                        ud.DEPARTMENTNAME = d.NAME;
+                    }
+                }
+            }
+            return ud;
         }
         /// <summary>
         /// 用户登录

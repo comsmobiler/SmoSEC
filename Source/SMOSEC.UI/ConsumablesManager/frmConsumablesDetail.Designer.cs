@@ -1,3 +1,5 @@
+using SMOSEC.UI.UserControl;
+
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmConsumablesDetail : Smobiler.Core.Controls.MobileForm
@@ -27,7 +29,8 @@ namespace SMOSEC.UI.ConsumablesManager
         private void InitializeComponent()
         {
             this.Title1 = new SMOSEC.UI.UserControl.Title();
-            this.Panel2 = new Smobiler.Core.Controls.Panel();
+            this.plButton = new Smobiler.Core.Controls.Panel();
+            this.btnPrint = new Smobiler.Core.Controls.Button();
             this.btnQuant = new Smobiler.Core.Controls.Button();
             this.btnEdit = new Smobiler.Core.Controls.Button();
             this.btnDelete = new Smobiler.Core.Controls.Button();
@@ -52,6 +55,7 @@ namespace SMOSEC.UI.ConsumablesManager
             this.txtFloor = new Smobiler.Core.Controls.TextBox();
             this.txtSPQ = new Smobiler.Core.Controls.TextBox();
             this.label1 = new Smobiler.Core.Controls.Label();
+            this.posPrinter1 = new Smobiler.Device.PosPrinter();
             // 
             // Title1
             // 
@@ -63,41 +67,56 @@ namespace SMOSEC.UI.ConsumablesManager
             this.Title1.Size = new System.Drawing.Size(300, 40);
             this.Title1.TitleText = "耗材详情";
             // 
-            // Panel2
+            // plButton
             // 
-            this.Panel2.BackColor = System.Drawing.Color.White;
-            this.Panel2.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.Panel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Panel2.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.plButton.BackColor = System.Drawing.Color.White;
+            this.plButton.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
+            this.plButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.plButton.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.btnPrint,
             this.btnQuant,
             this.btnEdit,
             this.btnDelete});
-            this.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel2.Location = new System.Drawing.Point(0, 480);
-            this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(300, 40);
+            this.plButton.Direction = Smobiler.Core.Controls.LayoutDirection.Row;
+            this.plButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.plButton.Layout = Smobiler.Core.Controls.LayoutPosition.Relative;
+            this.plButton.Location = new System.Drawing.Point(0, 480);
+            this.plButton.Name = "plButton";
+            this.plButton.Size = new System.Drawing.Size(300, 35);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Flex = 1;
+            this.btnPrint.Margin = new Smobiler.Core.Controls.Margin(2F, 5F, 2F, 5F);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(0, 0);
+            this.btnPrint.Text = "打印";
+            this.btnPrint.Press += new System.EventHandler(this.btnPrint_Press);
             // 
             // btnQuant
             // 
-            this.btnQuant.Location = new System.Drawing.Point(15, 5);
+            this.btnQuant.Flex = 1;
+            this.btnQuant.Margin = new Smobiler.Core.Controls.Margin(2F, 5F, 2F, 5F);
             this.btnQuant.Name = "btnQuant";
-            this.btnQuant.Size = new System.Drawing.Size(80, 30);
+            this.btnQuant.Size = new System.Drawing.Size(0, 0);
             this.btnQuant.Text = "库存分布";
             this.btnQuant.Press += new System.EventHandler(this.btnQuant_Press);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(205, 5);
+            this.btnEdit.Flex = 1;
+            this.btnEdit.Margin = new Smobiler.Core.Controls.Margin(2F, 5F, 2F, 5F);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(80, 30);
+            this.btnEdit.Size = new System.Drawing.Size(0, 0);
             this.btnEdit.Text = "修改耗材";
             this.btnEdit.Press += new System.EventHandler(this.btnEdit_Press);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(110, 5);
+            this.btnDelete.Flex = 1;
+            this.btnDelete.Margin = new Smobiler.Core.Controls.Margin(2F, 5F, 2F, 5F);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(80, 30);
+            this.btnDelete.Size = new System.Drawing.Size(0, 0);
             this.btnDelete.Text = "删除";
             this.btnDelete.Press += new System.EventHandler(this.btnDelete_Press);
             // 
@@ -262,7 +281,6 @@ namespace SMOSEC.UI.ConsumablesManager
             this.PanelImg.Location = new System.Drawing.Point(260, 92);
             this.PanelImg.Name = "PanelImg";
             this.PanelImg.Size = new System.Drawing.Size(30, 30);
-            this.PanelImg.Press += new System.EventHandler(this.PanelImg_Press);
             // 
             // ImgPicture
             // 
@@ -361,11 +379,17 @@ namespace SMOSEC.UI.ConsumablesManager
             this.label1.Size = new System.Drawing.Size(100, 40);
             this.label1.Text = "标准包装数量";
             // 
+            // posPrinter1
+            // 
+            this.posPrinter1.Name = "posPrinter1";
+            // 
             // frmConsumablesDetail
             // 
+            this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
+            this.posPrinter1});
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Title1,
-            this.Panel2,
+            this.plButton,
             this.Panel1});
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
             this.Statusbar = new Smobiler.Core.Controls.MobileFormStatusbar(Smobiler.Core.Controls.MobileFormStatusbarStyle.Default, System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(164)))), ((int)(((byte)(229))))));
@@ -377,7 +401,7 @@ namespace SMOSEC.UI.ConsumablesManager
         #endregion
 
         private UserControl.Title Title1;
-        internal Smobiler.Core.Controls.Panel Panel2;
+        internal Smobiler.Core.Controls.Panel plButton;
         internal Smobiler.Core.Controls.Button btnQuant;
         internal Smobiler.Core.Controls.Panel Panel1;
         internal Smobiler.Core.Controls.Label Label2;
@@ -402,5 +426,7 @@ namespace SMOSEC.UI.ConsumablesManager
         internal Smobiler.Core.Controls.TextBox txtSPQ;
         internal Smobiler.Core.Controls.Label label1;
         internal Smobiler.Core.Controls.Button btnDelete;
+        private Smobiler.Core.Controls.Button btnPrint;
+        private Smobiler.Device.PosPrinter posPrinter1;
     }
 }

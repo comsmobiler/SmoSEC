@@ -1,30 +1,32 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+using Smobiler.Core.Controls;
 using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.DTOs.InputDTO;
-using Smobiler.Core;
-using Smobiler.Core.Controls;
-using ListView = Smobiler.Core.Controls.ListView;
 
 namespace SMOSEC.UI.AssetsManager
 {
     partial class frmBoCreate : Smobiler.Core.Controls.MobileForm
     {
+        #region  定义变量
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
 
-        public List<string> AssIdList=new List<string>();
+        public List<string> AssIdList=new List<string>(); //所有行项的ASSID的集合
 
-        public DataTable AssTable=new DataTable(); 
+        public DataTable AssTable=new DataTable();   //行项数据的表格
         public string LocationId;
         public string BoManId;
         public string HManId;
         private string UserId;
+        #endregion
+
+        /// <summary>
+        /// 保存借用单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Press(object sender, EventArgs e)
         {
             try
@@ -32,14 +34,10 @@ namespace SMOSEC.UI.AssetsManager
                 AssBorrowOrderInputDto assBorrowOrderInput = new AssBorrowOrderInputDto
                 {
                     AssIds = AssIdList,
-//                    BorrowDate = DPickerCO.Value,
                     BORROWDATE = DateTime.Now,
                     BORROWER = BoManId,
-//                    BORROWER = "18875878973",
                     BRHANDLEMAN = HManId,
-//                    BRHANDLEMAN = "1586",
                     CREATEUSER = UserId,
-//                    EptReturnDate = DPickerRs.Value,
                     EPTRETURNDATE = DateTime.Now.AddYears(1),
                     LOCATIONID = LocationId,
                     MODIFYUSER = UserId,
@@ -62,38 +60,12 @@ namespace SMOSEC.UI.AssetsManager
                 Toast(ex.Message);
             }
         }
-
-//        private void btnHMan_Press(object sender, EventArgs e)
-//        {
-//            try
-//            {
-//                PopHMan.Groups.Clear();
-//                PopListGroup hManGroup=new PopListGroup();
-//                PopHMan.Title = "处理人选择";
-//                List<coreUser> users = _autofacConfig.coreUserService.GetAdmin();
-//                foreach (coreUser Row in users)
-//                {
-//                    hManGroup.AddListItem(Row.USER_NAME, Row.USER_ID);
-//                }
-//                PopHMan.Groups.Add(hManGroup);
-//                if (btnHMan.Tag != null)   //如果已有选中项，则显示选中效果
-//                {
-//                    foreach (PopListItem Item in hManGroup.Items)
-//                    {
-//                        if (Item.Value == btnHMan.Tag.ToString())
-//                            PopHMan.SetSelections(Item);
-//                    }
-//                }
-//                PopHMan.ShowDialog();
-//
-//
-//            }
-//            catch (Exception ex)
-//            {
-//                Toast(ex.Message);
-//            }
-//        }
-
+        
+        /// <summary>
+        /// 选择借用人
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBOMan_Press(object sender, EventArgs e)
         {
             try
@@ -126,6 +98,11 @@ namespace SMOSEC.UI.AssetsManager
 
         }
 
+        /// <summary>
+        /// 选择区域
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLocation_Press(object sender, EventArgs e)
         {
             try
@@ -162,6 +139,11 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
+        /// <summary>
+        /// 手机扫码添加二维码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImgBtnForBarcode_Press(object sender, EventArgs e)
         {
             try
@@ -173,7 +155,6 @@ namespace SMOSEC.UI.AssetsManager
                 else
                 {
                     barcodeScanner1.GetBarcode();
-//                    r2000Scanner1.BarcodeScan();
                 }
             }
             catch (Exception ex)
@@ -182,41 +163,12 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
-        //private void btnAdd_Press(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(btnLocation.Text))
-        //        {
-        //            throw new Exception("请先选择区域。");
-        //        }
-        //        else
-        //        {
-        //            //判断
-        //            frmSourceChoose frmSourceChoose = new frmSourceChoose
-        //            {
-        //                AssTable = AssTable,
-        //                LocationId = LocationId,
-        //                AssIdList = AssIdList,
-        //                OperationType = OperationType.借用
-        //            };
-        //            Show(frmSourceChoose, (MobileForm sender1, object args) =>
-        //            {
-        //                if (frmSourceChoose.ShowResult == ShowResult.Yes)
-        //                {
-        //                    AssTable = frmSourceChoose.AssTable;
-        //                    AssIdList = frmSourceChoose.AssIdList;
-        //                    BindListView();
-        //                }
-        //            });
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Toast(ex.Message);
-        //    }
-        //}
-
+      
+        /// <summary>
+        /// 选择借用人之后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PopBOMan_Selected(object sender, EventArgs e)
         {
             try
@@ -233,22 +185,12 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
-        private void PopHMan_Selected(object sender, EventArgs e)
-        {
-//            try
-//            {
-//                if (PopHMan.Selection != null)
-//                {
-//                    btnHMan.Text = PopHMan.Selection.Text;
-//                    HManId = PopHMan.Selection.Value;
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                Toast(ex.Message);
-//            }
-        }
-
+       
+        /// <summary>
+        /// 选择区域之后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PopLocation_Selected(object sender, EventArgs e)
         {
             try
@@ -279,42 +221,22 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
-        private void BarcodeScanner1_BarcodeScanned(object sender, BarcodeResultArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(btnLocation.Text))
-                {
-                    throw new Exception("请先选择区域");
-                }
-                else
-                {
-                    string barCode = e.Value;
-                    DataTable info = _autofacConfig.SettingService.GetUnUsedAssEx(LocationId, barCode);
-                    if (info.Rows.Count == 0)
-                    {
-                        throw new Exception("未在该区域的闲置物品中找到该物品");
-                    }
-                    else
-                    {
-                        DataRow row = info.Rows[0];
-                        AddAss(barCode,row["SN"].ToString(),row["IMAGE"].ToString(),row["NAME"].ToString());
-                        BindListView();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
+        /// <summary>
+        /// 手机按回退时，关闭当前窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmBOCreate_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
                 Close();
         }
 
+        /// <summary>
+        /// 初始化界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmBOCreate_Load(object sender, EventArgs e)
         {
             try
@@ -331,18 +253,30 @@ namespace SMOSEC.UI.AssetsManager
                 keys[0] = AssTable.Columns["ASSID"];
                 AssTable.PrimaryKey = keys;
 
-                UserId = Client.Session["UserID"].ToString();
-//                btnLocation.Text = "54";
-//                LocationId = "54";
+                UserId = Session["UserID"].ToString();
+                switch (Client.Session["Role"].ToString())
+                {
+                    case "SMOSECAdmin":
+                    {
+                        var user = _autofacConfig.coreUserService.GetUserByID(UserId);
+                        LocationId = user.USER_LOCATIONID;
+                        var location = _autofacConfig.assLocationService.GetByID(LocationId);
+                        btnLocation.Text = location.NAME;
+                        btnLocation.Enabled = false;
+                        btnLocation1.Enabled = false;
+                    }
+                        break;
+                    case "SMOSECUser":
+                    {
+                        BoManId = UserId;
+                        var user = _autofacConfig.coreUserService.GetUserByID(UserId);
+                        btnBOMan.Text = user.USER_NAME;
+                        btnBOMan.Enabled = false;
+                        btnBOMan1.Enabled = false;
+                    }
+                        break;
+                }
 
-                ////                ListView listView=new ListView();
-                //                _listView.TemplateControlName = "OperCreateAssLayout";
-                //                _listView.Name = "ListAss";
-                //                _listView.ShowSplitLine = true;
-                //                _listView.SplitLineColor = Color.FromArgb(230, 230, 230);
-                //                _listView.BackColor=Color.White;
-                //                _listView.Dock = DockStyle.Fill;
-                //                TabPageView1.Controls.Add(_listView);
             }
             catch (Exception ex)
             {
@@ -350,6 +284,9 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
+        /// <summary>
+        /// 绑定数据
+        /// </summary>
         public void BindListView()
         {
             try
@@ -364,6 +301,9 @@ namespace SMOSEC.UI.AssetsManager
           
         }
 
+        /// <summary>
+        /// 情况保存的数据
+        /// </summary>
         private void ClearInfo()
         {
             AssTable.Rows.Clear();
@@ -371,13 +311,20 @@ namespace SMOSEC.UI.AssetsManager
             BindListView();
         }
 
+        /// <summary>
+        /// 添加资产到表格
+        /// </summary>
+        /// <param name="assId">资产编号</param>
+        /// <param name="sn">序列号</param>
+        /// <param name="image">图片</param>
+        /// <param name="name">名称</param>
         public void AddAss(string assId, string sn, string image, string name)
         {
             try
             {
                 if (AssIdList.Contains(assId))
                 {
-//                    throw new Exception("已添加过该资产。");
+
                 }
                 else
                 {
@@ -398,6 +345,10 @@ namespace SMOSEC.UI.AssetsManager
 
         }
 
+        /// <summary>
+        /// 从相关数据中删除资产
+        /// </summary>
+        /// <param name="assId">资产编号</param>
         public void RemoveAss(string assId)
         {
             try
@@ -412,6 +363,11 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
+        /// <summary>
+        /// 手持按键扫描到二维码时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void r2000Scanner1_BarcodeDataCaptured(object sender, Smobiler.Device.R2000BarcodeScanEventArgs e)
         {
             try
@@ -432,7 +388,7 @@ namespace SMOSEC.UI.AssetsManager
                     {
                         DataRow row = info.Rows[0];
                         AddAss(row["ASSID"].ToString(),barCode,row["IMAGE"].ToString(), row["NAME"].ToString()); 
-                        BindListView();
+                        BindListView(); //重新绑定数据
                     }
                 }
             }
@@ -442,6 +398,11 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
+        /// <summary>
+        /// 手持按键扫描到RFID时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void r2000Scanner1_RFIDDataCaptured(object sender, Smobiler.Device.R2000RFIDScanEventArgs e)
         {
             try
@@ -462,7 +423,7 @@ namespace SMOSEC.UI.AssetsManager
                     {
                         DataRow row = info.Rows[0];
                         AddAss(row["ASSID"].ToString(), RFID, row["IMAGE"].ToString(), row["NAME"].ToString());
-                        BindListView();
+                        BindListView(); //重新绑定数据
                     }
                 }
             }
@@ -475,6 +436,11 @@ namespace SMOSEC.UI.AssetsManager
             }
         }
 
+        /// <summary>
+        /// 手机扫描到二维码时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void barcodeScanner1_BarcodeScanned_1(object sender, BarcodeResultArgs e)
         {
             try
@@ -495,8 +461,32 @@ namespace SMOSEC.UI.AssetsManager
                     {
                         DataRow row = info.Rows[0];
                         AddAss(row["ASSID"].ToString(), barCode, row["IMAGE"].ToString(), row["NAME"].ToString());
-                        BindListView();
+                        BindListView(); //重新绑定数据
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 点击扫描添加时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panelScan_Press(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(btnLocation.Text))
+                {
+                    throw new Exception("请先选择区域");
+                }
+                else
+                {
+                    barcodeScanner1.GetBarcode();
                 }
             }
             catch (Exception ex)

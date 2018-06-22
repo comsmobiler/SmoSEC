@@ -12,12 +12,16 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class ReturnOrderLayout : Smobiler.Core.Controls.MobileUserControl
     {
+        /// <summary>
+        /// 点击，查看归还单详情
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Panel1_Press(object sender, EventArgs e)
         {
             try
             {
-                frmRtoDetail rtoDetail=new frmRtoDetail();
-                rtoDetail.RtoId = LblID.BindDataValue.ToString();
+                frmRtoDetail rtoDetail = new frmRtoDetail {RtoId = LblID.BindDataValue.ToString()};
                 Form.Show(rtoDetail);
             }
             catch (Exception ex)

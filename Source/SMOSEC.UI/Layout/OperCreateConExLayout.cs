@@ -11,11 +11,6 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class OperCreateConExLayout : Smobiler.Core.Controls.MobileUserControl
     {
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Panel1_LongPress(object sender, EventArgs e)
         {
 

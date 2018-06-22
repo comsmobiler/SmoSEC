@@ -40,12 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\EuserInfo.cs" />
-    <Compile Include="Enum\LocationStatus.cs" />
+    <Compile Include="Enum\InventoryStatus.cs" />
+    <Compile Include="Enum\IsEnable.cs" />
     <Compile Include="Enum\PROCESSMODE.cs" />
     <Compile Include="Enum\ISSNCONTROL.cs" />
+    <Compile Include="Enum\ResultStatus.cs" />
+    <Compile Include="Enum\Sex.cs" />
     <Compile Include="Enum\STATUS.cs" />
     <Compile Include="Enum\OperateType.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="InputDTO\AddAIResultInputDto.cs" />
+    <Compile Include="InputDTO\AddCIResultInputDto.cs" />
     <Compile Include="InputDTO\AssBorrowOrderInputDto.cs" />
     <Compile Include="InputDTO\AssBorrowOrderRowInputDto.cs" />
     <Compile Include="InputDTO\AssCollarOrderInputDto.cs" />
@@ -55,6 +60,8 @@
     <Compile Include="InputDTO\AssetsOrderRow.cs" />
     <Compile Include="InputDTO\AssetsSNInputDto.cs" />
     <Compile Include="InputDTO\AssetsWriteOffInputDto.cs" />
+    <Compile Include="InputDTO\AssInventoryInputDto.cs" />
+    <Compile Include="InputDTO\AssInventoryResultInputDto.cs" />
     <Compile Include="InputDTO\AssProcessRecordInputDto.cs" />
     <Compile Include="InputDTO\AssQuantInputDto.cs" />
     <Compile Include="InputDTO\AssRepairOrderDto.cs" />
@@ -63,8 +70,11 @@
     <Compile Include="InputDTO\AssReturnOrderInputDto.cs" />
     <Compile Include="InputDTO\AssReturnOrderRowInputDto.cs" />
     <Compile Include="InputDTO\AssTypeDto.cs" />
+    <Compile Include="InputDTO\ConInventoryInputDto.cs" />
+    <Compile Include="InputDTO\ConInventoryResultInputDto.cs" />
     <Compile Include="InputDTO\ConsumablesInputDto.cs" />
     <Compile Include="InputDTO\ConsumablesOrderRow.cs" />
+    <Compile Include="InputDTO\DepInputDto.cs" />
     <Compile Include="InputDTO\OutboundOrderInputDto.cs" />
     <Compile Include="InputDTO\OutboundOrderRowInputDto.cs" />
     <Compile Include="InputDTO\ROInputDto.cs" />
@@ -77,6 +87,9 @@
     <Compile Include="OutputDTO\AssCollarOrderListOutputDto.cs" />
     <Compile Include="OutputDTO\AssCollarOrderOutputDto.cs" />
     <Compile Include="OutputDTO\AssetsOutputDto.cs" />
+    <Compile Include="OutputDTO\AssInventoryListOutputDto.cs" />
+    <Compile Include="OutputDTO\AssInventoryOutputDto.cs" />
+    <Compile Include="OutputDTO\AssInventoryResultOutputDto.cs" />
     <Compile Include="OutputDTO\AssPRListOutputDto.cs" />
     <Compile Include="OutputDTO\AssProRecordOutputDto.cs" />
     <Compile Include="OutputDTO\AssRestoreOrderListOutputDto.cs" />
@@ -88,7 +101,11 @@
     <Compile Include="OutputDTO\AssSNSelectExOutputDto.cs" />
     <Compile Include="OutputDTO\AssSNSelectOutputDto.cs" />
     <Compile Include="OutputDTO\BarChartOutputDto.cs" />
+    <Compile Include="OutputDTO\ConInventoryListOutputDto.cs" />
+    <Compile Include="OutputDTO\ConInventoryOutputDto.cs" />
+    <Compile Include="OutputDTO\ConInventoryResultOutputDto.cs" />
     <Compile Include="OutputDTO\ConsumablesOutputDto.cs" />
+    <Compile Include="OutputDTO\DepartmentDto.cs" />
     <Compile Include="OutputDTO\OperCreateAssExOutputDto.cs" />
     <Compile Include="OutputDTO\OperCreateAssOutputDto.cs" />
     <Compile Include="OutputDTO\OperCreateSNOutputDto.cs" />
@@ -96,6 +113,7 @@
     <Compile Include="OutputDTO\OperDetailAssOutputDto.cs" />
     <Compile Include="OutputDTO\OperDetailSNOutputDto.cs" />
     <Compile Include="OutputDTO\OutboundOrderOutputDto.cs" />
+    <Compile Include="OutputDTO\UserDepDto.cs" />
     <Compile Include="OutputDTO\WarehouseReceiptOutputDto.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,44 +1,57 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using Smobiler.Core;
 using Smobiler.Core.Controls;
-using SMOSEC.CommLib;
-using SMOSEC.Domain.Entity;
 using SMOSEC.UI.AssetsManager;
+using Smobiler.Device;
+using SMOSEC.DTOs.OutputDTO;
 
 namespace SMOSEC.UI.MasterData
 {
 
-
+    /// <summary>
+    /// 资产列表界面
+    /// </summary>
     partial class frmAssets : Smobiler.Core.Controls.MobileForm
     {
+        #region 变量
         private AutofacConfig _autofacConfig = new AutofacConfig();//调用配置类
 
-        public string SelectAssId;
+        public string SelectAssId;  //当前选择的资产
 
+        private string UserId;
+        private string LocatinId;
+
+        #endregion
+        /// <summary>
+        /// 按回退键，关闭客户端
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmAssets_KeyDown(object sender, KeyDownEventArgs e)
         {
             if (e.KeyCode == KeyCode.Back)
                 Client.Exit();
         }
 
+        /// <summary>
+        /// 绑定数据
+        /// </summary>
         public void Bind()
         {
             try
             {
-                DataTable table = _autofacConfig.SettingService.GetAllAss();
+                 LocatinId = "";
+                if (Client.Session["Role"].ToString() != "ADMIN")
+                {
+                    var user = _autofacConfig.coreUserService.GetUserByID(UserId);
+                    LocatinId = user.USER_LOCATIONID;
+                }
+
+                DataTable table = _autofacConfig.SettingService.GetAllAss(LocatinId);
                 gridAssRows.Cells.Clear();
-                table.Columns.Add("ChangeText");
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
                 {
-                    if (String.IsNullOrEmpty(Row["CurrentUser"].ToString()) == false)
-                    {
-                        Row["ChangeText"] = "使用人更换";
-                    }
                     if(Row["AssId"].ToString()==SelectAssId)
                     {
                         Row["IsChecked"] = true;
@@ -60,10 +73,16 @@ namespace SMOSEC.UI.MasterData
             }
         }
 
+        /// <summary>
+        /// 界面初始化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmAssets_Load(object sender, EventArgs e)
         {
             try
             {
+                UserId = Client.Session["UserID"].ToString();
                 Bind();
             }
             catch (Exception ex)
@@ -72,64 +91,22 @@ namespace SMOSEC.UI.MasterData
             }
 
         }
-        public String ASSID;          //更改使用者的资产编号  
-        public String LastUser;       //上个使用者编号
+
         /// <summary>
-        /// 更换使用者
+        /// 手持物理按键扫二维码，扫描到数据时
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void popCurrentUser_Selected(object sender, EventArgs e)
-        {
-            try
-            {
-                if (popCurrentUser.Selection.Value != LastUser)     //如果更换了使用者
-                {
-                    ReturnInfo RInfo = _autofacConfig.AssetsService.ChangeUser(ASSID, popCurrentUser.Selection.Value, Client.Session["UserID"].ToString());
-                    if (RInfo.IsSuccess)
-                    {
-                        Toast("更改使用者成功!");
-                        LastUser = popCurrentUser.Selection.Value;
-                    }
-                    else
-                    {
-                        throw new Exception(RInfo.ErrorInfo);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
-        private void ImgBtnForAssId_Press(object sender, EventArgs e)
-        {
-            try
-            {
-                barcodeScanner1.GetBarcode();
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
         private void r2000Scanner1_BarcodeDataCaptured(object sender, Smobiler.Device.R2000BarcodeScanEventArgs e)
         {
             try
             {
                 string barCode = e.Data;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode,LocatinId);
                 gridAssRows.Cells.Clear();
-                table.Columns.Add("ChangeText");
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
                 {
-                    if (String.IsNullOrEmpty(Row["CurrentUser"].ToString()) == false)
-                    {
-                        Row["ChangeText"] = "使用人更换";
-                    }
                     if (Row["AssId"].ToString() == SelectAssId)
                     {
                         Row["IsChecked"] = true;
@@ -152,21 +129,21 @@ namespace SMOSEC.UI.MasterData
 
         }
 
+        /// <summary>
+        /// 手持物理按键扫描RFID，扫描到RFID信息时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void r2000Scanner1_RFIDDataCaptured(object sender, Smobiler.Device.R2000RFIDScanEventArgs e)
         {
             try
             {
                 string RFID = e.Epc;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(RFID);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(RFID,LocatinId);
                 gridAssRows.Cells.Clear();
-                table.Columns.Add("ChangeText");
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
                 {
-                    if (String.IsNullOrEmpty(Row["CurrentUser"].ToString()) == false)
-                    {
-                        Row["ChangeText"] = "使用人更换";
-                    }
                     if (Row["AssId"].ToString() == SelectAssId)
                     {
                         Row["IsChecked"] = true;
@@ -188,6 +165,11 @@ namespace SMOSEC.UI.MasterData
             }
         }
 
+        /// <summary>
+        /// 点击ActionButton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmAssets_ActionButtonPress(object sender, ActionButtonPressEventArgs e)
         {
 
@@ -195,16 +177,25 @@ namespace SMOSEC.UI.MasterData
             {
                 switch (e.Index)
                 {
-                    case 0:
-                        frmAssetsCreate assCreate = new frmAssetsCreate();
-                        Show(assCreate, (MobileForm sender1, object args) =>
+                    case 0:     //资产新增
+                        try
                         {
-                            if (assCreate.ShowResult == ShowResult.Yes)
+                            if (Client.Session["Role"].ToString() == "SMOSECUser") throw new Exception("当前用户没有权限添加资产!");
+                            frmAssetsCreate assetsCreate = new frmAssetsCreate();
+                            Show(assetsCreate, (MobileForm sender1, object args) =>
                             {
-                                Bind();
-                            }
+                                if (assetsCreate.ShowResult == ShowResult.Yes)
+                                {
+                                    Bind();
+                                }
 
-                        });
+                            }
+                                );
+                        }
+                        catch (Exception ex)
+                        {
+                            Toast(ex.Message);
+                        }
                         break;
                     case 1:
                         //资产复制
@@ -219,7 +210,8 @@ namespace SMOSEC.UI.MasterData
                             frmAssetsCreate assetsCreate = new frmAssetsCreate
                             {
                                 DatePickerBuy = { Value = assets.BuyDate },
-                                txtDepart = { Text = assets.DepartmentId },
+                                DepId = assets.DepartmentId,
+                                btnDep = { Text = assets.DepartmentName + "   > " },
                                 DatePickerExpiry = { Value = assets.ExpiryDate },
                                 ImgPicture = { ResourceID = assets.Image },
                                 LocationId = assets.LocationId,
@@ -251,7 +243,7 @@ namespace SMOSEC.UI.MasterData
                         {
                             Toast(ex.Message);
                         }
-                        break;                        ;
+                        break;
                     case 2:
                         //资产领用
                         frmCollarOrder frmCO = new frmCollarOrder();
@@ -277,6 +269,38 @@ namespace SMOSEC.UI.MasterData
                         frmTransferRowsSN frmT = new frmTransferRowsSN();
                         this.Form.Show(frmT);
                         break;
+                    case 7:
+                        try
+                        {
+                            if (string.IsNullOrEmpty(SelectAssId))
+                            {
+                                throw new Exception("请先选择资产.");
+                            }
+                            AssetsOutputDto outputDto = _autofacConfig.SettingService.GetAssetsByID(SelectAssId);
+                            PosPrinterEntityCollection Commands = new PosPrinterEntityCollection();
+                            Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.Initial));
+                            Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.EnabledBarcode));
+                            Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.AbsoluteLocation));
+                            Commands.Add(new PosPrinterBarcodeEntity(PosBarcodeType.CODE128Height, "62"));
+                            Commands.Add(new PosPrinterBarcodeEntity(PosBarcodeType.CODE128, outputDto.SN));
+                            //Commands.Add(new PosPrinterBarcodeEntity(PosBarcodeType.CODE128, "E2000017320082231027BD"));
+                            Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.DisabledBarcode));
+                            Commands.Add(new PosPrinterContentEntity(System.Environment.NewLine));
+                            Commands.Add(new PosPrinterProtocolEntity(PosPrinterProtocol.Cut));
+
+                            posPrinter1.Print(Commands, (obj, args) =>
+                            {
+                                if (args.isError == true)
+                                    this.Toast("Error: " + args.error);
+                                else
+                                    this.Toast("打印成功");
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            Toast(ex.Message);
+                        }
+                        break;
                 }
             }
             catch (Exception ex)
@@ -286,21 +310,21 @@ namespace SMOSEC.UI.MasterData
 
         }
 
+        /// <summary>
+        /// 手机二维码扫描到二维码信息时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void barcodeScanner1_BarcodeScanned(object sender, BarcodeResultArgs e)
         {
             try
             {
                 string barCode = e.Value;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode,LocatinId);
                 gridAssRows.Cells.Clear();
-                table.Columns.Add("ChangeText");
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
                 {
-                    if (String.IsNullOrEmpty(Row["CurrentUser"].ToString()) == false)
-                    {
-                        Row["ChangeText"] = "使用人更换";
-                    }
                     if (Row["AssId"].ToString() == SelectAssId)
                     {
                         Row["IsChecked"] = true;
@@ -321,21 +345,20 @@ namespace SMOSEC.UI.MasterData
                 Toast(ex.Message);
             }
         }
-
+        /// <summary>
+        /// 按照SN或者名称模糊匹配查询资产
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtFactor_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                DataTable table = _autofacConfig.SettingService.QueryAssets(txtSnOrName.Text);
+                DataTable table = _autofacConfig.SettingService.QueryAssets(txtNote.Text, LocatinId);
                 gridAssRows.Cells.Clear();
-                table.Columns.Add("ChangeText");
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
                 {
-                    if (String.IsNullOrEmpty(Row["CurrentUser"].ToString()) == false)
-                    {
-                        Row["ChangeText"] = "使用人更换";
-                    }
                     if (Row["AssId"].ToString() == SelectAssId)
                     {
                         Row["IsChecked"] = true;
@@ -350,6 +373,23 @@ namespace SMOSEC.UI.MasterData
                     gridAssRows.DataSource = table;
                     gridAssRows.DataBind();
                 }
+            }
+
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 手机扫描二维码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void imageButton1_Press(object sender, EventArgs e)
+        {
+            try
+            {
+                barcodeScanner1.GetBarcode();
             }
             catch (Exception ex)
             {

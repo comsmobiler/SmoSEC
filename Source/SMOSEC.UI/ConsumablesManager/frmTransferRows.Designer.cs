@@ -29,7 +29,7 @@ namespace SMOSEC.UI.ConsumablesManager
         private void InitializeComponent()
         {
             this.MenuTitle = new SMOSEC.UI.UserControl.MenuTitle();
-            this.Panel1 = new Smobiler.Core.Controls.Panel();
+            this.plContent = new Smobiler.Core.Controls.Panel();
             this.btnCreate = new Smobiler.Core.Controls.Button();
             this.listTransferOrder = new Smobiler.Core.Controls.ListView();
             // 
@@ -44,15 +44,15 @@ namespace SMOSEC.UI.ConsumablesManager
             this.MenuTitle.Size = new System.Drawing.Size(100, 40);
             this.MenuTitle.TitleText = "耗材调拨单列表";
             // 
-            // Panel1
+            // plContent
             // 
-            this.Panel1.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.plContent.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.btnCreate,
             this.listTransferOrder});
-            this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel1.Location = new System.Drawing.Point(0, 162);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(300, 100);
+            this.plContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.plContent.Location = new System.Drawing.Point(0, 162);
+            this.plContent.Name = "plContent";
+            this.plContent.Size = new System.Drawing.Size(300, 100);
             // 
             // btnCreate
             // 
@@ -85,7 +85,7 @@ namespace SMOSEC.UI.ConsumablesManager
             // 
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.MenuTitle,
-            this.Panel1});
+            this.plContent});
             this.DrawerName = "LeftMenu";
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
             this.Statusbar = new Smobiler.Core.Controls.MobileFormStatusbar(Smobiler.Core.Controls.MobileFormStatusbarStyle.Default, System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(164)))), ((int)(((byte)(229))))));
@@ -97,7 +97,7 @@ namespace SMOSEC.UI.ConsumablesManager
         #endregion
 
         private UserControl.MenuTitle MenuTitle;
-        internal Smobiler.Core.Controls.Panel Panel1;
+        internal Smobiler.Core.Controls.Panel plContent;
         private Smobiler.Core.Controls.Button btnCreate;
         internal Smobiler.Core.Controls.ListView listTransferOrder;
     }

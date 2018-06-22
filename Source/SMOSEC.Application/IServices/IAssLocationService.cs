@@ -61,7 +61,7 @@ namespace SMOSEC.Application.IServices
         /// <param name="LocationID"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        ReturnInfo ChangeEnable(String LocationID, LocationStatus status);
+        ReturnInfo ChangeEnable(String LocationID, IsEnable status);
         #endregion
     }
 }

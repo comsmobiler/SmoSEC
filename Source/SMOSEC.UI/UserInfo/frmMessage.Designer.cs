@@ -310,7 +310,6 @@ namespace SMOSEC.UI.UserInfo
             // 
             this.imgUser.Location = new System.Drawing.Point(106, 10);
             this.imgUser.Name = "imgUser";
-            this.imgUser.ResourceID = "6";
             this.imgUser.Size = new System.Drawing.Size(88, 88);
             this.imgUser.SizeMode = Smobiler.Core.Controls.ImageSizeMode.Stretch;
             this.imgUser.Press += new System.EventHandler(this.ImgUser_Press);

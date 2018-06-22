@@ -99,7 +99,7 @@ namespace SMOSEC.UI.UserInfo
                 if (RInfo.IsSuccess)
                 {
                     Client.Session["UserID"] = Tel;
-                    Client.Session["Role"] = radioGroup1.CheckedButton.Value;
+					Client.Session["Role"] = radioGroup1.CheckedButton.Value;
                     //关闭当前界面
                     this.Close();
                     frmAssets frm = new frmAssets();

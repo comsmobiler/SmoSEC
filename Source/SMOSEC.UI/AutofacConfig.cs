@@ -66,6 +66,19 @@ namespace SMOSEC.UI
         private ContainerBuilder containerBuilder;
 
         /// <summary>
+        /// 资产盘点单服务接口
+        /// </summary>
+        public IAssInventoryService AssInventoryService;
+        /// <summary>
+        /// 耗材盘点单服务接口
+        /// </summary>
+        public IConInventoryService ConInventoryService;
+
+        /// <summary>
+        /// 部门服务接口
+        /// </summary>
+        public IDepartmentService DepartmentService;
+        /// <summary>
         /// 初始化
         /// </summary>
         public void Init()
@@ -74,7 +87,7 @@ namespace SMOSEC.UI
             containerBuilder.RegisterType<SMOSECDbContext>().As<IDbContext>().SingleInstance();
             containerBuilder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             //
-            containerBuilder.RegisterType<AssLocationRepository>().As<IAssLocationRepository>().InstancePerDependency();           
+            containerBuilder.RegisterType<AssLocationRepository>().As<IAssLocationRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssetsRepository>().As<IAssetsRepository>().InstancePerLifetimeScope();
             containerBuilder.RegisterType<AssetsTypeRepository>().As<IAssetsTypeRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssRepairOrderRepository>().As<IAssRepairOrderRepository>().InstancePerDependency();
@@ -84,14 +97,10 @@ namespace SMOSEC.UI
             containerBuilder.RegisterType<AssTransferOrderRepository>().As<IAssTransferOrderRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssTransferOrderRowRepository>().As<IAssTransferOrderRowRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssBorrowOrderRepository>().As<IAssBorrowOrderRepository>().InstancePerDependency();
-            containerBuilder.RegisterType<AssBorrowOrderRowRepository>().As<IAssBorrowOrderRowRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssCollarOrderRepository>().As<IAssCollarOrderRepository>().InstancePerDependency();
-            containerBuilder.RegisterType<AssCollarOrderRowRepository>().As<IAssCollarOrderRowRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssProcessRecordRepository>().As<IAssProcessRecordRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssRestoreOrderRepository>().As<IAssRestoreOrderRepository>().InstancePerDependency();
-            containerBuilder.RegisterType<AssRestoreOrderRowRepository>().As<IAssRestoreOrderRowRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssReturnOrderRepository>().As<IAssReturnOrderRepository>().InstancePerDependency();
-            containerBuilder.RegisterType<AssReturnOrderRowRepository>().As<IAssReturnOrderRowRepository>().InstancePerDependency();
             containerBuilder.RegisterType<AssetsSNRepository>().As<IAssetsSNRepository>().InstancePerDependency();
             containerBuilder.RegisterType<coreUserRepository>().As<IcoreUserRepository>().InstancePerDependency();
             containerBuilder.RegisterType<ValidateCodeRepository>().As<IValidateCodeRepository>().InstancePerDependency();
@@ -101,6 +110,17 @@ namespace SMOSEC.UI
             containerBuilder.RegisterType<ConsumablesRepository>().As<IConsumablesRepository>().InstancePerDependency();
             containerBuilder.RegisterType<OutboundOrderRepository>().As<IOutboundOrderRepository>().InstancePerDependency();
             containerBuilder.RegisterType<WarehouseReceiptRepository>().As<IWarehouseReceiptRepository>().InstancePerDependency();
+
+            containerBuilder.RegisterType<AssInventoryRepository>().As<IAssInventoryRepository>()
+                .InstancePerDependency();
+            containerBuilder.RegisterType<AssInventoryResultRepository>().As<IAssInventoryResultRepository>()
+                .InstancePerDependency();
+            containerBuilder.RegisterType<ConInventoryRepository>().As<IConInventoryRepository>()
+                .InstancePerDependency();
+            containerBuilder.RegisterType<ConInventoryResultRepository>().As<IConInventoryResultRepository>()
+                .InstancePerDependency();
+            containerBuilder.RegisterType<DepartmentRepository>().As<IDepartmentRepository>()
+                .InstancePerDependency();
 
 
             containerBuilder.RegisterType<AssLocationService>().As<IAssLocationService>().InstancePerLifetimeScope();
@@ -115,8 +135,10 @@ namespace SMOSEC.UI
             containerBuilder.RegisterType<AssTransferOrderService>().As<IAssTransferOrderService>().InstancePerLifetimeScope();
 
             containerBuilder.RegisterType<ConsumablesService>().As<IConsumablesService>().InstancePerLifetimeScope();
+            containerBuilder.RegisterType<AssInventoryService>().As<IAssInventoryService>().InstancePerLifetimeScope();
+            containerBuilder.RegisterType<ConInventoryService>().As<IConInventoryService>().InstancePerLifetimeScope();
+            containerBuilder.RegisterType<DepartmentService>().As<IDepartmentService>().InstancePerLifetimeScope();
 
-            
         }
 
         /// <summary>
@@ -142,6 +164,9 @@ namespace SMOSEC.UI
             this.SettingService = container.Resolve<ISettingService>();
 
             this.ConsumablesService = container.Resolve<IConsumablesService>();
+            this.AssInventoryService = container.Resolve<IAssInventoryService>();
+            this.ConInventoryService = container.Resolve<IConInventoryService>();
+            this.DepartmentService = container.Resolve<IDepartmentService>();
         }
     }
 }

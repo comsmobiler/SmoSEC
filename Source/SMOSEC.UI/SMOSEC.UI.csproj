@@ -13,21 +13,6 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,8 +23,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,6 +58,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\Smobiler Designer\Library\Smobiler.Core.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="Smobiler.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f1ac7264a7cfc183, processorArchitecture=MSIL" />
     <Reference Include="Smobiler.Device, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e0b1d6c313d28ffc, processorArchitecture=MSIL" />
     <Reference Include="Smobiler.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9301bc54ca0d7a69, processorArchitecture=MSIL" />
     <Reference Include="Smobiler.Utility" />
@@ -102,6 +86,30 @@
     </Compile>
     <Compile Include="AssetsManager\Analyse\frmAssetsUseAnalyse.Designer.cs">
       <DependentUpon>frmAssetsUseAnalyse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventory.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventory.Designer.cs">
+      <DependentUpon>frmAssInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventoryCreate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventoryCreate.Designer.cs">
+      <DependentUpon>frmAssInventoryCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventoryEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventoryEdit.Designer.cs">
+      <DependentUpon>frmAssInventoryEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventoryResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AssetsManager\frmAssInventoryResult.Designer.cs">
+      <DependentUpon>frmAssInventoryResult.cs</DependentUpon>
     </Compile>
     <Compile Include="AssetsManager\frmBoCreate.cs">
       <SubType>Component</SubType>
@@ -255,6 +263,30 @@
     </Compile>
     <Compile Include="AutofacConfig.cs" />
     <Compile Include="AutomapperConfig.cs" />
+    <Compile Include="ConsumablesManager\frmConInventory.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConsumablesManager\frmConInventory.Designer.cs">
+      <DependentUpon>frmConInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsumablesManager\frmConInventoryCreate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConsumablesManager\frmConInventoryCreate.Designer.cs">
+      <DependentUpon>frmConInventoryCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsumablesManager\frmConInventoryEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConsumablesManager\frmConInventoryEdit.Designer.cs">
+      <DependentUpon>frmConInventoryEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsumablesManager\frmConInventoryResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConsumablesManager\frmConInventoryResult.Designer.cs">
+      <DependentUpon>frmConInventoryResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsumablesManager\frmConQuant.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -351,6 +383,38 @@
     <Compile Include="ConsumablesManager\frmWRDetail.Designer.cs">
       <DependentUpon>frmWRDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridviewbyUser.cs" />
+    <Compile Include="DepartmentMode.cs" />
+    <Compile Include="Department\frmDepartment.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Department\frmDepartment.Designer.cs">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\frmDepartmentCreate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Department\frmDepartmentCreate.Designer.cs">
+      <DependentUpon>frmDepartmentCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\frmDepartmentDetail.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Department\frmDepartmentDetail.Designer.cs">
+      <DependentUpon>frmDepartmentDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\frmDepAssignUser.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Department\frmDepAssignUser.Designer.cs">
+      <DependentUpon>frmDepAssignUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\frmDepPerMessage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Department\frmDepPerMessage.Designer.cs">
+      <DependentUpon>frmDepPerMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGenerateQRcode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -405,6 +469,12 @@
     <Compile Include="Layout\EditUserInfoLayout.Designer.cs">
       <DependentUpon>EditUserInfoLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\frmAIResultLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmAIResultLayout.Designer.cs">
+      <DependentUpon>frmAIResultLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\frmAssetsExLayout.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -441,6 +511,12 @@
     <Compile Include="Layout\frmAssetsTypeCreateLayout.Designer.cs">
       <DependentUpon>frmAssetsTypeCreateLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\frmAssInventoryLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmAssInventoryLayout.Designer.cs">
+      <DependentUpon>frmAssInventoryLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\frmAssSNRDLayout.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -465,6 +541,18 @@
     <Compile Include="Layout\frmAssTDLayout.Designer.cs">
       <DependentUpon>frmAssTDLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\frmCIResultLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmCIResultLayout.Designer.cs">
+      <DependentUpon>frmCIResultLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\frmCIResultTotalLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmCIResultTotalLayout.Designer.cs">
+      <DependentUpon>frmCIResultTotalLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\frmConChooseExLayout.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -477,11 +565,41 @@
     <Compile Include="Layout\frmConChooseLayout.Designer.cs">
       <DependentUpon>frmConChooseLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\frmConInventoryLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmConInventoryLayout.Designer.cs">
+      <DependentUpon>frmConInventoryLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\frmConResultLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmConResultLayout.Designer.cs">
+      <DependentUpon>frmConResultLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\frmConsumablesLayout.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Layout\frmConsumablesLayout.Designer.cs">
       <DependentUpon>frmConsumablesLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\frmDepartmentLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmDepartmentLayout.Designer.cs">
+      <DependentUpon>frmDepartmentLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\frmDepartmentModeLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmDepartmentModeLayout.Designer.cs">
+      <DependentUpon>frmDepartmentModeLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\frmDepAssignUserLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmDepAssignUserLayout.Designer.cs">
+      <DependentUpon>frmDepAssignUserLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout\frmLcoationRowsLayout.cs">
       <SubType>Component</SubType>
@@ -536,6 +654,12 @@
     </Compile>
     <Compile Include="Layout\frmTransferRowsLayout.Designer.cs">
       <DependentUpon>frmTransferRowsLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\frmUserLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmUserLayout.Designer.cs">
+      <DependentUpon>frmUserLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout\frmUserPwdLayout.cs">
       <SubType>Component</SubType>
@@ -742,6 +866,18 @@
     <EmbeddedResource Include="AssetsManager\Analyse\frmAssetsUseAnalyse.resx">
       <DependentUpon>frmAssetsUseAnalyse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AssetsManager\frmAssInventory.resx">
+      <DependentUpon>frmAssInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetsManager\frmAssInventoryCreate.resx">
+      <DependentUpon>frmAssInventoryCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetsManager\frmAssInventoryEdit.resx">
+      <DependentUpon>frmAssInventoryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetsManager\frmAssInventoryResult.resx">
+      <DependentUpon>frmAssInventoryResult.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssetsManager\frmBoCreate.resx">
       <DependentUpon>frmBoCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -817,6 +953,18 @@
     <EmbeddedResource Include="AssetsManager\frmTransferRowsSN.resx">
       <DependentUpon>frmTransferRowsSN.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsumablesManager\frmConInventory.resx">
+      <DependentUpon>frmConInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsumablesManager\frmConInventoryCreate.resx">
+      <DependentUpon>frmConInventoryCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsumablesManager\frmConInventoryEdit.resx">
+      <DependentUpon>frmConInventoryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsumablesManager\frmConInventoryResult.resx">
+      <DependentUpon>frmConInventoryResult.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsumablesManager\frmConQuant.resx">
       <DependentUpon>frmConQuant.cs</DependentUpon>
     </EmbeddedResource>
@@ -865,6 +1013,21 @@
     <EmbeddedResource Include="ConsumablesManager\frmWRDetail.resx">
       <DependentUpon>frmWRDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Department\frmDepartment.resx">
+      <DependentUpon>frmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\frmDepartmentCreate.resx">
+      <DependentUpon>frmDepartmentCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\frmDepartmentDetail.resx">
+      <DependentUpon>frmDepartmentDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\frmDepAssignUser.resx">
+      <DependentUpon>frmDepAssignUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\frmDepPerMessage.resx">
+      <DependentUpon>frmDepPerMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGenerateQRcode.resx">
       <DependentUpon>frmGenerateQRcode.cs</DependentUpon>
     </EmbeddedResource>
@@ -892,6 +1055,9 @@
     <EmbeddedResource Include="Layout\EditUserInfoLayout.resx">
       <DependentUpon>EditUserInfoLayout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmAIResultLayout.resx">
+      <DependentUpon>frmAIResultLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmAssetsExLayout.resx">
       <DependentUpon>frmAssetsExLayout.cs</DependentUpon>
     </EmbeddedResource>
@@ -910,6 +1076,9 @@
     <EmbeddedResource Include="Layout\frmAssetsTypeCreateLayout.resx">
       <DependentUpon>frmAssetsTypeCreateLayout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmAssInventoryLayout.resx">
+      <DependentUpon>frmAssInventoryLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmAssSNRDLayout.resx">
       <DependentUpon>frmAssSNRDLayout.cs</DependentUpon>
     </EmbeddedResource>
@@ -922,14 +1091,35 @@
     <EmbeddedResource Include="Layout\frmAssTDLayout.resx">
       <DependentUpon>frmAssTDLayout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmCIResultLayout.resx">
+      <DependentUpon>frmCIResultLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmCIResultTotalLayout.resx">
+      <DependentUpon>frmCIResultTotalLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmConChooseExLayout.resx">
       <DependentUpon>frmConChooseExLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmConChooseLayout.resx">
       <DependentUpon>frmConChooseLayout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmConInventoryLayout.resx">
+      <DependentUpon>frmConInventoryLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmConResultLayout.resx">
+      <DependentUpon>frmConResultLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmConsumablesLayout.resx">
       <DependentUpon>frmConsumablesLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmDepartmentLayout.resx">
+      <DependentUpon>frmDepartmentLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmDepartmentModeLayout.resx">
+      <DependentUpon>frmDepartmentModeLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmDepAssignUserLayout.resx">
+      <DependentUpon>frmDepAssignUserLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmLcoationRowsLayout.resx">
       <DependentUpon>frmLcoationRowsLayout.cs</DependentUpon>
@@ -957,6 +1147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmTransferRowsLayout.resx">
       <DependentUpon>frmTransferRowsLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmUserLayout.resx">
+      <DependentUpon>frmUserLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmUserPwdLayout.resx">
       <DependentUpon>frmUserPwdLayout.cs</DependentUpon>
@@ -1069,38 +1262,32 @@
   <ItemGroup>
     <Content Include="Smobiler_128.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SMOSEC.Application\SMOSEC.Application.csproj">
-      <Project>{b4ed4ba2-0f97-4e61-a8cd-9f8fe47e7bab}</Project>
+      <Project>{B4ED4BA2-0F97-4E61-A8CD-9F8FE47E7BAB}</Project>
       <Name>SMOSEC.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\SMOSEC.CommLib\SMOSEC.CommLib.csproj">
-      <Project>{f67cf087-2032-479e-9b7e-d6ed0cb3904e}</Project>
+      <Project>{F67CF087-2032-479E-9B7E-D6ED0CB3904E}</Project>
       <Name>SMOSEC.CommLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\SMOSEC.Domain\SMOSEC.Domain.csproj">
-      <Project>{75adb9c8-d14e-415a-93c9-113e5795f63a}</Project>
+      <Project>{75ADB9C8-D14E-415A-93C9-113E5795F63A}</Project>
       <Name>SMOSEC.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SMOSEC.DTOs\SMOSEC.DTOs.csproj">
-      <Project>{b9b23883-06c5-4581-b315-4f2f649d55c5}</Project>
+      <Project>{B9B23883-06C5-4581-B315-4F2F649D55C5}</Project>
       <Name>SMOSEC.DTOs</Name>
     </ProjectReference>
     <ProjectReference Include="..\SMOSEC.Infrastructure\SMOSEC.Infrastructure.csproj">
-      <Project>{c2679305-61a8-45c5-bcd5-482a734c71a2}</Project>
+      <Project>{C2679305-61A8-45C5-BCD5-482A734C71A2}</Project>
       <Name>SMOSEC.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\SMOSEC.Repository\SMOSEC.Repository.csproj">
-      <Project>{a228840d-7e0b-49f0-987a-cf43e932ba50}</Project>
+      <Project>{A228840D-7E0B-49F0-987A-CF43E932BA50}</Project>
       <Name>SMOSEC.Repository</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

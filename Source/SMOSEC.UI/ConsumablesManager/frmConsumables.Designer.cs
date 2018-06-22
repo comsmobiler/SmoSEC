@@ -1,3 +1,5 @@
+using SMOSEC.UI.UserControl;
+
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmConsumables : Smobiler.Core.Controls.MobileForm
@@ -27,8 +29,9 @@ namespace SMOSEC.UI.ConsumablesManager
         private void InitializeComponent()
         {
             this.menuTitle1 = new SMOSEC.UI.UserControl.MenuTitle();
-            this.btnAdd = new Smobiler.Core.Controls.Button();
             this.ListViewCon = new Smobiler.Core.Controls.ListView();
+            this.panel1 = new Smobiler.Core.Controls.Panel();
+            this.btnAdd = new Smobiler.Core.Controls.Button();
             // 
             // menuTitle1
             // 
@@ -40,35 +43,42 @@ namespace SMOSEC.UI.ConsumablesManager
             this.menuTitle1.Size = new System.Drawing.Size(300, 40);
             this.menuTitle1.TitleText = "ºÄ²Ä";
             // 
+            // ListViewCon
+            // 
+            this.ListViewCon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListViewCon.Location = new System.Drawing.Point(0, 73);
+            this.ListViewCon.Margin = new Smobiler.Core.Controls.Margin(0F, 5F, 0F, 0F);
+            this.ListViewCon.Name = "ListViewCon";
+            this.ListViewCon.PageSizeTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.ListViewCon.PageSizeTextSize = 11F;
+            this.ListViewCon.Size = new System.Drawing.Size(300, 432);
+            this.ListViewCon.TemplateControlName = "frmConsumablesLayout";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.btnAdd});
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 53);
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(146)))), ((int)(((byte)(223)))));
             this.btnAdd.BorderRadius = 4;
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAdd.FontSize = 15F;
-            this.btnAdd.Location = new System.Drawing.Point(0, 42);
             this.btnAdd.Margin = new Smobiler.Core.Controls.Margin(10F, 10F, 10F, 0F);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(300, 33);
+            this.btnAdd.Size = new System.Drawing.Size(280, 33);
             this.btnAdd.Text = "Ìí¼ÓºÄ²Ä";
             this.btnAdd.Press += new System.EventHandler(this.btnAdd_Press);
-            // 
-            // ListViewCon
-            // 
-            this.ListViewCon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListViewCon.Location = new System.Drawing.Point(0, 95);
-            this.ListViewCon.Margin = new Smobiler.Core.Controls.Margin(0F, 20F, 0F, 0F);
-            this.ListViewCon.Name = "ListViewCon";
-            this.ListViewCon.PageSizeTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
-            this.ListViewCon.PageSizeTextSize = 11F;
-            this.ListViewCon.Size = new System.Drawing.Size(300, 410);
-            this.ListViewCon.TemplateControlName = "frmConsumablesLayout";
             // 
             // frmConsumables
             // 
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.menuTitle1,
-            this.btnAdd,
+            this.panel1,
             this.ListViewCon});
             this.DrawerName = "LeftMenu";
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
@@ -81,7 +91,8 @@ namespace SMOSEC.UI.ConsumablesManager
         #endregion
 
         private UserControl.MenuTitle menuTitle1;
-        internal Smobiler.Core.Controls.Button btnAdd;
         internal Smobiler.Core.Controls.ListView ListViewCon;
+        private Smobiler.Core.Controls.Panel panel1;
+        internal Smobiler.Core.Controls.Button btnAdd;
     }
 }

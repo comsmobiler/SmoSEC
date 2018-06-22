@@ -12,12 +12,16 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class BorrowOrderLayout : Smobiler.Core.Controls.MobileUserControl
     {
+        /// <summary>
+        /// 点击，查看借用单详情
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Panel1_Press(object sender, EventArgs e)
         {
             try
             {
-                frmBoDetail boDetail=new frmBoDetail();
-                boDetail.BoId = LblID.BindDataValue.ToString();
+                frmBoDetail boDetail = new frmBoDetail {BoId = LblID.BindDataValue.ToString()};
                 Form.Show(boDetail);
             }
             catch (Exception ex)

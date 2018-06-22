@@ -6,24 +6,22 @@ using SMOSEC.Infrastructure;
 
 namespace SMOSEC.Repository.Assets
 {
+    /// <summary>
+    /// 退库单查询实现
+    /// </summary>
     public class AssRestoreOrderRepository : BaseRepository<AssRestoreOrder>, IAssRestoreOrderRepository
     {
         /// <summary>
-        /// 仓储类的构造函数
+        /// 退库单查询类的构造函数
         /// </summary>
         /// <param name="dbContext">数据库上下文</param>
         public AssRestoreOrderRepository(IDbContext dbContext)
             : base(dbContext)
         { }
 
-        //        public IQueryable<AssRestoreOrder> GetListOrders()
-        //        {
-        //            throw new System.NotImplementedException();
-        //        }
-
         /// <summary>
         /// 得到对应的退库单列表
-        /// <param name="RSOID"></param>
+        /// <param name="RSOID">退库单编号</param>
         /// </summary>
         /// <returns></returns>
         public IQueryable<AssRestoreOrder> GetByID(string RSOID)
@@ -34,7 +32,7 @@ namespace SMOSEC.Repository.Assets
         /// <summary>
         /// 根据用户编号返回退库单信息
         /// </summary>
-        /// <param name="UserID"></param>
+        /// <param name="UserID">用户编号</param>
         /// <returns></returns>
         public IQueryable<AssRestoreOrder> GetByUserID(string UserID)
         {
@@ -46,6 +44,10 @@ namespace SMOSEC.Repository.Assets
             return result.AsNoTracking().OrderByDescending(a => a.CREATEDATE);
         }
 
+        /// <summary>
+        /// 得到最大编号
+        /// </summary>
+        /// <returns></returns>
         public string GetMaxID()
         {
             return _entities.Select(e => e.RSOID).Max();

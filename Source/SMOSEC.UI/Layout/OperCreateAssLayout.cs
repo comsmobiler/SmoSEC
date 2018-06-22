@@ -12,6 +12,11 @@ namespace SMOSEC.UI.Layout
     //[System.ComponentModel.ToolboxItem(true)]
     partial class OperCreateAssLayout : Smobiler.Core.Controls.MobileUserControl
     {
+        /// <summary>
+        /// 长按，删除资产
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Panel1_LongPress(object sender, EventArgs e)
         {
             try
@@ -46,8 +51,6 @@ namespace SMOSEC.UI.Layout
                                                     rsoCreate.BindListView();
                                                     break;
                                             }
-
-                //                            ReturnInfo returnInfo=_autofacConfig.SettingService
                                         }
                                     }
                                     catch (Exception ex)

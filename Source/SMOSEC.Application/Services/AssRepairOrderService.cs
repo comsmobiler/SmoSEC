@@ -203,7 +203,6 @@ namespace SMOSEC.Application.Services
             try
             {
                 String ROROWID = "0";
-                AssQuant assQuant = new AssQuant();
                 if (entity.Rows != null)
                 {
                     foreach (AssRepairOrderRow Row in entity.Rows)
@@ -247,7 +246,6 @@ namespace SMOSEC.Application.Services
             try
             {
                 AssRepairOrderRow assROR = new AssRepairOrderRow();
-                AssQuant assQuant = new AssQuant();
                 foreach (AssRepairOrderRow Row in entity.Rows)
                 {
                     assROR = _AssRepairOrderRowRepository.GetByID(entity.ROID, Row.ROROWID).FirstOrDefault();

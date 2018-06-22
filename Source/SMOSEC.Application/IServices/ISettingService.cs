@@ -2,8 +2,6 @@
 using System.Data;
 using System.Linq;
 using SMOSEC.CommLib;
-using SMOSEC.Domain.Entity;
-using SMOSEC.DTOs.Enum;
 using SMOSEC.DTOs.InputDTO;
 using SMOSEC.DTOs.OutputDTO;
 
@@ -23,10 +21,11 @@ namespace SMOSEC.Application.IServices
         AssetsOutputDto  GetAssetsByID(string ID);
 
         /// <summary>
-        /// 得到所有的固定资产
+        /// 得到某区域所有的固定资产
         /// </summary>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        DataTable GetAllAss();
+        DataTable GetAllAss(string LocationId);
 
         /// <summary>
         /// 查询空闲的资产数据
@@ -105,21 +104,39 @@ namespace SMOSEC.Application.IServices
         /// 查询处理记录
         /// </summary>
         /// <param name="ASSID">资产编号</param>
+        /// <param name="CID">耗材编号</param>
         /// <returns></returns>
-        DataTable GetRecords(string ASSID);
+        DataTable GetRecords(string ASSID,string CID);
 
         /// <summary>
-        /// 根据区域和资产编号返回库存信息
+        /// 根据SN或者名称查询资产
         /// </summary>
-        /// <param name="LocationID">区域编号</param>
-        /// <param name="AssID">资产编号</param>
+        /// <param name="SNOrName">SN或者名称</param>
+        /// <param name="LocationId">区域</param>
         /// <returns></returns>
-        IQueryable<AssQuant> GetQuants(string LocationID, string AssID);
+        DataTable QueryAssets(string SNOrName,string LocationId);
 
-        DataTable QueryAssets(string SNOrName);
+        /// <summary>
+        /// 根据SN得到资产信息
+        /// </summary>
+        /// <param name="SN">SN编号</param>
+        /// <param name="LocationId">区域编号</param>
+        /// <returns></returns>
+        DataTable GetAssetsBySN(string SN, string LocationId);
 
-        DataTable GetAssetsBySN(string SN);
-        #endregion
+        /// <summary>
+        /// 得到所有的SN
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetAllSns();
+        
+        /// <summary>
+        /// 根据SN列表得到相关的资产数据
+        /// </summary>
+        /// <param name="Sns">SN列表</param>
+        /// <returns></returns>
+        DataTable GetBySnList(List<string> Sns);
+            #endregion
 
         #region 操作
         /// <summary>

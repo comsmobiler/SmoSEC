@@ -9,13 +9,6 @@ namespace SMOSEC.Domain.Entity
     /// </summary>
     public class Assets : IAggregateRoot
     {
-//        /// <summary>
-//        /// 序列号
-//        /// </summary>
-//        [Key]
-//        [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]
-//        [DisplayName("序列号")]
-//        public string SN { get; set; }
         /// <summary>
         /// 资产编号
         /// </summary>
@@ -96,13 +89,6 @@ namespace SMOSEC.Domain.Entity
         [DisplayName("当前使用者")]
         public string CURRENTUSER { get; set; }
 
-//        /// <summary>
-//        /// 管理者
-//        /// </summary>
-//        [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]
-//        [DisplayName("管理者")]
-//        public string MANAGER { get; set; }
-
         /// <summary>
         /// 区域编号
         /// </summary>
@@ -169,6 +155,12 @@ namespace SMOSEC.Domain.Entity
         /// </summary>
         [DisplayName("当前状态(0 闲置,1 调拨中,2 使用中,3 维修中,4 报废，5借用中)默认为闲置")]
         public int? STATUS { get; set; }
+
+        /// <summary>
+        /// 是否锁定(0-不锁定，1-锁定)
+        /// </summary>
+        [DisplayName("是否锁定(0-不锁定，1-锁定)")]
+        public int ISLOCKED { get; set; }
     }
 
 }

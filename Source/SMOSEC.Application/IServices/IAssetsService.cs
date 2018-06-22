@@ -1,8 +1,8 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using SMOSEC.CommLib;
 using SMOSEC.DTOs.InputDTO;
 using SMOSEC.DTOs.OutputDTO;
-using System;
 
 namespace SMOSEC.Application.IServices
 {
@@ -23,8 +23,9 @@ namespace SMOSEC.Application.IServices
         /// 根据用户编号返回借用单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        DataTable GetBoByUserId(string userId);
+        DataTable GetBoByUserId(string userId,string LocationId);
 
         /// <summary>
         /// 得到对应的借用单行项列表
@@ -44,8 +45,9 @@ namespace SMOSEC.Application.IServices
         /// 根据用户编号返回领用单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        DataTable GetCoByUserId(string userId);
+        DataTable GetCoByUserId(string userId, string LocationId);
 
         /// <summary>
         /// 得到对应的领用单行项列表
@@ -65,8 +67,9 @@ namespace SMOSEC.Application.IServices
         /// 根据用户编号返回退库单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        DataTable GetRsoByUserId(string userId);
+        DataTable GetRsoByUserId(string userId, string LocationId);
 
         /// <summary>
         /// 得到对应的退库单行项列表
@@ -86,8 +89,9 @@ namespace SMOSEC.Application.IServices
         /// 根据用户编号返回归还单信息,用户编号为空则返回全部
         /// </summary>
         /// <param name="userId">用户编号</param>
+        /// <param name="LocationId">区域编号</param>
         /// <returns></returns>
-        DataTable GetRtoByUserId(string userId);
+        DataTable GetRtoByUserId(string userId, string LocationId);
 
         /// <summary>
         /// 得到对应的归还单行项列表

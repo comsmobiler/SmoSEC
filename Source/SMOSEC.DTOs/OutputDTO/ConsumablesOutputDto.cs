@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SMOSEC.DTOs.OutputDTO
 {
+    /// <summary>
+    /// 耗材详情信息
+    /// </summary>
     public class ConsumablesOutputDto
     {
         /// <summary>

@@ -66,5 +66,11 @@ namespace SMOSEC.Domain.Entity
         [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]
         [DisplayName("更新用户")]
         public string MODIFYUSER { get; set; }
+
+        /// <summary>
+        /// 是否锁定(0-不锁定,1-锁定)
+        /// </summary>
+        [DisplayName("是否锁定(0-不锁定,1-锁定)")]
+        public int ISLOCKED { get; set; }
     }
 }

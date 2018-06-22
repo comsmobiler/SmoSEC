@@ -281,6 +281,7 @@ namespace SMOSEC.UI.ConsumablesManager
             this.txtAssID.Location = new System.Drawing.Point(100, 0);
             this.txtAssID.Name = "txtAssID";
             this.txtAssID.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
+            this.txtAssID.ReadOnly = true;
             this.txtAssID.Size = new System.Drawing.Size(199, 40);
             this.txtAssID.WaterMarkText = "(±ØÌî)";
             this.txtAssID.WaterMarkTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));

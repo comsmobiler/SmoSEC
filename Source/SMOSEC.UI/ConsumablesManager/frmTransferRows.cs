@@ -31,7 +31,6 @@ namespace SMOSEC.UI.ConsumablesManager
         /// <param name="e"></param>
         private void frmTransferRows_Load(object sender, EventArgs e)
         {
-            Client.Session["Role"] = "SMOSECAdmin";
             Bind();
         }
         /// <summary>
