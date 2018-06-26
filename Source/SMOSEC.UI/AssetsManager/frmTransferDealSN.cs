@@ -107,7 +107,6 @@ namespace SMOSEC.UI.AssetsManager
         /// <param name="e"></param>
         private void frmTransferDealSN_Load(object sender, EventArgs e)
         {
-            Client.Session["UserID"] = "Steven";
             Bind();
         }
         /// <summary>

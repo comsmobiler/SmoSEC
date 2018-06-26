@@ -24,7 +24,6 @@ namespace SMOSEC.UI.AssetsManager
         /// <param name="e"></param>
         private void frmTransferDetailSN_Load(object sender, EventArgs e)
         {
-            Client.Session["Role"] = "SMOSECAdmin";
             Bind();
         }
         /// <summary>

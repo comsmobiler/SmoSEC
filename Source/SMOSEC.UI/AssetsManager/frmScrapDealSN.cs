@@ -105,7 +105,6 @@ namespace SMOSEC.UI.AssetsManager
         /// <param name="e"></param>
         private void frmScrapDealSN_Load(object sender, EventArgs e)
         {
-            Client.Session["UserID"] = "Steven";
             Bind();
         }
         /// <summary>

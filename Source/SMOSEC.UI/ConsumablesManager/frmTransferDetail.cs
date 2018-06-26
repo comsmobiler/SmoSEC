@@ -8,6 +8,7 @@ using SMOSEC.DTOs.Enum;
 using SMOSEC.DTOs.InputDTO;
 using SMOSEC.Domain.Entity;
 using System.Data;
+using SMOSEC.DTOs.OutputDTO;
 
 namespace SMOSEC.UI.ConsumablesManager
 {
@@ -83,18 +84,18 @@ namespace SMOSEC.UI.ConsumablesManager
                 tableAssets.Columns.Add("STATUS");            //行项状态
                 foreach (AssTransferOrderRow Row in TOData.Rows)
                 {
-                    Assets assets = autofacConfig.orderCommonService.GetAssetsByID(Row.ASSID);
+                    ConsumablesOutputDto cons = autofacConfig.ConsumablesService.GetConsumablesByID(Row.CID);
                     if (Row.STATUS == 0)
                     {
-                        tableAssets.Rows.Add(Row.ASSID, assets.NAME , assets.IMAGE , Row.INTRANSFERQTY, "调拨中");
+                        tableAssets.Rows.Add(Row.ASSID, cons.NAME , cons.IMAGE , Row.INTRANSFERQTY, "调拨中");
                     }
                     else if(Row.STATUS == 1)
                     {
-                        tableAssets.Rows.Add(Row.ASSID, assets.NAME, assets.IMAGE, Row.INTRANSFERQTY, "已完成");
+                        tableAssets.Rows.Add(Row.ASSID, cons.NAME, cons.IMAGE, Row.INTRANSFERQTY, "已完成");
                     }
                     else
                     {
-                        tableAssets.Rows.Add(Row.ASSID, assets.NAME, assets.IMAGE, Row.INTRANSFERQTY, "已取消");
+                        tableAssets.Rows.Add(Row.ASSID, cons.NAME, cons.IMAGE, Row.INTRANSFERQTY, "已取消");
                     }
                 }
                 if (tableAssets.Rows.Count > 0)
