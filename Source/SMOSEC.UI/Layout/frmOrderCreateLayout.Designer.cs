@@ -60,13 +60,13 @@ namespace SMOSEC.UI.Layout
             // lblName
             // 
             this.lblName.DataMember = "CID";
-            this.lblName.DisplayFormat = "资产名称: {0}";
+            this.lblName.DisplayFormat = "耗材名称: {0}";
             this.lblName.DisplayMember = "NAME";
             this.lblName.Location = new System.Drawing.Point(70, 0);
             this.lblName.Name = "lblName";
             this.lblName.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.lblName.Size = new System.Drawing.Size(115, 30);
-            this.lblName.Text = "资产名称: 书包";
+            this.lblName.Text = "耗材名称: 书包";
             // 
             // lblLocation
             // 

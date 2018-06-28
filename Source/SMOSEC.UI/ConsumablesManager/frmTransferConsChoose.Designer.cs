@@ -127,7 +127,7 @@ namespace SMOSEC.UI.ConsumablesManager
             this.Label4.Name = "Label4";
             this.Label4.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.Label4.Size = new System.Drawing.Size(88, 35);
-            this.Label4.Text = "资产选择";
+            this.Label4.Text = "耗材选择";
             // 
             // txtFactor
             // 
@@ -136,7 +136,7 @@ namespace SMOSEC.UI.ConsumablesManager
             this.txtFactor.Name = "txtFactor";
             this.txtFactor.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.txtFactor.Size = new System.Drawing.Size(172, 35);
-            this.txtFactor.WaterMarkText = "请输入资产名称";
+            this.txtFactor.WaterMarkText = "请输入耗材名称";
             // 
             // IBSearch
             // 

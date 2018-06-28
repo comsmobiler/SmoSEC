@@ -77,7 +77,7 @@ namespace SMOSEC.UI.ConsumablesManager
                 if (String.IsNullOrEmpty(TOData.NOTE)==false) lblNote.Text = TOData.NOTE;
 
                 DataTable tableAssets = new DataTable();      //未开启SN的资产列表
-                tableAssets.Columns.Add("ASSID");             //资产编号
+                tableAssets.Columns.Add("CID");               //耗材编号
                 tableAssets.Columns.Add("NAME");              //资产名称
                 tableAssets.Columns.Add("IMAGE");             //资产图片
                 tableAssets.Columns.Add("WAITREPAIRQTY");     //待确认数量
@@ -87,15 +87,15 @@ namespace SMOSEC.UI.ConsumablesManager
                     ConsumablesOutputDto cons = autofacConfig.ConsumablesService.GetConsumablesByID(Row.CID);
                     if (Row.STATUS == 0)
                     {
-                        tableAssets.Rows.Add(Row.ASSID, cons.NAME , cons.IMAGE , Row.INTRANSFERQTY, "调拨中");
+                        tableAssets.Rows.Add(Row.CID, cons.NAME , cons.IMAGE , Row.INTRANSFERQTY, "调拨中");
                     }
                     else if(Row.STATUS == 1)
                     {
-                        tableAssets.Rows.Add(Row.ASSID, cons.NAME, cons.IMAGE, Row.INTRANSFERQTY, "已完成");
+                        tableAssets.Rows.Add(Row.CID, cons.NAME, cons.IMAGE, Row.INTRANSFERQTY, "已完成");
                     }
                     else
                     {
-                        tableAssets.Rows.Add(Row.ASSID, cons.NAME, cons.IMAGE, Row.INTRANSFERQTY, "已取消");
+                        tableAssets.Rows.Add(Row.CID, cons.NAME, cons.IMAGE, Row.INTRANSFERQTY, "已取消");
                     }
                 }
                 if (tableAssets.Rows.Count > 0)
