@@ -51,13 +51,14 @@ namespace SMOSEC.UI.MasterData
                     Name = txtName.Text,
                     Note = txtNote.Text,
                     Place = txtPlace.Text,
-                    Price = decimal.Parse(txtPrice.Text),
                     Specification = txtSpe.Text,
                     TypeId = TypeId,
                     Unit = txtUnit.Text,
                     Vendor = txtVendor.Text,
                     SN = txtSN.Text
                 };
+                if (String.IsNullOrEmpty(txtPrice.Text) == false)
+                    assetsInputDto.Price = decimal.Parse(txtPrice.Text);
                 ReturnInfo returnInfo = _autofacConfig.SettingService.AddAssets(assetsInputDto);
                 if (returnInfo.IsSuccess)
                 {
