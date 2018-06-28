@@ -650,7 +650,7 @@ namespace SMOSEC.Application.Services
             //验证
             ReturnInfo rInfo = new ReturnInfo();
             StringBuilder sb = new StringBuilder();
-            string maxId = _assCollarOrderRepository.GetMaxId();
+            string maxId = _assReturnOrderRepository.GetMaxID();
             string rtoId = Helper.GenerateIDEx("RT", maxId);
             returnOrderInput.RTOID = rtoId;
             sb.Append(Helper.BasicValidate(returnOrderInput).ToString());
@@ -733,7 +733,7 @@ namespace SMOSEC.Application.Services
             //验证
             ReturnInfo rInfo = new ReturnInfo();
             StringBuilder sb = new StringBuilder();
-            string maxId = _assCollarOrderRepository.GetMaxId();
+            string maxId = _assRestoreOrderRepository.GetMaxID();
             string rsoId = Helper.GenerateIDEx("RS", maxId);
             restoreOrderInput.RSOID = rsoId;
             sb.Append(Helper.BasicValidate(restoreOrderInput).ToString());
