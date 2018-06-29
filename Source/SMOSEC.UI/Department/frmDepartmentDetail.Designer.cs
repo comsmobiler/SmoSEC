@@ -47,6 +47,8 @@ namespace SMOSEC.UI.Department
             this.title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.title1.Direction = Smobiler.Core.Controls.LayoutDirection.Row;
             this.title1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.title1.FontSize = 15F;
+            this.title1.ForeColor = System.Drawing.Color.White;
             this.title1.Location = new System.Drawing.Point(111, 36);
             this.title1.Name = "title1";
             this.title1.Size = new System.Drawing.Size(100, 50);
@@ -194,6 +196,8 @@ namespace SMOSEC.UI.Department
             this.gridUserData.Location = new System.Drawing.Point(0, 135);
             this.gridUserData.Name = "gridUserData";
             this.gridUserData.PageSize = 10;
+            this.gridUserData.PageSizeTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.gridUserData.PageSizeTextSize = 11F;
             this.gridUserData.ShowSplitLine = true;
             this.gridUserData.Size = new System.Drawing.Size(300, 265);
             this.gridUserData.SplitLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
@@ -206,6 +210,7 @@ namespace SMOSEC.UI.Department
             this.panel1,
             this.panel2});
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
+            this.Statusbar = new Smobiler.Core.Controls.MobileFormStatusbar(Smobiler.Core.Controls.MobileFormStatusbarStyle.Default, System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(164)))), ((int)(((byte)(229))))));
             this.KeyDown += new Smobiler.Core.Controls.KeyDownEventHandler(this.frmDepartmentDetail_KeyDown);
             this.Load += new System.EventHandler(this.frmDepartmentDetail_Load);
             this.Name = "frmDepartmentDetail";

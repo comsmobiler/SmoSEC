@@ -244,6 +244,7 @@ namespace SMOSEC.UI.Department
             this.btnSave,
             this.panel1});
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
+            this.Statusbar = new Smobiler.Core.Controls.MobileFormStatusbar(Smobiler.Core.Controls.MobileFormStatusbarStyle.Default, System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(164)))), ((int)(((byte)(229))))));
             this.KeyDown += new Smobiler.Core.Controls.KeyDownEventHandler(this.frmDepAssignUser_KeyDown);
             this.Load += new System.EventHandler(this.frmDepAssignUser_Load);
             this.Name = "frmDepAssignUser";

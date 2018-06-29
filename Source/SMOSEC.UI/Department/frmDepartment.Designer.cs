@@ -124,6 +124,7 @@ namespace SMOSEC.UI.Department
             this.treeDepData});
             this.DrawerName = "LeftMenu";
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
+            this.Statusbar = new Smobiler.Core.Controls.MobileFormStatusbar(Smobiler.Core.Controls.MobileFormStatusbarStyle.Default, System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(164)))), ((int)(((byte)(229))))));
             this.KeyDown += new Smobiler.Core.Controls.KeyDownEventHandler(this.frmDepartment_KeyDown);
             this.Load += new System.EventHandler(this.frmDepartment_Load);
             this.Name = "frmDepartment";

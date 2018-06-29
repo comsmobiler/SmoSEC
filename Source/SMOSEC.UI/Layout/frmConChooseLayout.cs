@@ -34,11 +34,11 @@ namespace SMOSEC.UI.Layout
                         throw new Exception("½ð¶îÓÐÎó¡£");
                     }
 
-                    source.AddCon(LblCId.BindDataValue.ToString(),0,Quantity, Money,Image.ResourceID, lblName.BindDataValue.ToString());
+//                    source.AddCon(LblCId.BindDataValue.ToString(),0,Quantity, Money,Image.ResourceID, lblName.BindDataValue.ToString());
                 }
                 else
                 {
-                    source.RemoveCon(LblCId.BindDataValue.ToString());
+//                    source.RemoveCon(LblCId.BindDataValue.ToString());
                 }
                 source.UpdateCheckState();
             }

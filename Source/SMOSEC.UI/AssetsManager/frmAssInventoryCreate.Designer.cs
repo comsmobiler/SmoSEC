@@ -253,6 +253,7 @@ namespace SMOSEC.UI.AssetsManager
             this.panel1,
             this.panel3});
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
+            this.Statusbar = new Smobiler.Core.Controls.MobileFormStatusbar(Smobiler.Core.Controls.MobileFormStatusbarStyle.Default, System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(164)))), ((int)(((byte)(229))))));
             this.Load += new System.EventHandler(this.frmAssInventoryCreate_Load);
             this.Name = "frmAssInventoryCreate";
 

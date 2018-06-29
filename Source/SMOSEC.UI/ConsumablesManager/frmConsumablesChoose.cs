@@ -492,11 +492,13 @@ namespace SMOSEC.UI.ConsumablesManager
             switch (OperationType)
             {
                 case OperationType.³ö¿â:
+                    ConTable.Rows.Clear();
+                    ConList.Clear();
                     foreach (var row in listViewCon.Rows)
                     {
 
                         frmConChooseExLayout CRow = (frmConChooseExLayout) row.Control;
-                        if (ConList.Contains(CRow.LblCId.Text))
+                        if (CRow.CheckBox1.Checked)
                         {
                             decimal Quant;
                             if (decimal.TryParse(CRow.lblQuant.Text, out Quant) == false)
@@ -522,10 +524,12 @@ namespace SMOSEC.UI.ConsumablesManager
                     }
                     break;
                 case OperationType.Èë¿â:
+                    ConTable.Rows.Clear();
+                    ConList.Clear();
                     foreach (var row in listViewCon.Rows)
                     {
                         frmConChooseLayout CRows = (frmConChooseLayout) row.Control;
-                        if (ConList.Contains(CRows.LblCId.Text))
+                        if (CRows.CheckBox1.Checked)
                         {
                             decimal Quantity;
                             if (decimal.TryParse(CRows.numeric1.Value.ToString(), out Quantity) == false)

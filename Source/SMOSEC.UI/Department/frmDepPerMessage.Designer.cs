@@ -323,6 +323,7 @@ namespace SMOSEC.UI.Department
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.title1,
             this.spContent});
+            this.Statusbar = new Smobiler.Core.Controls.MobileFormStatusbar(Smobiler.Core.Controls.MobileFormStatusbarStyle.Default, System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(164)))), ((int)(((byte)(229))))));
             this.Load += new System.EventHandler(this.frmDepPerMessage_Load);
             this.Name = "frmDepPerMessage";
 

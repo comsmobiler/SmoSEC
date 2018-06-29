@@ -45,11 +45,11 @@ namespace SMOSEC.UI.Layout
                     {
                         throw new Exception("库存格式不正确。");
                     }
-                    source.AddCon(LblCId.BindDataValue.ToString(), Quant, Quantity, Money, Image.ResourceID, lblName.BindDataValue.ToString());
+//                    source.AddCon(LblCId.BindDataValue.ToString(), Quant, Quantity, Money, Image.ResourceID, lblName.BindDataValue.ToString());
                 }
                 else
                 {
-                    source.RemoveCon(LblCId.BindDataValue.ToString());
+//                    source.RemoveCon(LblCId.BindDataValue.ToString());
                 }
                 source.UpdateCheckState();
             }
