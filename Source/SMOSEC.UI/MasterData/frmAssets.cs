@@ -42,7 +42,7 @@ namespace SMOSEC.UI.MasterData
         {
             try
             {
-                LocatinId = "";
+                 LocatinId = "";
                 if (Client.Session["Role"].ToString() != "ADMIN")
                 {
                     var user = _autofacConfig.coreUserService.GetUserByID(UserId);
@@ -54,7 +54,7 @@ namespace SMOSEC.UI.MasterData
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
                 {
-                    if (Row["AssId"].ToString() == SelectAssId)
+                    if(Row["AssId"].ToString()==SelectAssId)
                     {
                         Row["IsChecked"] = true;
                     }
@@ -104,7 +104,7 @@ namespace SMOSEC.UI.MasterData
             try
             {
                 string barCode = e.Data;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode, LocatinId);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode,LocatinId);
                 gridAssRows.Cells.Clear();
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
@@ -141,7 +141,7 @@ namespace SMOSEC.UI.MasterData
             try
             {
                 string RFID = e.Epc;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(RFID, LocatinId);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(RFID,LocatinId);
                 gridAssRows.Cells.Clear();
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
@@ -224,10 +224,10 @@ namespace SMOSEC.UI.MasterData
                                 txtName = { Text = assets.Name },
                                 txtNote = { Text = assets.Note },
                                 txtPlace = { Text = assets.Place },
-                                txtPrice = { Text = assets.Price.ToString() },
+                                txtPrice = { Text = assets.Price.ToString()},
                                 txtSpe = { Text = assets.Specification },
-                                btnType = { Tag = assets.TypeId, Text = assets.TypeName },
-                                txtUnit = { Text = assets.Unit },
+                                btnType = {Tag = assets.TypeId, Text = assets.TypeName },
+                                txtUnit = { Text = assets.Unit},
                                 txtVendor = { Text = assets.Vendor }
                             };
 
@@ -322,7 +322,7 @@ namespace SMOSEC.UI.MasterData
             try
             {
                 string barCode = e.Value;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode, LocatinId);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode,LocatinId);
                 gridAssRows.Cells.Clear();
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
@@ -412,19 +412,7 @@ namespace SMOSEC.UI.MasterData
         /// <param name="e"></param>
         private void popDep_Selected(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(popDep.Selection.Text) == false)
-            {
-                if (btnDep.Tag == null)
-                {
-                    btnDep.Tag = popDep.Selection.Value;         //选择部门编号
-                    SearchData();
-                }
-                else if (popDep.Selection.Value != btnDep.Tag.ToString())
-                {
-                    btnDep.Tag = popDep.Selection.Value;         //选择部门编号
-                    SearchData();
-                }
-            }
+            setBtnTag(popDep, btnDep);
         }
         /// <summary>
         /// 资产状态选择
@@ -442,19 +430,7 @@ namespace SMOSEC.UI.MasterData
         /// <param name="e"></param>
         private void popStatus_Selected(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(popStatus.Selection.Text) == false)
-            {
-                if (btnStatus.Tag == null)
-                {
-                    btnStatus.Tag = popStatus.Selection.Value;         //选择资产状态编号
-                    SearchData();
-                }
-                else if (popStatus.Selection.Value != btnStatus.Tag.ToString())
-                {
-                    btnStatus.Tag = popStatus.Selection.Value;         //选择资产状态编号
-                    SearchData();
-                }
-            }
+            setBtnTag(popStatus, btnStatus);
         }
         /// <summary>
         /// 资产类别选择
@@ -496,16 +472,25 @@ namespace SMOSEC.UI.MasterData
         /// <param name="e"></param>
         private void popType_Selected(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(popType.Selection.Text) == false)
+            setBtnTag(popType,btnType);
+        }
+        /// <summary>
+        /// 选择了部门/资产状态/资产大类
+        /// </summary>
+        /// <param name="popList"></param>
+        /// <param name="button"></param>
+        public void setBtnTag(PopList popList,Button button)
+        {
+            if (String.IsNullOrEmpty(popList.Selection.Text) == false)
             {
-                if (btnType.Tag == null)
+                if (button.Tag == null)
                 {
-                    btnType.Tag = popType.Selection.Value;         //选择大类编号
+                    button.Tag = popList.Selection.Value;         //选择大类编号
                     SearchData();
                 }
-                else if (popType.Selection.Value != btnType.Tag.ToString())
+                else if (popList.Selection.Value != button.Tag.ToString())
                 {
-                    btnType.Tag = popType.Selection.Value;         //选择大类编号
+                    button.Tag = popList.Selection.Value;         //选择大类编号
                     SearchData();
                 }
             }

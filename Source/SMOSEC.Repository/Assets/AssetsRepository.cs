@@ -132,6 +132,7 @@ namespace SMOSEC.Repository.Assets
         public IQueryable<SMOSEC.Domain.Entity.Assets> QueryAssets(string SNOrName, List<String> types)
         {
             var result = _entities;
+            result = result.Where(a=>a.STATUS !=6);
             if (types.Count > 0)
             {
                 result = result.Where(a => types.Contains(a.TYPEID));
