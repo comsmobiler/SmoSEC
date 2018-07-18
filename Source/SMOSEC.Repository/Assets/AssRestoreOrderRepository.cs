@@ -39,7 +39,7 @@ namespace SMOSEC.Repository.Assets
             var result = _entities;
             if (!string.IsNullOrEmpty(UserID))
             {
-                result = result.Where(a => a.RESTORER == UserID);
+//                result = result.Where(a => a.RESTORER == UserID);
             }
             return result.AsNoTracking().OrderByDescending(a => a.CREATEDATE);
         }

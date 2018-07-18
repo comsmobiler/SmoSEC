@@ -150,12 +150,6 @@ namespace SMOSEC.UI.AssetsManager
                 Status = (InventoryStatus)inventory
                     .STATUS;
 
-                if (Status == InventoryStatus.盘点结束 || Status == InventoryStatus.盘点未开始)
-                {
-                    panelScan.Visible = false;
-                }
-
-
                 //获得需要盘点的资产列表
                 assList = _autofacConfig.AssInventoryService.GetPendingInventoryList(IID);
 
@@ -208,6 +202,7 @@ namespace SMOSEC.UI.AssetsManager
                 if (Status == InventoryStatus.盘点结束 || Status == InventoryStatus.盘点未开始)
                 {
                     Form.ActionButton.Enabled = false;
+                    plButton.Visible = false;
                 }
 
                 //绑定数据

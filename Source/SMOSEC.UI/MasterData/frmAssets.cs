@@ -4,6 +4,8 @@ using Smobiler.Core.Controls;
 using SMOSEC.UI.AssetsManager;
 using Smobiler.Device;
 using SMOSEC.DTOs.OutputDTO;
+using System.Collections.Generic;
+using SMOSEC.Domain.Entity;
 
 namespace SMOSEC.UI.MasterData
 {
@@ -201,6 +203,7 @@ namespace SMOSEC.UI.MasterData
                         //资产复制
                         try
                         {
+                            if (Client.Session["Role"].ToString() == "SMOSECUser") throw new Exception("当前用户没有权限添加资产!");
                             if (string.IsNullOrEmpty(SelectAssId))
                             {
                                 throw new Exception("请先选择资产.");
@@ -223,8 +226,7 @@ namespace SMOSEC.UI.MasterData
                                 txtPlace = { Text = assets.Place },
                                 txtPrice = { Text = assets.Price.ToString()},
                                 txtSpe = { Text = assets.Specification },
-                                TypeId = assets.TypeId,
-                                btnType = { Text = assets.TypeName },
+                                btnType = {Tag = assets.TypeId, Text = assets.TypeName },
                                 txtUnit = { Text = assets.Unit},
                                 txtVendor = { Text = assets.Vendor }
                             };
@@ -352,9 +354,171 @@ namespace SMOSEC.UI.MasterData
         /// <param name="e"></param>
         private void txtFactor_TextChanged(object sender, EventArgs e)
         {
+            SearchData();
+        }
+        /// <summary>
+        /// 手机扫描二维码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void imageButton1_Press(object sender, EventArgs e)
+        {
             try
             {
-                DataTable table = _autofacConfig.SettingService.QueryAssets(txtNote.Text, LocatinId);
+                barcodeScanner1.GetBarcode();
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 部门选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDep_Press(object sender, EventArgs e)
+        {
+            try
+            {
+                popDep.Groups.Clear();       //数据清空
+                PopListGroup poli = new PopListGroup();
+                popDep.Groups.Add(poli);
+                List<DepartmentDto> deps = _autofacConfig.DepartmentService.GetAllDepartment();
+                foreach (DepartmentDto Row in deps)
+                {
+                    poli.AddListItem(Row.NAME, Row.DEPARTMENTID);
+                }
+                if (btnDep.Tag != null)   //如果已有选中项，则显示选中效果
+                {
+                    foreach (PopListItem Item in poli.Items)
+                    {
+                        if (Item.Value == btnDep.Tag.ToString())
+                            popDep.SetSelections(Item);
+                    }
+                }
+                popDep.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 选择了部门
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void popDep_Selected(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(popDep.Selection.Text) == false)
+            {
+                if (btnDep.Tag == null)
+                {
+                    btnDep.Tag = popDep.Selection.Value;         //选择部门编号
+                    SearchData();
+                }
+                if (popDep.Selection.Value != btnDep.Tag.ToString())
+                {
+                    btnDep.Tag = popDep.Selection.Value;         //选择部门编号
+                    SearchData();
+                }
+            }
+        }
+        /// <summary>
+        /// 资产状态选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStatus_Press(object sender, EventArgs e)
+        {
+            popStatus.ShowDialog();
+        }
+        /// <summary>
+        /// 选择了状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void popStatus_Selected(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(popStatus.Selection.Text) == false)
+            {
+                if (btnStatus.Tag == null)
+                {
+                    btnStatus.Tag = popStatus.Selection.Value;         //选择资产状态编号
+                    SearchData();
+                }
+                if (popStatus.Selection.Value != btnStatus.Tag.ToString())
+                {
+                    btnStatus.Tag = popStatus.Selection.Value;         //选择资产状态编号
+                    SearchData();
+                }
+            }
+        }
+        /// <summary>
+        /// 资产类别选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnType_Press(object sender, EventArgs e)
+        {
+            try
+            {
+                popType.Groups.Clear();       //数据清空
+                PopListGroup poli = new PopListGroup();
+                popType.Groups.Add(poli);
+                List<AssetsType> types = _autofacConfig.assTypeService.GetAllFirstLevel();
+                foreach (AssetsType Row in types)
+                {
+                    poli.AddListItem(Row.NAME, Row.TYPEID);
+                }
+                if (btnType.Tag != null)   //如果已有选中项，则显示选中效果
+                {
+                    foreach (PopListItem Item in poli.Items)
+                    {
+                        if (Item.Value == btnType.Tag.ToString())
+                            popType.SetSelections(Item);
+                    }
+                }
+                popType.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 选择了资产大类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void popType_Selected(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(popType.Selection.Text) == false)
+            {
+                if (btnType.Tag == null)
+                {
+                    btnType.Tag = popType.Selection.Value;         //选择大类编号
+                    SearchData();
+                }
+                if (popType.Selection.Value != btnType.Tag.ToString())
+                {
+                    btnType.Tag = popType.Selection.Value;         //选择大类编号
+                    SearchData();
+                }
+            }
+        }
+        /// <summary>
+        /// 数据绑定
+        /// </summary>
+        public void SearchData()
+        {
+            try
+            {
+                String DepId = btnDep.Tag == null ? null : btnDep.Tag.ToString();     //选择部门编号
+                String Status = btnStatus.Tag == null ? null : btnStatus.Tag.ToString();   //选择资产状态
+                String Type = btnType.Tag == null ? null : btnType.Tag.ToString();
+                DataTable table = _autofacConfig.SettingService.QueryAssets(txtNote.Text, LocatinId, DepId, Status, Type);
                 gridAssRows.Cells.Clear();
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
@@ -373,23 +537,6 @@ namespace SMOSEC.UI.MasterData
                     gridAssRows.DataSource = table;
                     gridAssRows.DataBind();
                 }
-            }
-
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-        /// <summary>
-        /// 手机扫描二维码
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void imageButton1_Press(object sender, EventArgs e)
-        {
-            try
-            {
-                barcodeScanner1.GetBarcode();
             }
             catch (Exception ex)
             {

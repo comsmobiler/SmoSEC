@@ -69,6 +69,10 @@ namespace SMOSEC.UI.AssetsManager
                     var user = _autofacConfig.coreUserService.GetUserByID(UserId);
                     LocationId = user.USER_LOCATIONID;
                 }
+                if (Client.Session["Role"].ToString() == "SMOSECUser")
+                {
+                    plButton.Visible = false;
+                }
                 DataTable assborrowTable = _autofacConfig.AssetsService.GetRsoByUserId(Client.Session["Role"].ToString() == "SMOSECUser" ? Client.Session["UserID"].ToString() : "",LocationId);
                 ListViewCO.Rows.Clear();
                 if (assborrowTable.Rows.Count > 0)

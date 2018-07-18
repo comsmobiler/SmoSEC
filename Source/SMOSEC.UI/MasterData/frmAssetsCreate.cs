@@ -4,6 +4,7 @@ using Smobiler.Core.Controls;
 using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.DTOs.InputDTO;
+using SMOSEC.UI.Layout;
 
 namespace SMOSEC.UI.MasterData
 {
@@ -14,7 +15,6 @@ namespace SMOSEC.UI.MasterData
     {
         #region 变量
         public string UserId; //用户名
-        public string TypeId;  //类型编号
         public string LocationId; //区域编号
         public string ManagerId; //管理人编号
 
@@ -34,7 +34,16 @@ namespace SMOSEC.UI.MasterData
             {
                 if (string.IsNullOrEmpty(LocationId))
                 {
-                    throw new Exception("请选择区域.");
+                    throw new Exception("请选择区域！");
+                }
+                decimal price;
+                if(btnType.Tag == null)
+                {
+                    throw new Exception("请选择类别!");
+                }
+                if (!decimal.TryParse(txtPrice.Text, out price))
+                {
+                    throw new Exception("请输入正确的单价！");
                 }
                 AssetsInputDto assetsInputDto = new AssetsInputDto
                 {
@@ -50,9 +59,10 @@ namespace SMOSEC.UI.MasterData
                     ModifyUser = UserId,
                     Name = txtName.Text,
                     Note = txtNote.Text,
-                    Place = txtPlace.Text,
+                    Place = txtPlace.Text, 
+                    Price = price,
                     Specification = txtSpe.Text,
-                    TypeId = TypeId,
+                    TypeId = btnType.Tag.ToString(),
                     Unit = txtUnit.Text,
                     Vendor = txtVendor.Text,
                     SN = txtSN.Text
@@ -87,39 +97,19 @@ namespace SMOSEC.UI.MasterData
         {
             try
             {
-                PopType.Groups.Clear();
-                PopListGroup typeGroup = new PopListGroup();
-                typeGroup.Title = "资产类型";
-                var typelist = _autofacConfig.assTypeService.GetAll();
-                foreach (var type in typelist)
+                string TypeId = "";
+                if (btnType.Tag != null)
                 {
-                    PopListItem item = new PopListItem
-                    {
-                        Value = type.TYPEID,
-                        Text = type.NAME
-                    };
-                    typeGroup.Items.Add(item);
+                    TypeId = btnType.Tag.ToString();
                 }
-                PopType.Groups.Add(typeGroup);
-                if (!string.IsNullOrEmpty(btnType.Text))
-                {
-                    foreach (PopListItem row in PopType.Groups[0].Items)
-                    {
-                        if (row.Text == btnType.Text)
-                        {
-                            PopType.SetSelections(row);
-                        }
-                    }
-                }
-                PopType.ShowDialog();
+                frmAssTypeChooseLayout layout = new frmAssTypeChooseLayout { IsCreate = true, typeId = TypeId };
+                ShowDialog(layout);
             }
             catch (Exception ex)
             {
                 Toast(ex.Message);
             }
-            
         }
-
         /// <summary>
         /// 选择区域
         /// </summary>
@@ -129,8 +119,6 @@ namespace SMOSEC.UI.MasterData
         {
             try
             {
-                
-
                 PopLocation.Groups.Clear();
                 PopListGroup locationGroup = new PopListGroup();
                 List<AssLocation> locations = _autofacConfig.assLocationService.GetEnableAll();
@@ -162,8 +150,6 @@ namespace SMOSEC.UI.MasterData
             }
            
         }
-
-
         /// <summary>
         /// 上传图片
         /// </summary>
@@ -173,7 +159,6 @@ namespace SMOSEC.UI.MasterData
         {
             CamPicture.GetPhoto();
         }
-
         /// <summary>
         /// 选择区域后
         /// </summary>
@@ -196,26 +181,6 @@ namespace SMOSEC.UI.MasterData
                 Toast(ex.Message);
             }
         }
-
-        /// <summary>
-        /// 类型选中后
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PopType_Selected(object sender, EventArgs e)
-        {
-            try
-            {
-                if (PopType.Selection == null) return;
-                btnType.Text = PopType.Selection.Text;
-                TypeId = PopType.Selection.Value;                
-            }
-            catch (Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-
         /// <summary>
         /// 图片获取到后
         /// </summary>
@@ -303,7 +268,6 @@ namespace SMOSEC.UI.MasterData
             {
                 string barCode = e.Value;
                 txtSN.Text = barCode;
-
             }
             catch (Exception ex)
             {

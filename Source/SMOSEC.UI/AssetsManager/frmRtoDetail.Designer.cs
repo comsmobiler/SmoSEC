@@ -35,11 +35,9 @@ namespace SMOSEC.UI.AssetsManager
             this.Panel3 = new Smobiler.Core.Controls.Panel();
             this.Label1 = new Smobiler.Core.Controls.Label();
             this.Label2 = new Smobiler.Core.Controls.Label();
-            this.Label7 = new Smobiler.Core.Controls.Label();
             this.Label8 = new Smobiler.Core.Controls.Label();
             this.txtNote = new Smobiler.Core.Controls.TextBox();
             this.DPickerCO = new Smobiler.Core.Controls.DatePicker();
-            this.txtBOMan = new Smobiler.Core.Controls.TextBox();
             this.txtHMan = new Smobiler.Core.Controls.TextBox();
             this.Label5 = new Smobiler.Core.Controls.Label();
             this.txtLocation = new Smobiler.Core.Controls.TextBox();
@@ -57,6 +55,7 @@ namespace SMOSEC.UI.AssetsManager
             // 
             // Panel1
             // 
+            this.Panel1.BackColor = System.Drawing.Color.White;
             this.Panel1.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Panel3,
             this.ListAss});
@@ -72,16 +71,15 @@ namespace SMOSEC.UI.AssetsManager
             this.Panel3.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Label1,
             this.Label2,
-            this.Label7,
             this.Label8,
             this.txtNote,
             this.DPickerCO,
-            this.txtBOMan,
             this.txtHMan,
             this.Label5,
             this.txtLocation});
+            this.Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(300, 158);
+            this.Panel3.Size = new System.Drawing.Size(300, 128);
             // 
             // Label1
             // 
@@ -91,7 +89,7 @@ namespace SMOSEC.UI.AssetsManager
             this.Label1.Name = "Label1";
             this.Label1.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.Label1.Size = new System.Drawing.Size(100, 30);
-            this.Label1.Text = "归还人";
+            this.Label1.Text = "归还处理人";
             // 
             // Label2
             // 
@@ -104,23 +102,12 @@ namespace SMOSEC.UI.AssetsManager
             this.Label2.Size = new System.Drawing.Size(100, 30);
             this.Label2.Text = "归还日期";
             // 
-            // Label7
-            // 
-            this.Label7.BackColor = System.Drawing.Color.White;
-            this.Label7.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.Label7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Label7.Location = new System.Drawing.Point(0, 60);
-            this.Label7.Name = "Label7";
-            this.Label7.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
-            this.Label7.Size = new System.Drawing.Size(100, 30);
-            this.Label7.Text = "归还处理人";
-            // 
             // Label8
             // 
             this.Label8.BackColor = System.Drawing.Color.White;
             this.Label8.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 1F);
             this.Label8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Label8.Location = new System.Drawing.Point(0, 120);
+            this.Label8.Location = new System.Drawing.Point(0, 90);
             this.Label8.Name = "Label8";
             this.Label8.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.Label8.Size = new System.Drawing.Size(100, 30);
@@ -131,7 +118,7 @@ namespace SMOSEC.UI.AssetsManager
             this.txtNote.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 1F);
             this.txtNote.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.txtNote.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.txtNote.Location = new System.Drawing.Point(100, 120);
+            this.txtNote.Location = new System.Drawing.Point(100, 90);
             this.txtNote.Name = "txtNote";
             this.txtNote.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
             this.txtNote.ReadOnly = true;
@@ -149,23 +136,12 @@ namespace SMOSEC.UI.AssetsManager
             this.DPickerCO.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
             this.DPickerCO.Size = new System.Drawing.Size(200, 30);
             // 
-            // txtBOMan
-            // 
-            this.txtBOMan.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.txtBOMan.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtBOMan.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.txtBOMan.Location = new System.Drawing.Point(100, 0);
-            this.txtBOMan.Name = "txtBOMan";
-            this.txtBOMan.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
-            this.txtBOMan.ReadOnly = true;
-            this.txtBOMan.Size = new System.Drawing.Size(200, 30);
-            // 
             // txtHMan
             // 
             this.txtHMan.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
             this.txtHMan.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.txtHMan.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.txtHMan.Location = new System.Drawing.Point(100, 60);
+            this.txtHMan.Location = new System.Drawing.Point(100, 0);
             this.txtHMan.Name = "txtHMan";
             this.txtHMan.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
             this.txtHMan.ReadOnly = true;
@@ -176,7 +152,7 @@ namespace SMOSEC.UI.AssetsManager
             this.Label5.BackColor = System.Drawing.Color.White;
             this.Label5.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
             this.Label5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Label5.Location = new System.Drawing.Point(0, 90);
+            this.Label5.Location = new System.Drawing.Point(0, 60);
             this.Label5.Name = "Label5";
             this.Label5.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.Label5.Size = new System.Drawing.Size(100, 30);
@@ -187,7 +163,7 @@ namespace SMOSEC.UI.AssetsManager
             this.txtLocation.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
             this.txtLocation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.txtLocation.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.txtLocation.Location = new System.Drawing.Point(100, 90);
+            this.txtLocation.Location = new System.Drawing.Point(100, 60);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
             this.txtLocation.ReadOnly = true;
@@ -198,12 +174,13 @@ namespace SMOSEC.UI.AssetsManager
             this.ListAss.BackColor = System.Drawing.Color.White;
             this.ListAss.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
             this.ListAss.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ListAss.Location = new System.Drawing.Point(0, 158);
+            this.ListAss.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListAss.Location = new System.Drawing.Point(0, 128);
             this.ListAss.Name = "ListAss";
             this.ListAss.PageSizeTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
             this.ListAss.PageSizeTextSize = 11F;
             this.ListAss.ShowSplitLine = true;
-            this.ListAss.Size = new System.Drawing.Size(300, 300);
+            this.ListAss.Size = new System.Drawing.Size(300, 330);
             this.ListAss.SplitLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ListAss.TemplateControlName = "OperDetailAssLayout";
             // 
@@ -226,11 +203,9 @@ namespace SMOSEC.UI.AssetsManager
         internal Smobiler.Core.Controls.Panel Panel3;
         internal Smobiler.Core.Controls.Label Label1;
         internal Smobiler.Core.Controls.Label Label2;
-        internal Smobiler.Core.Controls.Label Label7;
         internal Smobiler.Core.Controls.Label Label8;
         internal Smobiler.Core.Controls.TextBox txtNote;
         internal Smobiler.Core.Controls.DatePicker DPickerCO;
-        internal Smobiler.Core.Controls.TextBox txtBOMan;
         internal Smobiler.Core.Controls.TextBox txtHMan;
         internal Smobiler.Core.Controls.Label Label5;
         internal Smobiler.Core.Controls.TextBox txtLocation;

@@ -19,14 +19,6 @@ namespace SMOSEC.DTOs.InputDTO
         public string RTOID { get; set; }
 
         /// <summary>
-        /// 归还人
-        /// </summary>
-        [Required]
-        [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]
-        [DisplayName("归还人")]
-        public string RETURNER { get; set; }
-
-        /// <summary>
         /// 归还日期
         /// </summary>
         [Required]

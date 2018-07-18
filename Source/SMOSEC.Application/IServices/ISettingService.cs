@@ -109,12 +109,15 @@ namespace SMOSEC.Application.IServices
         DataTable GetRecords(string ASSID,string CID);
 
         /// <summary>
-        /// 根据SN或者名称查询资产
+        /// 根据SN或者名称或者部门或者状态查询资产
         /// </summary>
         /// <param name="SNOrName">SN或者名称</param>
         /// <param name="LocationId">区域</param>
+        /// <param name="DepId">部门编号</param>
+        /// <param name="Status">资产状态</param>
+        /// <param name="Type">资产类型</param>
         /// <returns></returns>
-        DataTable QueryAssets(string SNOrName,string LocationId);
+        DataTable QueryAssets(string SNOrName, string LocationId, string DepId, string Status, string Type);
 
         /// <summary>
         /// 根据SN得到资产信息
@@ -151,7 +154,14 @@ namespace SMOSEC.Application.IServices
         /// </summary>
         /// <param name="entity">资产信息</param>
         /// <returns></returns>
-        ReturnInfo UpdateAssets(AssetsInputDto entity);       
+        ReturnInfo UpdateAssets(AssetsInputDto entity);
+        /// <summary>
+        /// 删除资产(修改资产状态为已删除)
+        /// </summary>
+        /// <param name="assid"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        ReturnInfo DeleteAssets(string  assid, string userId);
 
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using SMOSEC.Domain.Entity;
+using System.Collections.Generic;
 
 namespace SMOSEC.Domain.IRepository
 {
@@ -42,7 +43,13 @@ namespace SMOSEC.Domain.IRepository
         /// <param name="Status">状态</param>
         /// <returns></returns>
         IQueryable<Assets> GetAssByStatus(string LocationID, string Name, string UserID, int Status);
-
+        /// <summary>
+        /// 根据SN或者名称模糊查询资产
+        /// </summary>
+        /// <param name="SNOrName">SN或者名称</param>
+        /// <param name="types"></param>
+        /// <returns></returns>
+        IQueryable<Assets> QueryAssets(string SNOrName, List<String> types);
         /// <summary>
         /// 查询对应状态的资产数据
         /// </summary>

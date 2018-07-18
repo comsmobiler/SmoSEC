@@ -35,12 +35,18 @@ namespace SMOSEC.Application.Services
         /// 数据库上下文
         /// </summary>
         private SMOSECDbContext SMOSECDbContext;
-
+        /// <summary>
+        /// 用户查询接口
+        /// </summary>
+        private IcoreUserRepository _coreUserRepository;
         /// <summary>
         /// 资产记录查询接口
         /// </summary>
         private IAssProcessRecordRepository _AssProcessRecordRepository;
-
+        /// <summary>
+        /// 资产分类查询接口
+        /// </summary>
+        private IAssetsTypeRepository _assetsTypeRepository;
         /// <summary>
         /// 部门的查询接口
         /// </summary>
@@ -52,12 +58,16 @@ namespace SMOSEC.Application.Services
             IAssetsRepository AssetsRepository,
             IAssProcessRecordRepository AssProcessRecordRepository,
             IDepartmentRepository departmentRepository,
+            IcoreUserRepository coreUserRepository,
+            IAssetsTypeRepository assetsTypeRepository,
             IDbContext dbContext)
         {
             _unitOfWork = unitOfWork;
             _AssetsRepository = AssetsRepository;
             _AssProcessRecordRepository = AssProcessRecordRepository;
             _departmentRepository = departmentRepository;
+            _coreUserRepository = coreUserRepository;
+            _assetsTypeRepository = assetsTypeRepository;
             SMOSECDbContext = (SMOSECDbContext)dbContext;
         }
 
@@ -95,7 +105,8 @@ namespace SMOSEC.Application.Services
                    TypeId = assetse.TYPEID,
                    TypeName = type.NAME,
                    Vendor = assetse.VENDOR,
-                   Unit = assetse.UNIT
+                   Unit = assetse.UNIT,
+                   Status=assetse.STATUS
                 };
             var assdto = dto.AsNoTracking().FirstOrDefault();
 
@@ -129,27 +140,41 @@ namespace SMOSEC.Application.Services
         /// <returns></returns>
         public DataTable GetAllAss(string LocationId)
         {
-            var list = _AssetsRepository.GetAll();
+            var list = _AssetsRepository.GetAll().Where(x=>x.STATUS !=6);
             if (!string.IsNullOrEmpty(LocationId))
             {
                 list = list.Where(a => a.LOCATIONID == LocationId);
             }
             list = list.OrderByDescending(a => a.CREATEDATE);
             var result = from assetse in list
-                join location in SMOSECDbContext.AssLocations on assetse.LOCATIONID equals location.LOCATIONID
-                join type in SMOSECDbContext.AssetsTypes on assetse.TYPEID equals type.TYPEID
-                select new
+                         join location in SMOSECDbContext.AssLocations on assetse.LOCATIONID equals location.LOCATIONID
+                         join type in SMOSECDbContext.AssetsTypes on assetse.TYPEID equals type.TYPEID
+                         select new
+                         {
+                             ASSID = assetse.ASSID,
+                             Image = assetse.IMAGE,
+                             DEPARTMENTID = assetse.DEPARTMENTID,
+                             DepName = "",
+                             Status = assetse.STATUS,
+                             StatusName = "",
+                             LocationName = location.NAME,
+                             Name = assetse.NAME,
+                             Price = assetse.PRICE,
+                             SN = assetse.SN,
+                             TypeName = type.NAME,
+                             Specification = assetse.SPECIFICATION
+                         };
+            DataTable table = LINQToDataTable.ToDataTable(result);
+            foreach (DataRow row in table.Rows)
+            {
+                Department dep = _departmentRepository.GetByID(row["DEPARTMENTID"].ToString()).FirstOrDefault();
+                row["StatusName"] = Enum.GetName(typeof(STATUS), row["Status"]);
+                if (dep != null)
                 {
-                    ASSID=assetse.ASSID,
-                    Image=assetse.IMAGE,
-                    LocationName=location.NAME,
-                    Name=assetse.NAME,
-                    Price=assetse.PRICE,
-                    SN=assetse.SN,
-                    TypeName=type.NAME,
-                    Specification=assetse.SPECIFICATION
-                };
-            return LINQToDataTable.ToDataTable(result);
+                    row["DepName"] = dep.NAME;
+                }
+            }
+            return table;
         }
 
         /// <summary>
@@ -182,12 +207,19 @@ namespace SMOSEC.Application.Services
         {
             int status = (int)STATUS.借用中;
             var result = _AssetsRepository.GetAssByStatusEx(LocationID, SN, UserID, status);
-            var dtos = Mapper.Map<List<Assets>, List<AssSelectOutputDto>>(result.ToList());
-            foreach (var dto in dtos)
-            {
-                dto.IsChecked = false;
-            }
-            return LINQToDataTable.ToDataTable(dtos);
+            var ass = from assetse in result
+                      join user in SMOSECDbContext.coreUsers on assetse.CURRENTUSER equals user.USER_ID
+                      select new AssSelectOutputDto()
+                      {
+                          IsChecked = false,
+                          IMAGE = assetse.IMAGE,
+                          NAME = assetse.IMAGE,
+                          ASSID = assetse.ASSID,
+                          SN = assetse.SN,
+                          USERNAME = user.USER_NAME
+
+                      };
+            return LINQToDataTable.ToDataTable(ass);
         }
 
 
@@ -297,12 +329,18 @@ namespace SMOSEC.Application.Services
         {
             int status = (int)STATUS.使用中;
             var result = _AssetsRepository.GetAssByStatusEx(LocationID, SN, UserID, status);
-            var dtos = Mapper.Map<List<Assets>, List<AssSelectOutputDto>>(result.ToList());
-            foreach (var dto in dtos)
-            {
-                dto.IsChecked = false;
-            }
-            return LINQToDataTable.ToDataTable(dtos);            
+            var ass = from assetse in result
+                      join user in SMOSECDbContext.coreUsers on assetse.CURRENTUSER equals user.USER_ID
+                      select new AssSelectOutputDto()
+                      {
+                          IsChecked = false,
+                          IMAGE = assetse.IMAGE,
+                          NAME = assetse.IMAGE,
+                          ASSID = assetse.ASSID,
+                          SN = assetse.SN,
+                          USERNAME = user.USER_NAME
+                      };
+            return LINQToDataTable.ToDataTable(ass);
         }
 
         /// <summary>
@@ -311,13 +349,6 @@ namespace SMOSEC.Application.Services
         /// <returns></returns>
         public DataTable GetLackOfStockAss()
         {
-//            var result = from ass in SMOSECDbContext.Assetss
-//                from quant in SMOSECDbContext.AssQuants
-//                where ass.ASSID == quant.ASSID
-//                select new
-//                {
-//
-//                };
             throw new System.NotImplementedException();
         }
 
@@ -369,20 +400,93 @@ namespace SMOSEC.Application.Services
         }
 
         /// <summary>
-        /// 根据SN或者名称查询资产
+        /// 根据SN或者名称或者部门或者状态查询资产
         /// </summary>
         /// <param name="SNOrName">SN或者名称</param>
-        /// <param name="LocationId">区域编号</param>
+        /// <param name="LocationId">区域</param>
+        /// <param name="DepId">部门编号</param>
+        /// <param name="Status">资产状态</param>
+        /// <param name="Type">资产类型</param>
         /// <returns></returns>
-        public DataTable QueryAssets(string SNOrName, string LocationId)
+        public DataTable QueryAssets(string SNOrName, string LocationId, string DepId, string Status, string Type)
         {
-            var result = _AssetsRepository.QueryAssets(SNOrName).AsNoTracking();
-            if (!string.IsNullOrEmpty(LocationId))
+            List<String> Types = new List<string>();
+            if (String.IsNullOrEmpty(Type) == false)
             {
-                result = result.Where(a => a.LOCATIONID == LocationId);
+                Types.Add(Type);
+                List<AssetsType> listType = _assetsTypeRepository.GetByParentTypeID(Type).AsNoTracking().ToList();
+                foreach (AssetsType Row in listType)
+                {
+                    List<AssetsType> LastlistType = _assetsTypeRepository.GetByParentTypeID(Row.TYPEID).AsNoTracking().ToList();
+                    foreach (AssetsType LastRow in LastlistType)
+                    {
+                        Types.Add(LastRow.TYPEID);
+                    }
+                    Types.Add(Row.TYPEID);
+                }
             }
-            return LINQToDataTable.ToDataTable(result);
 
+            coreUser coreUser = _coreUserRepository.GetUser(SNOrName).FirstOrDefault();
+            if (coreUser != null && String.IsNullOrEmpty(SNOrName) == false)
+            {
+                var result = _AssetsRepository.QueryAssets(coreUser.USER_ID, Types).AsNoTracking();
+                if (!string.IsNullOrEmpty(LocationId))
+                {
+                    result = result.Where(a => a.LOCATIONID == LocationId);
+                }
+                if (!string.IsNullOrEmpty(Status))
+                {
+                    int statusId = Convert.ToInt32(Status);
+                    result = result.Where(a => a.STATUS == statusId);
+                }
+                if (!string.IsNullOrEmpty(DepId))
+                {
+                    result = result.Where(a => a.DEPARTMENTID == DepId);
+                }
+                DataTable table = LINQToDataTable.ToDataTable(result);
+                table.Columns.Add("StatusName");
+                table.Columns.Add("DepName");
+                foreach (DataRow row in table.Rows)
+                {
+                    Department dep = _departmentRepository.GetByID(row["DEPARTMENTID"].ToString()).FirstOrDefault();
+                    row["StatusName"] = Enum.GetName(typeof(STATUS), row["Status"]);
+                    if (dep != null)
+                    {
+                        row["DepName"] = dep.NAME;
+                    }
+                }
+                return table;
+            }
+            else
+            {
+                var result = _AssetsRepository.QueryAssets(SNOrName, Types).AsNoTracking();
+                if (!string.IsNullOrEmpty(LocationId))
+                {
+                    result = result.Where(a => a.LOCATIONID == LocationId);
+                }
+                if (!string.IsNullOrEmpty(Status))
+                {
+                    int statusId = Convert.ToInt32(Status);
+                    result = result.Where(a => a.STATUS == statusId);
+                }
+                if (!string.IsNullOrEmpty(DepId))
+                {
+                    result = result.Where(a => a.DEPARTMENTID == DepId);
+                }
+                DataTable table = LINQToDataTable.ToDataTable(result);
+                table.Columns.Add("StatusName");
+                table.Columns.Add("DepName");
+                foreach (DataRow row in table.Rows)
+                {
+                    Department dep = _departmentRepository.GetByID(row["DEPARTMENTID"].ToString()).FirstOrDefault();
+                    row["StatusName"] = Enum.GetName(typeof(STATUS), row["Status"]);
+                    if (dep != null)
+                    {
+                        row["DepName"] = dep.NAME;
+                    }
+                }
+                return table;
+            }
         }
 
         /// <summary>
@@ -531,6 +635,7 @@ namespace SMOSEC.Application.Services
                 try
                 {
                     Assets assets = _AssetsRepository.GetByID(entity.AssId).FirstOrDefault();
+                    var originAss = Mapper.Map<Assets, AssetsOutputDto>(assets);
                     if (assets != null)
                     {
                         assets.BUYDATE = entity.BuyDate;
@@ -565,7 +670,15 @@ namespace SMOSEC.Application.Services
                         MODIFYUSER = entity.ModifyUser,
                         PROCESSCONTENT = entity.CreateUser + "修改了" + entity.AssId
                     };
-                    ;
+                    pr.PROCESSCONTENT = "修改资产"+entity.AssId+"。修改前数据:"+originAss.BuyDate
+                        +","+originAss.DepartmentId+","+originAss.ExpiryDate+","+originAss.Image
+                        +","+originAss.Name+","+originAss.Note+","+originAss.Place+","+originAss.Price
+                        +","+originAss.SN+","+originAss.Specification+","+originAss.TypeId
+                        +","+originAss.Unit+","+originAss.Vendor+"  修改后数据：" + assets.BUYDATE
+                        + "," + assets.DEPARTMENTID + "," + assets.EXPIRYDATE + "," + assets.IMAGE
+                        + "," + assets.NAME + "," + assets.NOTE + "," + assets.PLACE + "," + assets.PRICE
+                        + "," + assets.SN + "," + assets.SPECIFICATION + "," + assets.TYPEID
+                        + "," + assets.UNIT + "," + assets.VENDOR;
                     pr.PROCESSMODE = (int)PROCESSMODE.修改内容;
                     _unitOfWork.RegisterNew(pr);
 
@@ -590,13 +703,35 @@ namespace SMOSEC.Application.Services
                 return RInfo;
             }
         }
-
-
+        /// <summary>
+        /// 删除资产(修改资产状态为已删除)
+        /// </summary>
+        /// <param name="assid"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ReturnInfo DeleteAssets(string assid,string userId)
+        {
+            ReturnInfo RInfo = new ReturnInfo();
+            StringBuilder sb = new StringBuilder();
+            Assets assets = _AssetsRepository.GetByID(assid).FirstOrDefault();
+            if(assets != null)
+            {
+                assets.STATUS = (int)STATUS.已删除;
+                assets.MODIFYDATE = DateTime.Now;
+                assets.MODIFYUSER = userId;
+                _unitOfWork.RegisterDirty(assets);
+                _unitOfWork.Commit();
+                RInfo.IsSuccess = true;
+                return RInfo;
+            }
+            else
+            {
+                sb.Append("该资产不存在，请检查!");
+                RInfo.IsSuccess = false;
+                RInfo.ErrorInfo = sb.ToString();
+                return RInfo;
+            }
+        }
         #endregion
-
-
-
-
-
     }
 }

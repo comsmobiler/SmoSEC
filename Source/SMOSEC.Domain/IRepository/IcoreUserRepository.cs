@@ -30,6 +30,11 @@ namespace SMOSEC.Domain.IRepository
         /// <returns></returns>
         IQueryable<coreUser> GetUser();
         /// <summary>
+        /// 通过用户名称获取用户数据
+        /// </summary>
+        /// <returns></returns>
+        IQueryable<coreUser> GetUser(string Name);
+        /// <summary>
         /// 获取调入管理员数据
         /// </summary>
         /// <returns></returns>

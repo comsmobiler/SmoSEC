@@ -32,6 +32,10 @@ namespace SMOSEC.UI.AssetsManager
         {
             try
             {
+                if (AssIdList.Count == 0)
+                {
+                    throw new Exception("请添加领用的资产！");
+                }
                 AssCollarOrderInputDto assCollarOrderInput = new AssCollarOrderInputDto()
                 {
                     AssIds = AssIdList,
@@ -85,7 +89,7 @@ namespace SMOSEC.UI.AssetsManager
                     };
                     locationGroup.Items.Add(item);
                 }
-                PopLocation.Groups.Add(locationGroup);
+                PopLocation.Groups.Add(locationGroup);               
                 if (!string.IsNullOrEmpty(btnLocation.Text))
                 {
                     foreach (PopListItem row in PopLocation.Groups[0].Items)
@@ -154,7 +158,7 @@ namespace SMOSEC.UI.AssetsManager
                 }
                 else
                 {
-                    barcodeScanner1.GetBarcode();
+                      barcodeScanner1.GetBarcode();
                 }
             }
             catch (Exception ex)
@@ -198,26 +202,26 @@ namespace SMOSEC.UI.AssetsManager
                 switch (Client.Session["Role"].ToString())
                 {
                     case "SMOSECAdmin":
-                        {
-                            var user = _autofacConfig.coreUserService.GetUserByID(UserId);
-                            LocationId = user.USER_LOCATIONID;
-                            var location = _autofacConfig.assLocationService.GetByID(LocationId);
-                            btnLocation.Text = location.NAME;
-                            btnLocation.Enabled = false;
-                            btnLocation1.Enabled = false;
-                        }
+                    {
+                        var user = _autofacConfig.coreUserService.GetUserByID(UserId);
+                        LocationId = user.USER_LOCATIONID;
+                        var location = _autofacConfig.assLocationService.GetByID(LocationId);
+                        btnLocation.Text = location.NAME;
+                        btnLocation.Enabled = false;
+                        btnLocation1.Enabled = false;
+                    }
                         break;
                     case "SMOSECUser":
-                        {
-                            CoManId = UserId;
-                            var user = _autofacConfig.coreUserService.GetUserByID(UserId);
-                            btnCOMan.Text = user.USER_NAME;
-                            btnCOMan.Enabled = false;
-                            btnCOMan1.Enabled = false;
-                            var department = _autofacConfig.DepartmentService.GetDepartmentByDepID(user.USER_DEPARTMENTID);
-                            DepId = user.USER_DEPARTMENTID;
-                            txtDep.Text = department.NAME;
-                        }
+                    {
+                        CoManId = UserId;
+                        var user = _autofacConfig.coreUserService.GetUserByID(UserId);
+                        btnCOMan.Text = user.USER_NAME;
+                        btnCOMan.Enabled = false;
+                        btnCOMan1.Enabled = false;
+                        var department = _autofacConfig.DepartmentService.GetDepartmentByDepID(user.USER_DEPARTMENTID);
+                        DepId = user.USER_DEPARTMENTID;
+                        txtDep.Text = department.NAME;
+                    }
                         break;
                 }
             }

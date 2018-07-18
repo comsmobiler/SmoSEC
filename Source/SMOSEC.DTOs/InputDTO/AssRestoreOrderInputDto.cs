@@ -55,13 +55,6 @@ namespace SMOSEC.DTOs.InputDTO
         public string NOTE { get; set; }
 
         /// <summary>
-        /// 退库人
-        /// </summary>
-        [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]
-        [DisplayName("退库人")]
-        public string RESTORER { get; set; }
-
-        /// <summary>
         /// 创建用户
         /// </summary>
         [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]

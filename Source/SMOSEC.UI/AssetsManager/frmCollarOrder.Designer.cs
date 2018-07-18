@@ -31,8 +31,9 @@ namespace SMOSEC.UI.AssetsManager
         private void InitializeComponent()
         {
             this.Title1 = new SMOSEC.UI.UserControl.MenuTitle();
-            this.btnAdd = new Smobiler.Core.Controls.Button();
             this.ListViewCO = new Smobiler.Core.Controls.ListView();
+            this.plButton = new Smobiler.Core.Controls.Panel();
+            this.btnAdd = new Smobiler.Core.Controls.Button();
             // 
             // Title1
             // 
@@ -44,38 +45,44 @@ namespace SMOSEC.UI.AssetsManager
             this.Title1.Size = new System.Drawing.Size(300, 40);
             this.Title1.TitleText = "领用单列表";
             // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(146)))), ((int)(((byte)(223)))));
-            this.btnAdd.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnAdd.BorderRadius = 4;
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdd.FontSize = 15F;
-            this.btnAdd.Location = new System.Drawing.Point(0, 41);
-            this.btnAdd.Margin = new Smobiler.Core.Controls.Margin(10F, 10F, 10F, 0F);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(300, 34);
-            this.btnAdd.Text = "添加";
-            this.btnAdd.Press += new System.EventHandler(this.btnAdd_Press);
-            // 
             // ListViewCO
             // 
             this.ListViewCO.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
             this.ListViewCO.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ListViewCO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListViewCO.Location = new System.Drawing.Point(0, 75);
-            this.ListViewCO.Margin = new Smobiler.Core.Controls.Margin(0F, 20F, 0F, 0F);
             this.ListViewCO.Name = "ListViewCO";
             this.ListViewCO.PageSizeTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
             this.ListViewCO.PageSizeTextSize = 11F;
             this.ListViewCO.Size = new System.Drawing.Size(300, 400);
             this.ListViewCO.TemplateControlName = "CollarOrderLayout";
             // 
+            // plButton
+            // 
+            this.plButton.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.btnAdd});
+            this.plButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.plButton.Location = new System.Drawing.Point(0, 40);
+            this.plButton.Name = "plButton";
+            this.plButton.Size = new System.Drawing.Size(300, 55);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(146)))), ((int)(((byte)(223)))));
+            this.btnAdd.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnAdd.BorderRadius = 4;
+            this.btnAdd.FontSize = 15F;
+            this.btnAdd.Margin = new Smobiler.Core.Controls.Margin(10F, 10F, 10F, 0F);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(280, 35);
+            this.btnAdd.Text = "添加";
+            this.btnAdd.Press += new System.EventHandler(this.btnAdd_Press);
+            // 
             // frmCollarOrder
             // 
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Title1,
-            this.btnAdd,
+            this.plButton,
             this.ListViewCO});
             this.DrawerName = "LeftMenu";
             this.Orientation = Smobiler.Core.Controls.FormOrientation.Portrait;
@@ -88,7 +95,8 @@ namespace SMOSEC.UI.AssetsManager
         #endregion
 
         private MenuTitle Title1;
-        internal Smobiler.Core.Controls.Button btnAdd;
         internal Smobiler.Core.Controls.ListView ListViewCO;
+        private Smobiler.Core.Controls.Panel plButton;
+        internal Smobiler.Core.Controls.Button btnAdd;
     }
 }

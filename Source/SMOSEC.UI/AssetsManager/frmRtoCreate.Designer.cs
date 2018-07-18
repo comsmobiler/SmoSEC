@@ -35,20 +35,18 @@ namespace SMOSEC.UI.AssetsManager
             this.Panel3 = new Smobiler.Core.Controls.Panel();
             this.Label1 = new Smobiler.Core.Controls.Label();
             this.Label2 = new Smobiler.Core.Controls.Label();
-            this.Label7 = new Smobiler.Core.Controls.Label();
             this.Label8 = new Smobiler.Core.Controls.Label();
             this.txtNote = new Smobiler.Core.Controls.TextBox();
             this.DPickerCO = new Smobiler.Core.Controls.DatePicker();
-            this.btnBOMan = new Smobiler.Core.Controls.Button();
+            this.btnLocation = new Smobiler.Core.Controls.Button();
             this.Label4 = new Smobiler.Core.Controls.Label();
-            this.btnBOMan1 = new Smobiler.Core.Controls.Button();
+            this.btnLocation1 = new Smobiler.Core.Controls.Button();
             this.txtHMan = new Smobiler.Core.Controls.TextBox();
-            this.txtLocation = new Smobiler.Core.Controls.TextBox();
             this.panelScan = new Smobiler.Core.Controls.Panel();
             this.image1 = new Smobiler.Core.Controls.Image();
             this.label3 = new Smobiler.Core.Controls.Label();
             this.ListAss = new Smobiler.Core.Controls.ListView();
-            this.PopRTMan = new Smobiler.Core.Controls.PopList();
+            this.PopLocation = new Smobiler.Core.Controls.PopList();
             this.r2000Scanner1 = new Smobiler.Device.R2000Scanner();
             this.barcodeScanner1 = new Smobiler.Core.Controls.BarcodeScanner();
             this.image2 = new Smobiler.Core.Controls.Image();
@@ -101,18 +99,16 @@ namespace SMOSEC.UI.AssetsManager
             this.Panel3.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.Label1,
             this.Label2,
-            this.Label7,
             this.Label8,
             this.txtNote,
             this.DPickerCO,
-            this.btnBOMan,
+            this.btnLocation,
             this.Label4,
-            this.btnBOMan1,
+            this.btnLocation1,
             this.txtHMan,
-            this.txtLocation,
             this.panelScan});
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(300, 191);
+            this.Panel3.Size = new System.Drawing.Size(300, 160);
             // 
             // Label1
             // 
@@ -122,7 +118,7 @@ namespace SMOSEC.UI.AssetsManager
             this.Label1.Name = "Label1";
             this.Label1.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.Label1.Size = new System.Drawing.Size(100, 30);
-            this.Label1.Text = "归还人";
+            this.Label1.Text = "归还到区域";
             // 
             // Label2
             // 
@@ -135,23 +131,12 @@ namespace SMOSEC.UI.AssetsManager
             this.Label2.Size = new System.Drawing.Size(100, 30);
             this.Label2.Text = "归还日期";
             // 
-            // Label7
-            // 
-            this.Label7.BackColor = System.Drawing.Color.White;
-            this.Label7.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.Label7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Label7.Location = new System.Drawing.Point(0, 60);
-            this.Label7.Name = "Label7";
-            this.Label7.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
-            this.Label7.Size = new System.Drawing.Size(100, 30);
-            this.Label7.Text = "归还处理人";
-            // 
             // Label8
             // 
             this.Label8.BackColor = System.Drawing.Color.White;
             this.Label8.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 1F);
             this.Label8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Label8.Location = new System.Drawing.Point(0, 120);
+            this.Label8.Location = new System.Drawing.Point(0, 90);
             this.Label8.Name = "Label8";
             this.Label8.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.Label8.Size = new System.Drawing.Size(100, 30);
@@ -162,7 +147,7 @@ namespace SMOSEC.UI.AssetsManager
             this.txtNote.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 1F);
             this.txtNote.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.txtNote.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.txtNote.Location = new System.Drawing.Point(100, 120);
+            this.txtNote.Location = new System.Drawing.Point(100, 90);
             this.txtNote.Name = "txtNote";
             this.txtNote.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
             this.txtNote.Size = new System.Drawing.Size(200, 30);
@@ -179,45 +164,45 @@ namespace SMOSEC.UI.AssetsManager
             this.DPickerCO.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
             this.DPickerCO.Size = new System.Drawing.Size(200, 30);
             // 
-            // btnBOMan
+            // btnLocation
             // 
-            this.btnBOMan.BackColor = System.Drawing.Color.White;
-            this.btnBOMan.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.btnBOMan.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnBOMan.BorderRadius = 0;
-            this.btnBOMan.ForeColor = System.Drawing.Color.Black;
-            this.btnBOMan.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.btnBOMan.Location = new System.Drawing.Point(100, 0);
-            this.btnBOMan.Name = "btnBOMan";
-            this.btnBOMan.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 2F, 0F);
-            this.btnBOMan.Size = new System.Drawing.Size(166, 30);
-            this.btnBOMan.Press += new System.EventHandler(this.btnBOMan_Press);
+            this.btnLocation.BackColor = System.Drawing.Color.White;
+            this.btnLocation.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
+            this.btnLocation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnLocation.BorderRadius = 0;
+            this.btnLocation.ForeColor = System.Drawing.Color.Black;
+            this.btnLocation.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
+            this.btnLocation.Location = new System.Drawing.Point(100, 0);
+            this.btnLocation.Name = "btnLocation";
+            this.btnLocation.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 2F, 0F);
+            this.btnLocation.Size = new System.Drawing.Size(166, 30);
+            this.btnLocation.Press += new System.EventHandler(this.btnLocation_Press);
             // 
             // Label4
             // 
             this.Label4.BackColor = System.Drawing.Color.White;
             this.Label4.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
             this.Label4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.Label4.Location = new System.Drawing.Point(0, 90);
+            this.Label4.Location = new System.Drawing.Point(0, 60);
             this.Label4.Name = "Label4";
             this.Label4.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.Label4.Size = new System.Drawing.Size(100, 30);
             this.Label4.Text = "归还到区域";
             // 
-            // btnBOMan1
+            // btnLocation1
             // 
-            this.btnBOMan1.BackColor = System.Drawing.Color.White;
-            this.btnBOMan1.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.btnBOMan1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnBOMan1.BorderRadius = 0;
-            this.btnBOMan1.ForeColor = System.Drawing.Color.Black;
-            this.btnBOMan1.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.btnBOMan1.Location = new System.Drawing.Point(266, 0);
-            this.btnBOMan1.Name = "btnBOMan1";
-            this.btnBOMan1.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
-            this.btnBOMan1.Size = new System.Drawing.Size(34, 30);
-            this.btnBOMan1.Text = ">";
-            this.btnBOMan1.Press += new System.EventHandler(this.btnBOMan_Press);
+            this.btnLocation1.BackColor = System.Drawing.Color.White;
+            this.btnLocation1.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
+            this.btnLocation1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnLocation1.BorderRadius = 0;
+            this.btnLocation1.ForeColor = System.Drawing.Color.Black;
+            this.btnLocation1.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
+            this.btnLocation1.Location = new System.Drawing.Point(266, 0);
+            this.btnLocation1.Name = "btnLocation1";
+            this.btnLocation1.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
+            this.btnLocation1.Size = new System.Drawing.Size(34, 30);
+            this.btnLocation1.Text = ">";
+            this.btnLocation1.Press += new System.EventHandler(this.btnLocation_Press);
             // 
             // txtHMan
             // 
@@ -230,23 +215,12 @@ namespace SMOSEC.UI.AssetsManager
             this.txtHMan.ReadOnly = true;
             this.txtHMan.Size = new System.Drawing.Size(200, 30);
             // 
-            // txtLocation
-            // 
-            this.txtLocation.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
-            this.txtLocation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtLocation.HorizontalAlignment = Smobiler.Core.Controls.HorizontalAlignment.Right;
-            this.txtLocation.Location = new System.Drawing.Point(100, 90);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Padding = new Smobiler.Core.Controls.Padding(0F, 0F, 5F, 0F);
-            this.txtLocation.ReadOnly = true;
-            this.txtLocation.Size = new System.Drawing.Size(200, 30);
-            // 
             // panelScan
             // 
             this.panelScan.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.image1,
             this.label3});
-            this.panelScan.Location = new System.Drawing.Point(5, 156);
+            this.panelScan.Location = new System.Drawing.Point(5, 126);
             this.panelScan.Name = "panelScan";
             this.panelScan.Size = new System.Drawing.Size(124, 28);
             this.panelScan.Touchable = true;
@@ -271,19 +245,19 @@ namespace SMOSEC.UI.AssetsManager
             this.ListAss.BackColor = System.Drawing.Color.White;
             this.ListAss.Border = new Smobiler.Core.Controls.Border(0F, 1F, 0F, 0F);
             this.ListAss.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ListAss.Location = new System.Drawing.Point(0, 191);
+            this.ListAss.Location = new System.Drawing.Point(0, 160);
             this.ListAss.Name = "ListAss";
             this.ListAss.PageSizeTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
             this.ListAss.PageSizeTextSize = 11F;
             this.ListAss.ShowSplitLine = true;
-            this.ListAss.Size = new System.Drawing.Size(300, 220);
+            this.ListAss.Size = new System.Drawing.Size(300, 251);
             this.ListAss.SplitLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.ListAss.TemplateControlName = "OperCreateAssLayout";
+            this.ListAss.TemplateControlName = "OperCreateAssExLayout";
             // 
-            // PopRTMan
+            // PopLocation
             // 
-            this.PopRTMan.Name = "PopRTMan";
-            this.PopRTMan.Selected += new System.EventHandler(this.PopRTMan_Selected);
+            this.PopLocation.Name = "PopLocation";
+            this.PopLocation.Selected += new System.EventHandler(this.PopLocation_Selected);
             // 
             // r2000Scanner1
             // 
@@ -313,7 +287,7 @@ namespace SMOSEC.UI.AssetsManager
             // frmRtoCreate
             // 
             this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
-            this.PopRTMan,
+            this.PopLocation,
             this.r2000Scanner1,
             this.barcodeScanner1});
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
@@ -336,17 +310,15 @@ namespace SMOSEC.UI.AssetsManager
         internal Smobiler.Core.Controls.Panel Panel3;
         internal Smobiler.Core.Controls.Label Label1;
         internal Smobiler.Core.Controls.Label Label2;
-        internal Smobiler.Core.Controls.Label Label7;
         internal Smobiler.Core.Controls.Label Label8;
         internal Smobiler.Core.Controls.TextBox txtNote;
         internal Smobiler.Core.Controls.DatePicker DPickerCO;
-        internal Smobiler.Core.Controls.Button btnBOMan;
+        internal Smobiler.Core.Controls.Button btnLocation;
         internal Smobiler.Core.Controls.Label Label4;
-        internal Smobiler.Core.Controls.Button btnBOMan1;
-        internal Smobiler.Core.Controls.PopList PopRTMan;
+        internal Smobiler.Core.Controls.Button btnLocation1;
+        internal Smobiler.Core.Controls.PopList PopLocation;
         private Smobiler.Core.Controls.ListView ListAss;
         internal Smobiler.Core.Controls.TextBox txtHMan;
-        internal Smobiler.Core.Controls.TextBox txtLocation;
         private Smobiler.Device.R2000Scanner r2000Scanner1;
         private Smobiler.Core.Controls.BarcodeScanner barcodeScanner1;
         internal Smobiler.Core.Controls.Panel panelScan;

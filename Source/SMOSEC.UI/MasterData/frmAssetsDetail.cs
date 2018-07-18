@@ -5,6 +5,7 @@ using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.DTOs.OutputDTO;
 using Smobiler.Device;
+using SMOSEC.DTOs.Enum;
 
 namespace SMOSEC.UI.MasterData
 {
@@ -163,7 +164,7 @@ namespace SMOSEC.UI.MasterData
                     DatePickerBuy = { Value = Convert.ToDateTime(txtBuyDate.Text) },
                     DepId = DepId,
                     btnDep = { Text = txtDep.Text + "   > " },
-                    DatePickerExpiry = { Value = Convert.ToDateTime(txtEDate.Text)},
+                    DatePickerExpiry = { Value = Convert.ToDateTime(txtEDate.Text) },
                     ImgPicture = { ResourceID = image2.ResourceID },
                     LocationId = LocationId,
                     btnLocation = { Text = txtLocation1.Text },
@@ -174,8 +175,7 @@ namespace SMOSEC.UI.MasterData
                     txtPlace = { Text = txtPlace1.Text },
                     txtPrice = { Text = txtPrice1.Text },
                     txtSpe = { Text = txtSPE1.Text },
-                    TypeId = TypeId,
-                    btnType = { Text = txtType.Text },
+                    btnType = { Tag = TypeId, Text = txtType.Text },
                     txtUnit = { Text = txtUnit1.Text },
                     txtVendor = { Text = txtVendor1.Text }
                 };
@@ -283,6 +283,47 @@ namespace SMOSEC.UI.MasterData
                         this.Toast("Error: " + args.error);
                     else
                         this.Toast("打印成功");
+                });
+            }
+            catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 资产删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Press(object sender, EventArgs e)
+        {
+            try
+            {
+                AssetsOutputDto ass = _autofacConfig.SettingService.GetAssetsByID(AssId);
+                if (ass.Status != (int)STATUS.闲置) throw new Exception("资产处于非空闲状态中，无法删除!");
+                MessageBox.Show("是否确定删除该资产？", "系统提示", MessageBoxButtons.YesNo, (object sender1, MessageBoxHandlerArgs args) =>
+                {
+                    try
+                    {
+                        if (args.Result == ShowResult.Yes)
+                        {
+                            ReturnInfo RInfo = _autofacConfig.SettingService.DeleteAssets(AssId,Client.Session["UserID"].ToString());
+                            if (RInfo.IsSuccess)
+                            {
+                                Toast("删除成功!");
+                                ShowResult = ShowResult.Yes;
+                                Close();
+                            }
+                            else
+                            {
+                                throw new Exception(RInfo.ErrorInfo);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast(ex.Message);
+                    }
                 });
             }
             catch (Exception ex)

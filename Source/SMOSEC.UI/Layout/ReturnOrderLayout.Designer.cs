@@ -34,9 +34,9 @@ namespace SMOSEC.UI.Layout
             this.Label3 = new Smobiler.Core.Controls.Label();
             this.Label5 = new Smobiler.Core.Controls.Label();
             this.LblID = new Smobiler.Core.Controls.Label();
-            this.LblBMan = new Smobiler.Core.Controls.Label();
             this.LblDate = new Smobiler.Core.Controls.Label();
             this.LblLocation = new Smobiler.Core.Controls.Label();
+            this.lblRSMan = new Smobiler.Core.Controls.Label();
             // 
             // Panel1
             // 
@@ -49,9 +49,9 @@ namespace SMOSEC.UI.Layout
             this.Label3,
             this.Label5,
             this.LblID,
-            this.LblBMan,
             this.LblDate,
-            this.LblLocation});
+            this.LblLocation,
+            this.lblRSMan});
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(300, 76);
             this.Panel1.Touchable = true;
@@ -63,17 +63,17 @@ namespace SMOSEC.UI.Layout
             this.Label1.Location = new System.Drawing.Point(10, 8);
             this.Label1.Name = "Label1";
             this.Label1.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.Label1.Size = new System.Drawing.Size(43, 20);
+            this.Label1.Size = new System.Drawing.Size(51, 20);
             this.Label1.Text = "单号";
             // 
             // Label2
             // 
             this.Label2.BackColor = System.Drawing.Color.White;
-            this.Label2.Location = new System.Drawing.Point(173, 8);
+            this.Label2.Location = new System.Drawing.Point(10, 48);
             this.Label2.Name = "Label2";
             this.Label2.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.Label2.Size = new System.Drawing.Size(54, 20);
-            this.Label2.Text = "归还人";
+            this.Label2.Size = new System.Drawing.Size(51, 20);
+            this.Label2.Text = "处理人";
             // 
             // Label3
             // 
@@ -81,16 +81,16 @@ namespace SMOSEC.UI.Layout
             this.Label3.Location = new System.Drawing.Point(10, 28);
             this.Label3.Name = "Label3";
             this.Label3.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.Label3.Size = new System.Drawing.Size(43, 20);
+            this.Label3.Size = new System.Drawing.Size(51, 20);
             this.Label3.Text = "日期";
             // 
             // Label5
             // 
             this.Label5.BackColor = System.Drawing.Color.White;
-            this.Label5.Location = new System.Drawing.Point(10, 48);
+            this.Label5.Location = new System.Drawing.Point(176, 48);
             this.Label5.Name = "Label5";
             this.Label5.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.Label5.Size = new System.Drawing.Size(43, 20);
+            this.Label5.Size = new System.Drawing.Size(55, 20);
             this.Label5.Text = "区域";
             // 
             // LblID
@@ -98,37 +98,37 @@ namespace SMOSEC.UI.Layout
             this.LblID.BackColor = System.Drawing.Color.White;
             this.LblID.DataMember = "RTOID";
             this.LblID.DisplayMember = "RTOID";
-            this.LblID.Location = new System.Drawing.Point(53, 8);
+            this.LblID.Location = new System.Drawing.Point(61, 8);
             this.LblID.Name = "LblID";
             this.LblID.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.LblID.Size = new System.Drawing.Size(120, 20);
-            // 
-            // LblBMan
-            // 
-            this.LblBMan.DataMember = "RETURNER";
-            this.LblBMan.DisplayMember = "RETURNER";
-            this.LblBMan.Location = new System.Drawing.Point(227, 8);
-            this.LblBMan.Name = "LblBMan";
-            this.LblBMan.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.LblBMan.Size = new System.Drawing.Size(63, 20);
+            this.LblID.Size = new System.Drawing.Size(229, 20);
             // 
             // LblDate
             // 
             this.LblDate.DataMember = "RETURNDATE";
             this.LblDate.DisplayMember = "RETURNDATE";
-            this.LblDate.Location = new System.Drawing.Point(53, 28);
+            this.LblDate.Location = new System.Drawing.Point(61, 28);
             this.LblDate.Name = "LblDate";
             this.LblDate.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.LblDate.Size = new System.Drawing.Size(237, 20);
+            this.LblDate.Size = new System.Drawing.Size(229, 20);
             // 
             // LblLocation
             // 
             this.LblLocation.DataMember = "LOCATIONNAME";
             this.LblLocation.DisplayMember = "LOCATIONNAME";
-            this.LblLocation.Location = new System.Drawing.Point(53, 48);
+            this.LblLocation.Location = new System.Drawing.Point(231, 48);
             this.LblLocation.Name = "LblLocation";
             this.LblLocation.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
-            this.LblLocation.Size = new System.Drawing.Size(237, 20);
+            this.LblLocation.Size = new System.Drawing.Size(59, 20);
+            // 
+            // lblRSMan
+            // 
+            this.lblRSMan.DataMember = "HandleMan";
+            this.lblRSMan.DisplayMember = "HandleMan";
+            this.lblRSMan.Location = new System.Drawing.Point(61, 48);
+            this.lblRSMan.Name = "lblRSMan";
+            this.lblRSMan.Padding = new Smobiler.Core.Controls.Padding(10F, 0F, 0F, 0F);
+            this.lblRSMan.Size = new System.Drawing.Size(115, 20);
             // 
             // ReturnOrderLayout
             // 
@@ -146,8 +146,8 @@ namespace SMOSEC.UI.Layout
         internal Smobiler.Core.Controls.Label Label3;
         internal Smobiler.Core.Controls.Label Label5;
         internal Smobiler.Core.Controls.Label LblID;
-        internal Smobiler.Core.Controls.Label LblBMan;
         internal Smobiler.Core.Controls.Label LblDate;
         internal Smobiler.Core.Controls.Label LblLocation;
+        internal Smobiler.Core.Controls.Label lblRSMan;
     }
 }

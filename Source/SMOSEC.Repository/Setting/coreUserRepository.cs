@@ -57,6 +57,14 @@ namespace SMOSEC.Repository.Setting
             return _entities.Where(x => x.USER_ROLE == "SMOSECUser");
         }
         /// <summary>
+        /// 通过用户名称获取用户数据
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<coreUser> GetUser(string Name)
+        {
+            return _entities.Where(x => x.USER_NAME.Contains(Name));
+        }
+        /// <summary>
         /// 通过用户编号获取用户信息
         /// </summary>
         /// <param name="ID"></param>

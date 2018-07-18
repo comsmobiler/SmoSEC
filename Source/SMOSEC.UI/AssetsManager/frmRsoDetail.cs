@@ -44,7 +44,6 @@ namespace SMOSEC.UI.AssetsManager
                 AssRestoreOrderOutputDto assRestoreOrderOutput = _autofacConfig.AssetsService.GetRsobyId(RsoId);
                 if (assRestoreOrderOutput != null)
                 {
-                    txtRSMan.Text = assRestoreOrderOutput.Restorer;
                     txtHMan.Text = assRestoreOrderOutput.Handleman;
                     txtLocation.Text = assRestoreOrderOutput.LocationName ;
                     txtNote.Text = assRestoreOrderOutput.Note;

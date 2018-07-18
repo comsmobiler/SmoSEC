@@ -2,6 +2,7 @@
 using System.Linq;
 using SMOSEC.Domain.IRepository;
 using SMOSEC.Infrastructure;
+using System.Collections.Generic;
 
 namespace SMOSEC.Repository.Assets
 {
@@ -60,7 +61,7 @@ namespace SMOSEC.Repository.Assets
         /// </summary>
         /// <param name="UserID">用户编号</param>
         /// <returns></returns>
-        public IQueryable<SMOSEC.Domain.Entity.Assets> GetByUser(String UserID)
+        public IQueryable<Domain.Entity.Assets> GetByUser(String UserID)
         {
             var result = _entities;
             if (!string.IsNullOrEmpty(UserID))
@@ -122,7 +123,25 @@ namespace SMOSEC.Repository.Assets
             result = result.Where(a => a.STATUS == Status&&a.ISLOCKED==0);
             return result;
         }
-
+        /// <summary>
+        /// 根据序列号或者名称查询资产
+        /// </summary>
+        /// <param name="SNOrName">序列号或者名称</param>
+        /// <param name="types"></param>
+        /// <returns></returns>
+        public IQueryable<SMOSEC.Domain.Entity.Assets> QueryAssets(string SNOrName, List<String> types)
+        {
+            var result = _entities;
+            if (types.Count > 0)
+            {
+                result = result.Where(a => types.Contains(a.TYPEID));
+            }
+            if (!string.IsNullOrEmpty(SNOrName))
+            {
+                result = result.Where(a => a.SN.Contains(SNOrName) || a.NAME.Contains(SNOrName) || a.CURRENTUSER.Contains(SNOrName));
+            }
+            return result;
+        }
         /// <summary>
         /// 查询空闲的资产数据(除调入区域外的)
         /// </summary>

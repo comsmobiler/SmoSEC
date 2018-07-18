@@ -28,6 +28,23 @@ namespace SMOSEC.Repository.Assets
             return _entities.Where(x => x.TYPEID == ID);
         }
         /// <summary>
+        /// 获取所有大类
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<AssetsType> GetAllFirstLevel()
+        {
+            return _entities.Where(x => x.TLEVEL == 1);
+        }
+        /// <summary>
+        /// 根据父类型编号，获取子类型数据
+        /// </summary>
+        /// <param name="TypeID"></param>
+        /// <returns></returns>
+        public IQueryable<AssetsType> GetByParentTypeID(string TypeID)
+        {
+            return _entities.Where(x => x.PARENTTYPEID == TypeID);
+        }
+        /// <summary>
         /// 根据类型编号判断是否为父分类
         /// </summary>
         /// <param name="ID"></param>

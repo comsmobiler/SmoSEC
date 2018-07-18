@@ -54,13 +54,6 @@ namespace SMOSEC.Domain.Entity
         public string NOTE { get; set; }
 
         /// <summary>
-        /// 退库人
-        /// </summary>
-        [StringLength(maximumLength: 20, ErrorMessage = "长度不能超过20")]
-        [DisplayName("退库人")]
-        public string RESTORER { get; set; }
-
-        /// <summary>
         /// 创建时间
         /// </summary>
         [DisplayName("创建时间")]

@@ -1,33 +1,58 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using Smobiler.Core;
 using Smobiler.Core.Controls;
-using SMOSEC.UI.Layout;
-using System.Data;
-using SMOSEC.Application.Services;
 using SMOSEC.Domain.Entity;
+using SMOSEC.UI.MasterData;
 
-namespace SMOSEC.UI.MasterData
+namespace SMOSEC.UI.Layout
 {
-    partial class frmAssetsTypeRows : Smobiler.Core.Controls.MobileForm
-    {
+    ////ToolboxItem用于控制是否添加自定义控件到工具箱，true添加，false不添加
+    //[System.ComponentModel.ToolboxItem(true)]
+    partial class frmAssTypeChooseLayout : Smobiler.Core.Controls.MobileUserControl
+    { 
         #region "definition"
         AutofacConfig autofacConfig = new AutofacConfig();//调用配置类
         public Int32 MaxLevel = 3;         //最深层级
         public Int32 NowLevel = 1;     //当前层级
         public String ID;              //选择资产分类编号
+        public string typeId;
+        public string typeName;
+        public bool IsCreate;
         #endregion
         /// <summary>
-        /// 页面初始化
+        /// 关闭当前弹出页
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmAssetsTypeRows_Load(object sender, EventArgs e)
+        private void plClose_Press(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void treeAssetsType_NodePress(object sender, TreeViewClickEventArgs e)
+        {
+            if (IsCreate)
+            {
+                ((frmAssetsCreate)Form).btnType.Tag = e.Value;    //所选资产分类编号
+                ((frmAssetsCreate)Form).btnType.Text = e.Text;    //所选资产分类名称
+            }
+            else
+            {
+                ((frmAssetsDetailEdit)Form).btnType.Tag = e.Value;   //所选资产分类编号
+                ((frmAssetsDetailEdit)Form).btnType.Text = e.Text;   //所选资产分类名称
+            }
+            this.Close();
+        }
+
+        private void frmAssTypeChooseLayout_Load(object sender, EventArgs e)
         {
             Bind();
         }
+
         /// <summary>
         /// 数据绑定
         /// </summary>
@@ -55,6 +80,7 @@ namespace SMOSEC.UI.MasterData
                             treeAssetsType.Nodes.Add(Node);
                         }
                     }
+                    ChangeNodeColor(treeAssetsType.Nodes);
                 }
             }
             catch (Exception ex)
@@ -62,6 +88,7 @@ namespace SMOSEC.UI.MasterData
                 Toast(ex.Message);
             }
         }
+
         /// <summary>
         /// 添加子级资产分类(总共三级)
         /// </summary>
@@ -104,84 +131,21 @@ namespace SMOSEC.UI.MasterData
             }
             return TreeData;
         }
-        /// <summary>
-        /// 添加下级资产分类
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void IBAdd_Press(object sender, EventArgs e)
+
+        public void ChangeNodeColor(TreeViewNodeCollection nodes)
         {
-            try
+            foreach (TreeViewNode node in nodes)
             {
-                if (String.IsNullOrEmpty(ID))  throw new Exception("请先选择父类资产类别");
-                if (autofacConfig.assTypeService.GetByID(ID).TLEVEL == 3) throw new Exception("当前所选类别为最低级，无法创建下级!");
-                frmAssetsTypeCreateLayout frm = new frmAssetsTypeCreateLayout();
-                frm.isCreateSon = true;
-                frm.ID = ID;
-                ShowDialog(frm);
+                if (node.Value == typeId)
+                {
+                    node.TextColor = Color.Red;
+                    return;
+                }
+                if (node.Nodes.Count > 0)
+                {
+                    ChangeNodeColor(node.Nodes);
+                }
             }
-            catch(Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-        /// <summary>
-        /// 进行编辑
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void IBEdit_Press(object sender, EventArgs e)
-        {
-            try
-            {
-                if (String.IsNullOrEmpty(ID)) throw new Exception("请先选择要操作的资产类别");
-                frmLocationRowsButtonLayout frm = new frmLocationRowsButtonLayout();
-                frm.ID = ID;
-                DialogOptions Dialog = new DialogOptions {
-                    JustifyAlign = LayoutJustifyAlign.FlexEnd,
-                    Padding = new Padding(0)
-                };
-                ShowDialog(frm,Dialog);
-            }
-            catch(Exception ex)
-            {
-                Toast(ex.Message);
-            }
-        }
-        /// <summary>
-        /// 新建资产分类
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCreate_Press(object sender, EventArgs e)
-        {
-            frmAssetsTypeCreateLayout frm = new frmAssetsTypeCreateLayout();
-            frm.isCreate = true;
-            frm.plFID.Visible = false;
-            frm.plFName.Visible = false;
-            frm.plFDate.Visible = false;
-            frm.Height = 220;
-            this.ShowDialog(frm);
-        }
-        /// <summary>
-        /// 选择资产
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void treeAssetsType_NodePress(object sender, TreeViewClickEventArgs e)
-        {
-            ID = e.Value;        //所选资产分类编号
-            lblName.Text = e.Text;      //所选资产分类名称
-        }
-        /// <summary>
-        /// 手机自带返回键操作
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void frmAssetsTypeRows_KeyDown(object sender, KeyDownEventArgs e)
-        {
-            if (e.KeyCode == KeyCode.Back)
-                Client.Exit();
         }
     }
 }

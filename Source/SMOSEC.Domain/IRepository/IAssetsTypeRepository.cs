@@ -16,6 +16,17 @@ namespace SMOSEC.Domain.IRepository
         /// <returns></returns>
         IQueryable<AssetsType> GetByID(String ID);
         /// <summary>
+        /// 获取所有大类
+        /// </summary>
+        /// <returns></returns>
+        IQueryable<AssetsType> GetAllFirstLevel();
+        /// <summary>
+        /// 根据父类型编号，获取子类型数据
+        /// </summary>
+        /// <param name="TypeID"></param>
+        /// <returns></returns>
+        IQueryable<AssetsType> GetByParentTypeID(string TypeID);
+        /// <summary>
         /// 判断是否为父分类
         /// </summary>
         /// <param name="ID"></param>

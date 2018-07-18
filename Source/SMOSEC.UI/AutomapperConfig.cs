@@ -13,23 +13,14 @@ namespace SMOSEC.UI
         public static void Init()
         {
             //映射InputDto到Entity
-//            Mapper.CreateMap<AssRepairOrder, ROInputDto>();
-//            Mapper.CreateMap<AssScrapOrder, SOInputDto>();
-//            Mapper.CreateMap<AssTransferOrder, TOInputDto>();
-            //映射InputDto到Entity
             Mapper.Initialize(x =>
             {
                 //映射InputDto到Entity
                 x.CreateMap<AssetsInputDto, Assets>();
                 x.CreateMap<AssBorrowOrderInputDto, AssBorrowOrder>();
-                //x.CreateMap<AssBorrowOrderRowInputDto, AssBorrowOrder>();
                 x.CreateMap<AssCollarOrderInputDto, AssCollarOrder>();
-                //x.CreateMap<AssCollarOrderRowInputDto, AssCollarOrderRow>();
-//                x.CreateMap<AssProcessRecordInputDto, AssProcessRecord>();
                 x.CreateMap<AssRestoreOrderInputDto, AssRestoreOrder>();
-                // x.CreateMap<AssRestoreOrderRowInputDto, AssRestoreOrderRow>();
                 x.CreateMap<AssReturnOrderInputDto, AssReturnOrder>();
-                // x.CreateMap<AssReturnOrderRowInputDto, AssReturnOrderRow>();
                 x.CreateMap<ConsumablesInputDto, Consumables>();
                 x.CreateMap<OutboundOrderInputDto, OutboundOrder>();
                 x.CreateMap<WarehouseReceiptInputDto, WarehouseReceipt>();

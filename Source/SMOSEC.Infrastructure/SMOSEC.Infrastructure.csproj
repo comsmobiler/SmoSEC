@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201806060842390_AddIsLockedToLocation.Designer.cs">
       <DependentUpon>201806060842390_AddIsLockedToLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807170321038_ChangeRSOandRTO.cs" />
+    <Compile Include="Migrations\201807170321038_ChangeRSOandRTO.Designer.cs">
+      <DependentUpon>201807170321038_ChangeRSOandRTO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SMOSECDbContext.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -147,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806060842390_AddIsLockedToLocation.resx">
       <DependentUpon>201806060842390_AddIsLockedToLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807170321038_ChangeRSOandRTO.resx">
+      <DependentUpon>201807170321038_ChangeRSOandRTO.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

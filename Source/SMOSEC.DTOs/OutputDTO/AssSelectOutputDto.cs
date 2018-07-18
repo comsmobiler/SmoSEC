@@ -10,9 +10,7 @@
         public string ASSID { get; set; }
         public string NAME { get; set; }
         public string SN { get; set; }
-//        public string SOURCEID { get; set; }
-//        public decimal QUANTITY { get; set; }
-//        public decimal QTY { get; set; }
+        public string USERNAME { get; set; }
 
     }
 }

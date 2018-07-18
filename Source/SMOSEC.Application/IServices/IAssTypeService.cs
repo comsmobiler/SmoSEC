@@ -18,6 +18,11 @@ namespace SMOSEC.Application.IServices
         /// <returns></returns>
         List<AssetsType> GetAll();
         /// <summary>
+        /// 返回所有资产大类信息
+        /// </summary>
+        /// <returns></returns>
+        List<AssetsType> GetAllFirstLevel();
+        /// <summary>
         /// 根据资产类别编号返回资产类别信息
         /// </summary>
         /// <param name="ID"></param>

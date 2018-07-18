@@ -66,7 +66,6 @@ namespace SMOSEC.UI.MasterData
             this.ImgBtnForSN = new Smobiler.Core.Controls.ImageButton();
             this.CamPicture = new Smobiler.Core.Controls.Camera();
             this.PopLocation = new Smobiler.Core.Controls.PopList();
-            this.PopType = new Smobiler.Core.Controls.PopList();
             this.barcodeScanner1 = new Smobiler.Core.Controls.BarcodeScanner();
             this.Title1 = new SMOSEC.UI.UserControl.Title();
             this.Panel2 = new Smobiler.Core.Controls.Panel();
@@ -497,11 +496,6 @@ namespace SMOSEC.UI.MasterData
             this.PopLocation.Name = "PopLocation";
             this.PopLocation.Selected += new System.EventHandler(this.PopLocation_Selected);
             // 
-            // PopType
-            // 
-            this.PopType.Name = "PopType";
-            this.PopType.Selected += new System.EventHandler(this.PopType_Selected);
-            // 
             // barcodeScanner1
             // 
             this.barcodeScanner1.Name = "barcodeScanner1";
@@ -617,7 +611,6 @@ namespace SMOSEC.UI.MasterData
             this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
             this.CamPicture,
             this.PopLocation,
-            this.PopType,
             this.barcodeScanner1,
             this.r2000Scanner1,
             this.popDep});
@@ -655,7 +648,6 @@ namespace SMOSEC.UI.MasterData
         internal Smobiler.Core.Controls.TextBox txtSN;
         internal Smobiler.Core.Controls.TextBox txtPrice;
         internal Smobiler.Core.Controls.DatePicker DatePickerBuy;
-        internal Smobiler.Core.Controls.Button btnType;
         internal Smobiler.Core.Controls.Button btnType1;
         internal Smobiler.Core.Controls.Button btnLocation;
         internal Smobiler.Core.Controls.Button btnLocation1;
@@ -666,7 +658,6 @@ namespace SMOSEC.UI.MasterData
         internal Smobiler.Core.Controls.DatePicker DatePickerExpiry;
         private Smobiler.Core.Controls.Camera CamPicture;
         internal Smobiler.Core.Controls.PopList PopLocation;
-        internal Smobiler.Core.Controls.PopList PopType;
         internal Smobiler.Core.Controls.TextBox txtAssID;
         internal Smobiler.Core.Controls.Label label12;
         internal Smobiler.Core.Controls.TextBox txtPlace;
@@ -680,5 +671,6 @@ namespace SMOSEC.UI.MasterData
         internal Smobiler.Core.Controls.TextBox txtManager;
         internal Smobiler.Core.Controls.Button btnDep;
         private Smobiler.Core.Controls.PopList popDep;
+        internal Smobiler.Core.Controls.Button btnType;
     }
 }

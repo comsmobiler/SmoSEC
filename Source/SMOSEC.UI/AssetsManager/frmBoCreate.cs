@@ -31,6 +31,10 @@ namespace SMOSEC.UI.AssetsManager
         {
             try
             {
+                if (AssIdList.Count == 0)
+                {
+                    throw new Exception("请添加借用的资产！");
+                }
                 AssBorrowOrderInputDto assBorrowOrderInput = new AssBorrowOrderInputDto
                 {
                     AssIds = AssIdList,

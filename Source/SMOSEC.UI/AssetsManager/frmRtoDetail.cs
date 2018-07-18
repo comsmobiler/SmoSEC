@@ -45,7 +45,6 @@ namespace SMOSEC.UI.AssetsManager
                 AssReturnOrderOutputDto assBorrowOrderOutput = _autofacConfig.AssetsService.GetRtobyId(RtoId);
                 if (assBorrowOrderOutput != null)
                 {
-                    txtBOMan.Text = assBorrowOrderOutput.Returner;
                     txtHMan.Text = assBorrowOrderOutput.Handleman;
                     txtLocation.Text = assBorrowOrderOutput.Locationid;
                     txtNote.Text = assBorrowOrderOutput.Note;

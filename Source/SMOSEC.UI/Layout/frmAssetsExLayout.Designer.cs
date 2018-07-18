@@ -28,7 +28,7 @@ namespace SMOSEC.UI.Layout
         [System.Diagnostics.DebuggerStepThrough()]
         private void InitializeComponent()
         {
-            this.touchPanel1 = new Smobiler.Core.Controls.Panel();
+            this.tpRow = new Smobiler.Core.Controls.Panel();
             this.imgPicture = new Smobiler.Core.Controls.Image();
             this.lblName = new Smobiler.Core.Controls.Label();
             this.lblID = new Smobiler.Core.Controls.Label();
@@ -36,22 +36,22 @@ namespace SMOSEC.UI.Layout
             this.Label16 = new Smobiler.Core.Controls.Label();
             this.checkBox1 = new Smobiler.Core.Controls.CheckBox();
             // 
-            // touchPanel1
+            // tpRow
             // 
-            this.touchPanel1.BackColor = System.Drawing.Color.White;
-            this.touchPanel1.Border = new Smobiler.Core.Controls.Border(0F, 0F, 0F, 1F);
-            this.touchPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.touchPanel1.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
+            this.tpRow.BackColor = System.Drawing.Color.White;
+            this.tpRow.Border = new Smobiler.Core.Controls.Border(0F, 0F, 0F, 1F);
+            this.tpRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.tpRow.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.imgPicture,
             this.lblName,
             this.lblID,
             this.lblPrice,
             this.Label16,
             this.checkBox1});
-            this.touchPanel1.Name = "touchPanel1";
-            this.touchPanel1.Size = new System.Drawing.Size(300, 70);
-            this.touchPanel1.Touchable = true;
-            this.touchPanel1.Press += new System.EventHandler(this.touchPanel1_Press);
+            this.tpRow.Name = "tpRow";
+            this.tpRow.Size = new System.Drawing.Size(300, 70);
+            this.tpRow.Touchable = true;
+            this.tpRow.Press += new System.EventHandler(this.touchPanel1_Press);
             // 
             // imgPicture
             // 
@@ -120,14 +120,14 @@ namespace SMOSEC.UI.Layout
             // frmAssetsExLayout
             // 
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.touchPanel1});
+            this.tpRow});
             this.Size = new System.Drawing.Size(300, 70);
             this.Name = "frmAssetsExLayout";
 
         }
         #endregion
 
-        private Smobiler.Core.Controls.Panel touchPanel1;
+        private Smobiler.Core.Controls.Panel tpRow;
         private Smobiler.Core.Controls.Image imgPicture;
         private Smobiler.Core.Controls.Label lblName;
         private Smobiler.Core.Controls.Label lblID;

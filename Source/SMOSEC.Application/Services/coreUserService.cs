@@ -69,7 +69,7 @@ namespace SMOSEC.Application.Services
         /// <returns></returns>
         public List<coreUser> GetAll()
         {
-            return _coreUserRepository.GetAll().AsNoTracking().ToList();
+            return _coreUserRepository.GetAll().OrderBy(x=>x.USER_NAME).AsNoTracking().ToList();
         }
         /// <summary>
         /// 得到某个部门的所有用户

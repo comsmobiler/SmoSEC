@@ -249,7 +249,6 @@ namespace SMOSEC.Application.Services
         public AssRestoreOrderOutputDto GetRsobyId(string rsoid)
         {
             var dto = from assRestoreOrder in _SMOSECDbContext.AssRestoreOrders
-                      join user in _SMOSECDbContext.coreUsers on assRestoreOrder.RESTORER equals user.USER_ID
                       join user2 in _SMOSECDbContext.coreUsers on assRestoreOrder.HANDLEMAN equals user2.USER_ID
                       join location in _SMOSECDbContext.AssLocations on assRestoreOrder.LOCATIONID equals location.LOCATIONID
                       where assRestoreOrder.RSOID == rsoid
@@ -257,7 +256,6 @@ namespace SMOSEC.Application.Services
                       {
                           Rsoid = assRestoreOrder.RSOID,
                           Restoredate = assRestoreOrder.RESTOREDATE,
-                          Restorer = user.USER_NAME,
                           Handleman = user2.USER_NAME,
                           LocationName = location.NAME,
                           Note = assRestoreOrder.NOTE,
@@ -282,7 +280,6 @@ namespace SMOSEC.Application.Services
             }
             var result = from restoreOrder in list
                          join user in _SMOSECDbContext.coreUsers on restoreOrder.HANDLEMAN equals user.USER_ID
-                         join user2 in _SMOSECDbContext.coreUsers on restoreOrder.RESTORER equals user2.USER_ID
                          join location in _SMOSECDbContext.AssLocations on restoreOrder.LOCATIONID equals location.LOCATIONID
                          select new
                          {
@@ -290,7 +287,6 @@ namespace SMOSEC.Application.Services
                              Rsoid = restoreOrder.RSOID,
                              LocationName = location.NAME,
                              Restoredate = restoreOrder.RESTOREDATE,
-                             Restorer = user2.USER_NAME
                          };
 
             return LINQToDataTable.ToDataTable(result);
@@ -325,7 +321,6 @@ namespace SMOSEC.Application.Services
         public AssReturnOrderOutputDto GetRtobyId(string rtoid)
         {
             var dto = from assReturnOrder in _SMOSECDbContext.AssReturnOrders
-                      join user in _SMOSECDbContext.coreUsers on assReturnOrder.RETURNER equals user.USER_ID
                       join user2 in _SMOSECDbContext.coreUsers on assReturnOrder.HANDLEMAN equals user2.USER_ID
                       join location in _SMOSECDbContext.AssLocations on assReturnOrder.LOCATIONID equals location.LOCATIONID
                       where assReturnOrder.RTOID == rtoid
@@ -333,7 +328,6 @@ namespace SMOSEC.Application.Services
                       {
                           Rtoid = assReturnOrder.RTOID,
                           Returndate = assReturnOrder.RETURNDATE,
-                          Returner = user.USER_NAME,
                           Handleman = user2.USER_NAME,
                           Locationid = location.NAME,
                           Note = assReturnOrder.NOTE
@@ -356,14 +350,14 @@ namespace SMOSEC.Application.Services
                 list = list.Where(a => a.LOCATIONID == LocationId);
             }
             var result = from returnOrder in list
-                         join user in _SMOSECDbContext.coreUsers on returnOrder.RETURNER equals user.USER_ID
+                         join user in _SMOSECDbContext.coreUsers on returnOrder.HANDLEMAN equals user.USER_ID
                          join location in _SMOSECDbContext.AssLocations on returnOrder.LOCATIONID equals location.LOCATIONID
                          select new
                          {
                              Rtoid = returnOrder.RTOID,
                              LocationName = location.NAME,
                              Returndate = returnOrder.RETURNDATE,
-                             Returner = user.USER_NAME
+                             HandleMan=user.USER_NAME
                          };
             return LINQToDataTable.ToDataTable(result);
         }
@@ -695,7 +689,7 @@ namespace SMOSEC.Application.Services
                             HANDLEMAN = returnOrderInput.HANDLEMAN,
                             MODIFYDATE = DateTime.Now,
                             MODIFYUSER = returnOrderInput.MODIFYUSER,
-                            PROCESSCONTENT = returnOrderInput.RETURNER + "归还了" + assId,
+                            PROCESSCONTENT = returnOrderInput.HANDLEMAN + "归还了" + assId,
                             PROCESSMODE = (int)PROCESSMODE.归还,
                             QUANTITY = 1
                         };
@@ -778,7 +772,7 @@ namespace SMOSEC.Application.Services
                             HANDLEMAN = restoreOrderInput.HANDLEMAN,
                             MODIFYDATE = DateTime.Now,
                             MODIFYUSER = restoreOrderInput.MODIFYUSER,
-                            PROCESSCONTENT = restoreOrderInput.RESTORER + "退库了" + assId,
+                            PROCESSCONTENT = restoreOrderInput.HANDLEMAN + "退库了" + assId,
                             PROCESSMODE = (int)PROCESSMODE.退库,
                             QUANTITY = 1
                         };

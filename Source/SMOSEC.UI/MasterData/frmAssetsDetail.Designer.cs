@@ -71,6 +71,7 @@ namespace SMOSEC.UI.MasterData
             this.txtEDate = new Smobiler.Core.Controls.TextBox();
             this.popCurrentUser = new Smobiler.Core.Controls.PopList();
             this.posPrinter1 = new Smobiler.Device.PosPrinter();
+            this.btnDelete = new Smobiler.Core.Controls.Button();
             // 
             // Title1
             // 
@@ -91,7 +92,8 @@ namespace SMOSEC.UI.MasterData
             this.btnPrint,
             this.btnEdit,
             this.btnLog,
-            this.btnChange});
+            this.btnChange,
+            this.btnDelete});
             this.plButton.Direction = Smobiler.Core.Controls.LayoutDirection.Row;
             this.plButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.plButton.Layout = Smobiler.Core.Controls.LayoutPosition.Relative;
@@ -567,6 +569,15 @@ namespace SMOSEC.UI.MasterData
             // 
             this.posPrinter1.Name = "posPrinter1";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Flex = 1;
+            this.btnDelete.Margin = new Smobiler.Core.Controls.Margin(2F, 5F, 2F, 5F);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(0, 0);
+            this.btnDelete.Text = "×Ê²úÉ¾³ý";
+            this.btnDelete.Press += new System.EventHandler(this.btnDelete_Press);
+            // 
             // frmAssetsDetail
             // 
             this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
@@ -628,5 +639,6 @@ namespace SMOSEC.UI.MasterData
         private Smobiler.Core.Controls.TextBox txtEDate;
         private Smobiler.Core.Controls.PopList popCurrentUser;
         private Smobiler.Device.PosPrinter posPrinter1;
+        internal Smobiler.Core.Controls.Button btnDelete;
     }
 }

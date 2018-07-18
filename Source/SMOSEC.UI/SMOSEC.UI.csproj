@@ -541,6 +541,12 @@
     <Compile Include="Layout\frmAssTDLayout.Designer.cs">
       <DependentUpon>frmAssTDLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\frmAssTypeChooseLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\frmAssTypeChooseLayout.Designer.cs">
+      <DependentUpon>frmAssTypeChooseLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\frmCIResultLayout.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1090,6 +1096,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmAssTDLayout.resx">
       <DependentUpon>frmAssTDLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\frmAssTypeChooseLayout.resx">
+      <DependentUpon>frmAssTypeChooseLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\frmCIResultLayout.resx">
       <DependentUpon>frmCIResultLayout.cs</DependentUpon>
