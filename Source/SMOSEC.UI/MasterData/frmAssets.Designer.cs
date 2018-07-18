@@ -35,6 +35,7 @@ namespace SMOSEC.UI.MasterData
             Smobiler.Core.Controls.PopListItem popListItem4 = new Smobiler.Core.Controls.PopListItem();
             Smobiler.Core.Controls.PopListItem popListItem5 = new Smobiler.Core.Controls.PopListItem();
             Smobiler.Core.Controls.PopListItem popListItem6 = new Smobiler.Core.Controls.PopListItem();
+            Smobiler.Core.Controls.PopListItem popListItem7 = new Smobiler.Core.Controls.PopListItem();
             Smobiler.Core.Controls.ActionButtonItem actionButtonItem1 = new Smobiler.Core.Controls.ActionButtonItem();
             Smobiler.Core.Controls.ActionButtonItem actionButtonItem2 = new Smobiler.Core.Controls.ActionButtonItem();
             Smobiler.Core.Controls.ActionButtonItem actionButtonItem3 = new Smobiler.Core.Controls.ActionButtonItem();
@@ -150,30 +151,33 @@ namespace SMOSEC.UI.MasterData
             // popStatus
             // 
             popListItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            popListItem1.Text = "闲置";
-            popListItem1.Value = "0";
+            popListItem1.Text = "全部";
             popListItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            popListItem2.Text = "调拨中";
-            popListItem2.Value = "1";
+            popListItem2.Text = "闲置";
+            popListItem2.Value = "0";
             popListItem3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            popListItem3.Text = "使用中";
-            popListItem3.Value = "2";
+            popListItem3.Text = "调拨中";
+            popListItem3.Value = "1";
             popListItem4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            popListItem4.Text = "维修中";
-            popListItem4.Value = "3";
+            popListItem4.Text = "使用中";
+            popListItem4.Value = "2";
             popListItem5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            popListItem5.Text = "报废";
-            popListItem5.Value = "4";
+            popListItem5.Text = "维修中";
+            popListItem5.Value = "3";
             popListItem6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            popListItem6.Text = "借用中";
-            popListItem6.Value = "5";
+            popListItem6.Text = "报废";
+            popListItem6.Value = "4";
+            popListItem7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            popListItem7.Text = "借用中";
+            popListItem7.Value = "5";
             popListGroup1.Items.AddRange(new Smobiler.Core.Controls.PopListItem[] {
             popListItem1,
             popListItem2,
             popListItem3,
             popListItem4,
             popListItem5,
-            popListItem6});
+            popListItem6,
+            popListItem7});
             popListGroup1.Value = null;
             this.popStatus.Groups.AddRange(new Smobiler.Core.Controls.PopListGroup[] {
             popListGroup1});
