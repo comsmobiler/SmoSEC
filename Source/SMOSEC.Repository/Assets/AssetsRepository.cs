@@ -26,7 +26,7 @@ namespace SMOSEC.Repository.Assets
         /// <returns></returns>
         public IQueryable<SMOSEC.Domain.Entity.Assets> GetByTypeID(string TypeID)
         {
-            return _entities.Where(x => x.TYPEID  == TypeID);
+            return _entities.Where(x => x.TYPEID  == TypeID && x.STATUS !=6);
         }
         /// <summary>
         /// 根据资产条码返回资产信息
@@ -129,7 +129,7 @@ namespace SMOSEC.Repository.Assets
         /// <param name="SNOrName">序列号或者名称</param>
         /// <param name="types"></param>
         /// <returns></returns>
-        public IQueryable<SMOSEC.Domain.Entity.Assets> QueryAssets(string SNOrName, List<String> types)
+        public IQueryable<Domain.Entity.Assets> QueryAssets(string SNOrName, List<String> types)
         {
             var result = _entities;
             result = result.Where(a=>a.STATUS !=6);
@@ -149,7 +149,7 @@ namespace SMOSEC.Repository.Assets
         /// <param name="LocationID">区域编号</param>
         /// <param name="Name">资产名称</param>
         /// <returns></returns>
-        public IQueryable<SMOSEC.Domain.Entity.Assets> GetUnUsedAssOther(string LocationID, string Name)
+        public IQueryable<Domain.Entity.Assets> GetUnUsedAssOther(string LocationID, string Name)
         {
             var result = _entities;
             if (!string.IsNullOrEmpty(LocationID))
@@ -169,12 +169,12 @@ namespace SMOSEC.Repository.Assets
         /// </summary>
         /// <param name="days"></param>
         /// <returns></returns>
-        public IQueryable<SMOSEC.Domain.Entity.Assets> GetImminentAssets(int days)
+        public IQueryable<Domain.Entity.Assets> GetImminentAssets(int days)
         {
             DateTime targetDateTime = DateTime.Now.Date.AddDays(days);
             DateTime Now = DateTime.Now.Date;
             //            return _entities.Where(a => a.EXPIRYDATE >=Now && ASSIDs.Contains(a.ASSID)).AsNoTracking();
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>

@@ -58,7 +58,7 @@ namespace SMOSEC.UI.Layout
             this.SNBuMen = new Smobiler.Core.Controls.Panel();
             this.label34 = new Smobiler.Core.Controls.Label();
             this.Consumables = new Smobiler.Core.Controls.Panel();
-            this.image7 = new Smobiler.Core.Controls.Image();
+            this.imgCons = new Smobiler.Core.Controls.Image();
             this.label35 = new Smobiler.Core.Controls.Label();
             this.label36 = new Smobiler.Core.Controls.Label();
             this.HaoCai = new Smobiler.Core.Controls.Panel();
@@ -449,7 +449,7 @@ namespace SMOSEC.UI.Layout
             this.Consumables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(75)))), ((int)(((byte)(125)))));
             this.Consumables.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.Consumables.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
-            this.image7,
+            this.imgCons,
             this.label35,
             this.label36});
             this.Consumables.Direction = Smobiler.Core.Controls.LayoutDirection.Row;
@@ -460,12 +460,12 @@ namespace SMOSEC.UI.Layout
             this.Consumables.TouchOpacity = 100;
             this.Consumables.Press += new System.EventHandler(this.Assets_Press);
             // 
-            // image7
+            // imgCons
             // 
-            this.image7.Location = new System.Drawing.Point(16, 7);
-            this.image7.Name = "image7";
-            this.image7.ResourceID = "haocai1";
-            this.image7.Size = new System.Drawing.Size(20, 20);
+            this.imgCons.Location = new System.Drawing.Point(16, 7);
+            this.imgCons.Name = "imgCons";
+            this.imgCons.ResourceID = "haocai1";
+            this.imgCons.Size = new System.Drawing.Size(20, 20);
             // 
             // label35
             // 
@@ -1039,7 +1039,7 @@ namespace SMOSEC.UI.Layout
         internal Smobiler.Core.Controls.Panel SNBuMen;
         internal Smobiler.Core.Controls.Label label34;
         internal Smobiler.Core.Controls.Panel Consumables;
-        internal Smobiler.Core.Controls.Image image7;
+        internal Smobiler.Core.Controls.Image imgCons;
         internal Smobiler.Core.Controls.Label label35;
         private Smobiler.Core.Controls.Label label36;
         internal Smobiler.Core.Controls.Panel ruku;

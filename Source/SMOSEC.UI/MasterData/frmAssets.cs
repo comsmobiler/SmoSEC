@@ -42,7 +42,7 @@ namespace SMOSEC.UI.MasterData
         {
             try
             {
-                 LocatinId = "";
+                LocatinId = "";
                 if (Client.Session["Role"].ToString() != "ADMIN")
                 {
                     var user = _autofacConfig.coreUserService.GetUserByID(UserId);
@@ -54,7 +54,7 @@ namespace SMOSEC.UI.MasterData
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
                 {
-                    if(Row["AssId"].ToString()==SelectAssId)
+                    if (Row["AssId"].ToString() == SelectAssId)
                     {
                         Row["IsChecked"] = true;
                     }
@@ -104,7 +104,7 @@ namespace SMOSEC.UI.MasterData
             try
             {
                 string barCode = e.Data;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode,LocatinId);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode, LocatinId);
                 gridAssRows.Cells.Clear();
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
@@ -141,7 +141,7 @@ namespace SMOSEC.UI.MasterData
             try
             {
                 string RFID = e.Epc;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(RFID,LocatinId);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(RFID, LocatinId);
                 gridAssRows.Cells.Clear();
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
@@ -191,8 +191,7 @@ namespace SMOSEC.UI.MasterData
                                     Bind();
                                 }
 
-                            }
-                                );
+                            });
                         }
                         catch (Exception ex)
                         {
@@ -224,22 +223,21 @@ namespace SMOSEC.UI.MasterData
                                 txtName = { Text = assets.Name },
                                 txtNote = { Text = assets.Note },
                                 txtPlace = { Text = assets.Place },
-                                txtPrice = { Text = assets.Price.ToString()},
+                                txtPrice = { Text = assets.Price.ToString() },
                                 txtSpe = { Text = assets.Specification },
-                                btnType = {Tag = assets.TypeId, Text = assets.TypeName },
-                                txtUnit = { Text = assets.Unit},
+                                btnType = { Tag = assets.TypeId, Text = assets.TypeName },
+                                txtUnit = { Text = assets.Unit },
                                 txtVendor = { Text = assets.Vendor }
                             };
 
                             Show(assetsCreate, (MobileForm sender1, object args) =>
+                            {
+                                if (assetsCreate.ShowResult == ShowResult.Yes)
                                 {
-                                    if (assetsCreate.ShowResult == ShowResult.Yes)
-                                    {
-                                        Bind();
-                                    }
-
+                                    Bind();
                                 }
-                            );
+
+                            });
                         }
                         catch (Exception ex)
                         {
@@ -322,7 +320,7 @@ namespace SMOSEC.UI.MasterData
             try
             {
                 string barCode = e.Value;
-                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode,LocatinId);
+                DataTable table = _autofacConfig.SettingService.GetAssetsBySN(barCode, LocatinId);
                 gridAssRows.Cells.Clear();
                 table.Columns.Add("IsChecked");
                 foreach (DataRow Row in table.Rows)
@@ -472,14 +470,14 @@ namespace SMOSEC.UI.MasterData
         /// <param name="e"></param>
         private void popType_Selected(object sender, EventArgs e)
         {
-            setBtnTag(popType,btnType);
+            setBtnTag(popType, btnType);
         }
         /// <summary>
         /// 选择了部门/资产状态/资产大类
         /// </summary>
         /// <param name="popList"></param>
         /// <param name="button"></param>
-        public void setBtnTag(PopList popList,Button button)
+        public void setBtnTag(PopList popList, Button button)
         {
             if (String.IsNullOrEmpty(popList.Selection.Text) == false)
             {

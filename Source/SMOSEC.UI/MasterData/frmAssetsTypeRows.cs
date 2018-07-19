@@ -8,6 +8,7 @@ using SMOSEC.UI.Layout;
 using System.Data;
 using SMOSEC.Application.Services;
 using SMOSEC.Domain.Entity;
+using SMOSEC.DTOs.Enum;
 
 namespace SMOSEC.UI.MasterData
 {
@@ -52,6 +53,10 @@ namespace SMOSEC.UI.MasterData
                                     Node.Nodes.Add(SonRow);
                                 }
                             }
+                            if(Row.ISENABLE== (int)IsEnable.禁用)
+                            {
+                                Node.TextColor = System.Drawing.Color.Red;
+                            }
                             treeAssetsType.Nodes.Add(Node);
                         }
                     }
@@ -87,6 +92,10 @@ namespace SMOSEC.UI.MasterData
                                 Node.Nodes.Add(SonRow);
                             }
                         }
+                        if (Row.ISENABLE == (int)IsEnable.禁用)
+                        {
+                            Node.TextColor = System.Drawing.Color.Red;
+                        }
                         TreeData.Nodes.Add(Node);
                     }
                 }
@@ -98,6 +107,10 @@ namespace SMOSEC.UI.MasterData
                     if (Row.TLEVEL == Level && Row.PARENTTYPEID == ParentID)
                     {
                         TreeViewNode Node = new TreeViewNode(Row.NAME, null, "三", Row.TYPEID);
+                        if (Row.ISENABLE == (int)IsEnable.禁用)
+                        {
+                            Node.TextColor = System.Drawing.Color.Red;
+                        }
                         TreeData.Nodes.Add(Node);
                     }
                 }
@@ -135,7 +148,16 @@ namespace SMOSEC.UI.MasterData
             try
             {
                 if (String.IsNullOrEmpty(ID)) throw new Exception("请先选择要操作的资产类别");
+                AssetsType assetsType= autofacConfig.assTypeService.GetByID(ID);
                 frmLocationRowsButtonLayout frm = new frmLocationRowsButtonLayout();
+                if (assetsType.ISENABLE == (int)IsEnable.启用)
+                {
+                    frm.Enable = true;
+                }
+                else
+                {
+                    frm.Enable = false; 
+                }
                 frm.ID = ID;
                 DialogOptions Dialog = new DialogOptions {
                     JustifyAlign = LayoutJustifyAlign.FlexEnd,

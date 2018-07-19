@@ -174,18 +174,16 @@ namespace SMOSEC.Application.Services
         public ReturnInfo DeleteAssLocation(String ID)
         {
             ReturnInfo RInfo = new ReturnInfo();
+            if (String.IsNullOrEmpty(ID))
+                throw new Exception("区域编号不能为空");
+            AssLocation al = _AssLocationRepository.GetByID(ID).FirstOrDefault();
+            if (al == null)
+                throw new Exception("区域编号不存在，请检查!");
             try
             {
-                if (String.IsNullOrEmpty(ID))
-                    throw new Exception("区域编号不能为空");
-                AssLocation al = _AssLocationRepository.GetByID(ID).FirstOrDefault();
-                if (al == null)
-                    throw new Exception("区域编号不存在，请检查!");
-
                 _unitOfWork.RegisterDeleted(al);
-                bool result = _unitOfWork.Commit();
+                _unitOfWork.Commit();
                 RInfo.IsSuccess = true;
-                RInfo.ErrorInfo = "删除成功!";
                 return RInfo;
             }
             catch (Exception ex)
@@ -205,17 +203,16 @@ namespace SMOSEC.Application.Services
         public ReturnInfo ChangeEnable(String LocationID, IsEnable status)
         {
             ReturnInfo RInfo = new ReturnInfo();
+            if (String.IsNullOrEmpty(LocationID))
+                throw new Exception("区域编号不能为空");
+            AssLocation al = _AssLocationRepository.GetByID(LocationID).FirstOrDefault();
+            if (al == null)
+                throw new Exception("区域编号不存在，请检查!");
             try
             {
-                if (String.IsNullOrEmpty(LocationID))
-                    throw new Exception("区域编号不能为空");
-                AssLocation al = _AssLocationRepository.GetByID(LocationID).FirstOrDefault();
-                if (al == null)
-                    throw new Exception("区域编号不存在，请检查!");
-
                 al.ISENABLE = (int)status;
                 _unitOfWork.RegisterDirty(al);
-                bool result = _unitOfWork.Commit();
+                 _unitOfWork.Commit();
                 RInfo.IsSuccess = true;
                 return RInfo;
             }

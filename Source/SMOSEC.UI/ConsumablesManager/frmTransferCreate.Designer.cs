@@ -55,6 +55,7 @@ namespace SMOSEC.UI.ConsumablesManager
             this.popDealInMan = new Smobiler.Core.Controls.PopList();
             this.popLocation = new Smobiler.Core.Controls.PopList();
             this.BarcodeScanner1 = new Smobiler.Core.Controls.BarcodeScanner();
+            this.popConLoc = new Smobiler.Core.Controls.PopList();
             // 
             // title1
             // 
@@ -321,13 +322,19 @@ namespace SMOSEC.UI.ConsumablesManager
             this.BarcodeScanner1.Name = "BarcodeScanner1";
             this.BarcodeScanner1.BarcodeScanned += new Smobiler.Core.Controls.BarcodeScannerCallBackHandler(this.BarcodeScanner1_BarcodeScanned);
             // 
+            // popConLoc
+            // 
+            this.popConLoc.Name = "popConLoc";
+            this.popConLoc.Selected += new System.EventHandler(this.popConLoc_Selected);
+            // 
             // frmTransferCreate
             // 
             this.Components.AddRange(new Smobiler.Core.Controls.MobileComponent[] {
             this.popDealMan,
             this.popDealInMan,
             this.popLocation,
-            this.BarcodeScanner1});
+            this.BarcodeScanner1,
+            this.popConLoc});
             this.Controls.AddRange(new Smobiler.Core.Controls.MobileControl[] {
             this.title1,
             this.plButton,
@@ -366,5 +373,6 @@ namespace SMOSEC.UI.ConsumablesManager
         internal Smobiler.Core.Controls.PopList popDealInMan;
         internal Smobiler.Core.Controls.PopList popLocation;
         internal Smobiler.Core.Controls.BarcodeScanner BarcodeScanner1;
+        private Smobiler.Core.Controls.PopList popConLoc;
     }
 }

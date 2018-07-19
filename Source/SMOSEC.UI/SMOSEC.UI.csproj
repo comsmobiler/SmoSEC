@@ -685,6 +685,12 @@
     <Compile Include="Layout\LeftMenu.Designer.cs">
       <DependentUpon>LeftMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\OperCreateAssExLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layout\OperCreateAssExLayout.Designer.cs">
+      <DependentUpon>OperCreateAssExLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\OperCreateAssLayout.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1168,6 +1174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\LeftMenu.resx">
       <DependentUpon>LeftMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\OperCreateAssExLayout.resx">
+      <DependentUpon>OperCreateAssExLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\OperCreateAssLayout.resx">
       <DependentUpon>OperCreateAssLayout.cs</DependentUpon>

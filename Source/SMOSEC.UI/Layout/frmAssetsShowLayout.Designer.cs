@@ -55,13 +55,13 @@ namespace SMOSEC.UI.Layout
             // 
             // lblNumber
             // 
-            this.lblNumber.DisplayFormat = "待维修数量: {0}";
+            this.lblNumber.DisplayFormat = "待确认数量: {0}";
             this.lblNumber.DisplayMember = "WAITREPAIRQTY";
             this.lblNumber.Location = new System.Drawing.Point(70, 30);
             this.lblNumber.Name = "lblNumber";
             this.lblNumber.Padding = new Smobiler.Core.Controls.Padding(5F, 0F, 0F, 0F);
             this.lblNumber.Size = new System.Drawing.Size(115, 30);
-            this.lblNumber.Text = "待维修数量:  20";
+            this.lblNumber.Text = "待确认数量:  20";
             // 
             // lblStatus
             // 
@@ -80,7 +80,6 @@ namespace SMOSEC.UI.Layout
             this.lblNumber,
             this.lblStatus});
             this.Size = new System.Drawing.Size(0, 60);
-            this.Load += new System.EventHandler(this.frmAssetsShowLayout_Load);
             this.Name = "frmAssetsShowLayout";
 
         }

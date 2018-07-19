@@ -16,6 +16,7 @@ namespace SMOSEC.UI.Layout
         #region "define"
         public String ID;       //区域编号或者类别编号
         public String LocName;    //区域名称
+        public bool Enable = false;    //是否启用
         AutofacConfig autofacConfig = new AutofacConfig();    //调用配置类
         #endregion
         /// <summary>
@@ -54,51 +55,81 @@ namespace SMOSEC.UI.Layout
             {
                 if (this.Form.ToString() == "SMOSEC.UI.MasterData.frmLocationRows")
                 {
-                    MessageBox.Show("你确定要删除该区域吗?","系统提醒",MessageBoxButtons.OKCancel, (object sender1, MessageBoxHandlerArgs args)=> 
-                    {
-                        try
-                        {
-                            if (args.Result == ShowResult.OK)     //删除该区域
+                    MessageBox.Show("你确定要删除该区域吗?", "系统提醒", MessageBoxButtons.OKCancel, (object sender1, MessageBoxHandlerArgs args) =>
+                      {
+                          try
+                          {
+                              if (args.Result == ShowResult.OK)     //删除该区域
                             {
-                                ReturnInfo r = autofacConfig.assLocationService.DeleteAssLocation(ID);
-                                if (r.IsSuccess == true)
-                                {
-                                    this.Form.Toast("删除成功");
-                                    ((frmLocationRows)Form).Bind();      //刷新数据
+                                  ReturnInfo r = autofacConfig.assLocationService.DeleteAssLocation(ID);
+                                  if (r.IsSuccess == true)
+                                  {
+                                      this.Form.Toast("删除成功");
+                                      ((frmLocationRows)Form).Bind();      //刷新数据
                                 }
-                                else
-                                {
-                                    throw new Exception(r.ErrorInfo);
-                                }
-                            }
-                        }
-                        catch(Exception ex)
-                        {
-                            Form.Toast(ex.Message);
-                        }                      
-                    });
+                                  else
+                                  {
+                                      throw new Exception(r.ErrorInfo);
+                                  }
+                              }
+                          }
+                          catch (Exception ex)
+                          {
+                              Form.Toast(ex.Message);
+                          }
+                      });
                 }
                 else if (this.Form.ToString() == "SMOSEC.UI.MasterData.frmAssetsTypeRows")
                 {
-                    MessageBox.Show("你确定要删除该分类吗?", "系统提醒", MessageBoxButtons.OKCancel, (object sender1, MessageBoxHandlerArgs args) =>
+                    if (Enable)        //禁用该分类
                     {
-                        try
+                        MessageBox.Show("你确定要禁用该分类吗?", "系统提醒", MessageBoxButtons.OKCancel, (object sender1, MessageBoxHandlerArgs args) =>
                         {
-                            if (args.Result == ShowResult.OK)
+                            try
                             {
-                                if (autofacConfig.assTypeService.HasAssets(ID))
+                                if (args.Result == ShowResult.OK)
                                 {
-                                    throw new Exception("当前资产分类有相关的资产数据，不允许删除!");
-                                }else if (autofacConfig.assTypeService.IsParent(ID))
-                                {
-                                    throw new Exception("当前资产分类有子分类，不允许删除!");
+                                    if (autofacConfig.assTypeService.HasAssets(ID))
+                                    {
+                                        throw new Exception("当前资产分类有相关的资产数据，不允许禁用!");
+                                    }
+                                    else if (autofacConfig.assTypeService.IsParent(ID))
+                                    {
+                                        throw new Exception("当前资产分类有子分类，不允许禁用!");
+                                    }
+                                    else
+                                    {
+                                        ReturnInfo r = autofacConfig.assTypeService.ChangeEnable(ID, DTOs.Enum.IsEnable.禁用);
+                                        if (r.IsSuccess == true)
+                                        {
+                                            this.Form.Toast("分类禁用成功!");
+                                            ((frmAssetsTypeRows)Form).Bind();
+                                        }
+                                        else
+                                        {
+                                            throw new Exception(r.ErrorInfo);
+                                        }
+                                    }
                                 }
-                                else
+                            }
+                            catch (Exception ex)
+                            {
+                                Form.Toast(ex.Message);
+                            }
+                        });
+                    }
+                    else        //启用该分类
+                    {
+                        MessageBox.Show("你确定要启用该分类吗?", "系统提醒", MessageBoxButtons.OKCancel, (object sender1, MessageBoxHandlerArgs args) =>
+                        {
+                            try
+                            {
+                                if (args.Result == ShowResult.OK)
                                 {
-                                    ReturnInfo r = autofacConfig.assTypeService.DeleteAssetsType(ID);
+                                    ReturnInfo r = autofacConfig.assTypeService.ChangeEnable(ID, DTOs.Enum.IsEnable.启用);
                                     if (r.IsSuccess == true)
                                     {
-                                        this.Form.Toast("删除成功!");
+                                        this.Form.Toast("分类启用成功!");
                                         ((frmAssetsTypeRows)Form).Bind();
                                     }
                                     else
@@ -107,15 +138,15 @@ namespace SMOSEC.UI.Layout
                                     }
                                 }
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            Form.Toast(ex.Message);
-                        }
-                    });
+                            catch (Exception ex)
+                            {
+                                Form.Toast(ex.Message);
+                            }
+                        });
+                    }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Form.Toast(ex.Message);
             }
@@ -127,15 +158,22 @@ namespace SMOSEC.UI.Layout
         /// <param name="e"></param>
         private void frmLocationRowsButtonLayout_Load(object sender, EventArgs e)
         {
-            if(this.Form.ToString()== "SMOSEC.UI.MasterData.frmLocationRows")
+            if (this.Form.ToString() == "SMOSEC.UI.MasterData.frmLocationRows")
             {
                 btnEdit.Text = "编辑此区域";
                 btnDelete.Text = "删除此区域";
             }
-            else if(this.Form.ToString() == "SMOSEC.UI.MasterData.frmAssetsTypeRows")
+            else if (this.Form.ToString() == "SMOSEC.UI.MasterData.frmAssetsTypeRows")
             {
                 btnEdit.Text = "编辑此分类";
-                btnDelete.Text = "删除此分类";
+                if (Enable)
+                {
+                    btnDelete.Text = "禁用此分类";
+                }
+                else
+                {
+                    btnDelete.Text = "启用此分类";
+                }
             }
         }
     }

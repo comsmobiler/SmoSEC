@@ -18,12 +18,7 @@ namespace SMOSEC.UI.Layout
         /// <param name="e"></param>
         private void frmAssetsShowLayout_Load(object sender, EventArgs e)
         {
-            if (Form.ToString() == "SMOSEC.UI.AssetsManager.frmRepairDetail")
-                lblNumber.DisplayFormat = "待维修数量: {0}";
-            else if (Form.ToString() == "SMOSEC.UI.AssetsManager.frmScrapDetail")
-                lblNumber.DisplayFormat = "报废数量: {0}";
-            else if ((Form.ToString() == "SMOSEC.UI.AssetsManager.frmTransferDetail"))
-                lblNumber.DisplayFormat = "待确认数量: {0}";
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
+using SMOSEC.DTOs.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -60,6 +61,13 @@ namespace SMOSEC.Application.IServices
         /// <param name="ID"></param>
         /// <returns></returns>
         ReturnInfo DeleteAssetsType(String  ID);
+        /// <summary>
+        /// 更改分类启用状态
+        /// </summary>
+        /// <param name="TypeId"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        ReturnInfo ChangeEnable(String TypeId, IsEnable status);
         #endregion   
     }
 }

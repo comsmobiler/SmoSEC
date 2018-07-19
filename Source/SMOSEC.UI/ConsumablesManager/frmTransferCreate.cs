@@ -299,9 +299,9 @@ namespace SMOSEC.UI.ConsumablesManager
                 List<ConQuant> assList = autofacConfig.orderCommonService.GetUnUseCon(btnLocation.Tag.ToString(),CID);
                 if (assList.Count > 1)
                 {
-                    popLocation.Groups.Clear();
+                    popConLoc.Groups.Clear();
                     PopListGroup poli = new PopListGroup();
-                    popLocation.Groups.Add(poli);
+                    popConLoc.Groups.Add(poli);
                     foreach (ConQuant Row in assList)
                     {
                         if (Row.LOCATIONID != btnLocation.Tag.ToString())
@@ -310,7 +310,7 @@ namespace SMOSEC.UI.ConsumablesManager
                             poli.AddListItem(Loc.NAME, Row.LOCATIONID);
                         }                       
                     }
-                    popLocation.ShowDialog();
+                    popConLoc.ShowDialog();
                 }
                 else
                 {
@@ -413,6 +413,41 @@ namespace SMOSEC.UI.ConsumablesManager
                 }
             }
             catch (Exception ex)
+            {
+                Toast(ex.Message);
+            }
+        }
+        /// <summary>
+        /// ºÄ²ÄÑ¡¶¨
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void popConLoc_Selected(object sender, EventArgs e)
+        {
+            try
+            {
+                if(String.IsNullOrEmpty(popConLoc.Selection.Text) == false)
+                {
+                    Consumables cons = autofacConfig.orderCommonService.GetConsByID(CID);
+                    ConsumablesOrderRow Data = new ConsumablesOrderRow();
+                    Data.CID = CID;
+                    Data.LOCATIONID = popConLoc.Selection.Value;
+                    Data.IMAGE = cons.IMAGE;
+                    Data.QTY = 0;
+                    if (RowData.Count > 0)
+                    {
+                        RowData.Add(Data);
+                    }
+                    else
+                    {
+                        List<ConsumablesOrderRow> Datas = new List<ConsumablesOrderRow>();
+                        Datas.Add(Data);
+                        RowData = Datas;
+                    }
+                    Bind();
+                }            
+            }
+            catch(Exception ex)
             {
                 Toast(ex.Message);
             }

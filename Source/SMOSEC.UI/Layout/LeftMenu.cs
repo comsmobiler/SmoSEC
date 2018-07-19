@@ -45,7 +45,7 @@ namespace SMOSEC.UI.Layout
                 imgSNAssets.ResourceID = "zichan2";
                 lblConsumables.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 lblConsumablesShow.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                imgConsumables.ResourceID = "haocai1";
+                imgCons.ResourceID = "haocai1";
                 SNAssets.Visible = true;
                 SNJieyong.Visible = true;
                 SNGuiHuan.Visible = true;
@@ -201,7 +201,7 @@ namespace SMOSEC.UI.Layout
             {
                 lblConsumables.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 lblConsumablesShow.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                imgConsumables.ResourceID = "haocai1";
+                imgCons.ResourceID = "haocai1";
                 DiaoBo.Visible = false;
                 HaoCai.Visible = false;
                 ruku.Visible = false;
@@ -213,7 +213,7 @@ namespace SMOSEC.UI.Layout
             {
                 lblConsumables.ForeColor = System.Drawing.Color.FromArgb(93, 155, 251);
                 lblConsumablesShow.ForeColor = System.Drawing.Color.FromArgb(93, 155, 251);
-                imgConsumables.ResourceID = "haocai2";
+                imgCons.ResourceID = "haocai2";
                 lblSNAssetsManager.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 lblSNAssetsShow.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
                 imgSNAssets.ResourceID = "zichan1";
