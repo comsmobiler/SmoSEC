@@ -330,6 +330,7 @@ namespace SMOSEC.UI.ConsumablesManager
                         Datas.Add(Data);
                         RowData = Datas;
                     }
+                    Bind();
                 }
             }
             catch (Exception ex)
