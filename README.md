@@ -1,3 +1,5 @@
+![logo](https://github.com/LuSteven/Images/blob/master/Images/SmoSeclogo.jpg)       
+
 ## 项目简介
 项目包含资产、耗材两种类型资产的管理功能，由部门管理、区域管理、盘点、标签打印、出入库等核心功能组成。
 ![登录页](https://github.com/LuSteven/Images/blob/master/Images/logon.gif)    
