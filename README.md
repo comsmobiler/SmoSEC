@@ -1,8 +1,8 @@
-![logo](https://github.com/LuSteven/Images/blob/master/SEC-Images/SmoSeclogo.jpg)       
+![logo](https://github.com/comsmobiler/SmoSEC/tree/master/Resources/SmoSeclogo.jpg)       
 
 ## 项目简介
 项目包含资产、耗材两种类型资产的管理功能，由部门管理、区域管理、盘点、标签打印、出入库等核心功能组成。
-![登录页](https://github.com/LuSteven/Images/blob/master/SEC-Images/logon.gif)    
+![登录页](https://github.com/comsmobiler/SmoSEC/tree/master/Resources/logon.gif)    
 
 该项目已经打包了Android和iOS的安装包。供大家体验。
 + [Android下载](https://apps.smobiler.com/App/AppDetails?AppID=75)
@@ -31,13 +31,13 @@ SmobilerDesigner版本：450.1532931155([下载并安装SmobilerDesigner](https:
 确认Visual Studio已安装且版本正确。   
 确认SmobilerDesigner已安装且版本正确。   
 下载源码，在VisualStudio中打开。
-![演示](https://github.com/LuSteven/Images/blob/master/SEC-Images/menu.gif)
+![演示](https://github.com/comsmobiler/SmoSEC/tree/master/Resources/menu.gif)
 
 ## 调试
 确认SmobilerClient已安装至手机且版本正确。    
 点击“启动“。   
 手机打开SmobilerClient，“扫一扫”，扫描二维码。    
-![调试](https://github.com/LuSteven/Images/blob/master/SEC-Images/start.gif)    
+![调试](https://github.com/comsmobiler/SmoSEC/tree/master/Resources/start.gif)    
 注意：请确保手机和服务器处于同一局域网
 
 ## 相关资料
