@@ -22,10 +22,10 @@ namespace SMOSEC.Infrastructure
             //            new DropCreateDatabaseIfModelChanges<SMOSECDbContext>());
             //}
             //自动创建更新数据库和表,产生系统表
+            //Database.SetInitializer<SMOSECDbContext>(null);
             Database.SetInitializer<SMOSECDbContext>(
                     new DropCreateDatabaseIfModelChanges<SMOSECDbContext>());
             this.Configuration.LazyLoadingEnabled = false;
-
         }
 
         /// <summary>

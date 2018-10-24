@@ -28,7 +28,7 @@ namespace SMOSEC.UI.Layout
                                     {
                                         if (args.Result == ShowResult.Yes)
                                         {
-                                            switch (LblType.BindDataValue)
+                                            switch (LblType.BindDataValue.ToString())
                                             {
                                                 case "CO":
                                                     frmCoCreate coCreate = (frmCoCreate) this.Form;
