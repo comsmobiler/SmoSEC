@@ -8,7 +8,7 @@
 + [Android下载](https://apps.smobiler.com/App/AppDetails?AppID=75)
 + [iOS下载](https://apps.smobiler.com/App/AppDetails?AppID=75)（iOS用户需使用safari浏览器打开此链接下载）           
 我们为该demo提供了试用的登陆账号：12345678912，密码为：123456
-
++ [Gitee下载](https://gitee.com/smobiler/SmoSEC)
 ## 环境要求
 
 ### 客户端运行环境要求
