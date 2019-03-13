@@ -4,6 +4,7 @@
 项目包含资产、耗材两种类型资产的管理功能，由部门管理、区域管理、盘点、标签打印、出入库等核心功能组成。
 ![登录页](https://github.com/comsmobiler/SmoSEC/blob/master/Resources/logon.gif)    
 
+也可前往Gitee码云获取源码，https://gitee.com/smobiler/SmoSEC  
 该项目已经打包了Android和iOS的安装包。供大家体验。
 + [Android下载](https://apps.smobiler.com/App/AppDetails?AppID=75)
 + [iOS下载](https://apps.smobiler.com/App/AppDetails?AppID=75)（iOS用户需使用safari浏览器打开此链接下载）           
