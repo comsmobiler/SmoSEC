@@ -5,6 +5,7 @@ using SMOSEC.CommLib;
 using SMOSEC.Domain.Entity;
 using SMOSEC.DTOs.InputDTO;
 using SMOSEC.UI.Layout;
+using Smobiler.Core;
 
 namespace SMOSEC.UI.MasterData
 {
@@ -192,7 +193,8 @@ namespace SMOSEC.UI.MasterData
             {
                 if (string.IsNullOrEmpty(e.error))
                 {
-                    e.SaveFile(UserId + DateTime.Now.ToString("yyyyMMddHHmm") + ".png");
+                    e.SaveFile(UserId + DateTime.Now.ToString("yyyyMMddHHmm") + ".png",MobileResourceManager.DefaultImagePath);
+                    //  e.SaveFile(UserId + DateTime.Now.ToString("yyyyMMddHHmm") + ".png");
                     ImgPicture.ResourceID = UserId + DateTime.Now.ToString("yyyyMMddHHmm");
                     ImgPicture.Refresh();
                 }

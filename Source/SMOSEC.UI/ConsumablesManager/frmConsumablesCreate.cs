@@ -2,7 +2,7 @@ using System;
 using SMOSEC.CommLib;
 using SMOSEC.DTOs.InputDTO;
 using Smobiler.Core.Controls;
-
+using Smobiler.Core;
 namespace SMOSEC.UI.ConsumablesManager
 {
     partial class frmConsumablesCreate : Smobiler.Core.Controls.MobileForm
@@ -127,7 +127,8 @@ namespace SMOSEC.UI.ConsumablesManager
             {
                 if (string.IsNullOrEmpty(e.error))
                 {
-                    e.SaveFile(UserId + DateTime.Now.ToString("yyyyMMddHHmm") + ".png");
+                    e.SaveFile(UserId + DateTime.Now.ToString("yyyyMMddHHmm") + ".png",MobileResourceManager.DefaultImagePath);
+                    // e.SaveFile(UserId + DateTime.Now.ToString("yyyyMMddHHmm") + ".png");
                     ImgPicture.ResourceID = UserId + DateTime.Now.ToString("yyyyMMddHHmm");
                     ImgPicture.Refresh();
                 }
