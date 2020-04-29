@@ -149,7 +149,7 @@ namespace SMOSEC.UI.Layout
             this.numeric1.DataMember = "QUANTITY";
             this.numeric1.DisplayMember = "QUANTITY";
             this.numeric1.Location = new System.Drawing.Point(192, 68);
-            this.numeric1.MaxValue = 999999F;
+            this.numeric1.MaxValue = 999999;
             this.numeric1.Name = "numeric1";
             this.numeric1.Size = new System.Drawing.Size(100, 20);
             // 
@@ -158,7 +158,7 @@ namespace SMOSEC.UI.Layout
             this.numeric2.DataMember = "MONEY";
             this.numeric2.DisplayMember = "MONEY";
             this.numeric2.Location = new System.Drawing.Point(192, 88);
-            this.numeric2.MaxValue = 999999F;
+            this.numeric2.MaxValue = 999999;
             this.numeric2.Name = "numeric2";
             this.numeric2.Size = new System.Drawing.Size(100, 20);
             // 

@@ -128,7 +128,7 @@ namespace SMOSEC.UI.Layout
             this.numMoney.DisplayMember = "MONEY";
             this.numMoney.FontSize = 13F;
             this.numMoney.Location = new System.Drawing.Point(165, 68);
-            this.numMoney.MaxValue = 999999F;
+            this.numMoney.MaxValue = 999999;
             this.numMoney.MinusIconColor = System.Drawing.Color.Black;
             this.numMoney.Name = "numMoney";
             this.numMoney.Size = new System.Drawing.Size(90, 20);
@@ -155,7 +155,7 @@ namespace SMOSEC.UI.Layout
             this.numQuant.DisplayMember = "QUANTITY";
             this.numQuant.FontSize = 13F;
             this.numQuant.Location = new System.Drawing.Point(165, 48);
-            this.numQuant.MaxValue = 999999F;
+            this.numQuant.MaxValue = 999999;
             this.numQuant.MinusIconColor = System.Drawing.Color.Black;
             this.numQuant.Name = "numQuant";
             this.numQuant.Size = new System.Drawing.Size(90, 20);

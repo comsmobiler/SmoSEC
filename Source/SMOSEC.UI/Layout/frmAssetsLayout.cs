@@ -40,7 +40,7 @@ namespace SMOSEC.UI.Layout
         {
             if (Check.Checked)
             {
-                if (numNumber.Value >Convert.ToSingle(lblNumber.BindDataValue)) throw new Exception("选择数量不可超过可用数量!");
+                if (numNumber.Value >Convert.ToDecimal(lblNumber.BindDataValue)) throw new Exception("选择数量不可超过可用数量!");
                 if (numNumber.Value == 0) throw new Exception("选择数量不能为0!");
                 ConsumablesOrderRow Data = new ConsumablesOrderRow();
                 Data.IMAGE = imgAss.BindDisplayValue.ToString();
